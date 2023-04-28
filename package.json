@@ -1,0 +1,26 @@
+{
+  "name": "putasporkinit",
+  "version": "1.0.0",
+  "description": "Node.js based web application for saving and managing recipes. ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeByDex/PutASporkInIt.git"
+  },
+  "keywords": [
+    "node.js",
+    "javascript",
+    "sequelize",
+    "express.js",
+    "recipe."
+  ],
+  "author": "Chelsea Luevano (ChelseaLuevano)",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/CodeByDex/PutASporkInIt/issues"
+  },
+  "homepage": "https://github.com/CodeByDex/PutASporkInIt#readme"
+}

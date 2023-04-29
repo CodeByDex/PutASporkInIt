@@ -1,4 +1,6 @@
 const sq = require("../../config/connection");
+
+const seedIngredient = require('../../models/ingredient');
 const user = require('../../models/user');
 const recipe = require('../../models/recipe');
 const userPassword = require('../../models/userPassword');

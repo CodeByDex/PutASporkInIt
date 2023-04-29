@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS spork_db;
+CREATE DATABASE spork_db;

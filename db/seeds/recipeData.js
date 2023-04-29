@@ -1,8 +1,7 @@
-const { Recipe } = require('../models');
+const { Recipe } = require('../../models');
 
 const recipeData = [
-    {   id: 1, 
-        name: "Ted's Biscuits",
+    {   name: "Ted's Biscuits",
         description: `Iconic Biscuit Recipe from Apple TV's series, "Ted Lasso".
         In the show, Ted Lasso, a small-time college football coach from the Midwest hired to coach a pro soccer team in England despite knowing nothing about soccer, tries to win over the team's owner, Rebecca Welton, by making his famous biscuit recipe. `,
         instructions: `Preheat oven to 300 F. 
@@ -26,4 +25,4 @@ const recipeData = [
 
 const seedRecipe = () => Recipe.bulkCreate(recipeData);
 
-module.exports = recipeData;
+module.exports = seedRecipe;

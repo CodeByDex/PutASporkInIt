@@ -15,6 +15,14 @@ Recipe.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    userID: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: "User",
+        key: "id"
+      }
+    },
     description: {
       type: DataTypes.TEXT,
       allowNull: false

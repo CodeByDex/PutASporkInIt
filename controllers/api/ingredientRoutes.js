@@ -8,4 +8,12 @@ router.post('/', (req, res) => {
     defaultUOM: req.body.defaultUOM,
     })
 })
+
+router.get('/', (req, res) => {
+    helper.SafeGetAll(res, Ingredient, [])    
+})
+
+router.get('/:id', (req, res) => {
+    helper.SafeGetByID(req.params.id, res, Ingredient, [])
+})
 module.exports = router;

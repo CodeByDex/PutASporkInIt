@@ -23,4 +23,8 @@ router.put('/:id', (req, res) => {
         defaultUOM: req.body.defaultUOM
     })
 })
+
+router.delete('/:id', (req, res) => {
+    helper.SafeDelete(req.params.id, res, Ingredient)
+})
 module.exports = router;

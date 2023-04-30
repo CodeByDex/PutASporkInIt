@@ -18,4 +18,11 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     helper.SafeGetByID(req.params.id, res, User, [])
 })
+
+router.put('/:id', (req, res) => {
+    helper.SafeUpdate(req.params.id, res, User, {
+        userName: req.body.userName,
+        email: req.body.email
+    })
+})
 module.exports = router;

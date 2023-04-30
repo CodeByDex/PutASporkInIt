@@ -27,4 +27,5 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     helper.SafeDelete(req.params.id, res, Ingredient)
 })
+
 module.exports = router;

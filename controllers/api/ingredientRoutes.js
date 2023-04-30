@@ -16,4 +16,11 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     helper.SafeGetByID(req.params.id, res, Ingredient, [])
 })
+
+router.put('/:id', (req, res) => {
+    helper.SafeUpdate(req.params.id, res, Ingredient, {
+        name: req.body.name,
+        defaultUOM: req.body.defaultUOM
+    })
+})
 module.exports = router;

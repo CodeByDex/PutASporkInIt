@@ -1,0 +1,21 @@
+_id: req_a5249f448c354392a61b4024f2d5d849
+type: Request
+parentId: fld_290930c4c4ba4f3589fcbf23144fc5e7
+modified: 1682884903628
+created: 1682874327931
+url: http://localhost:3001/api/ingredients/1
+name: Ingredient Delete
+description: ""
+method: DELETE
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1682874327931
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

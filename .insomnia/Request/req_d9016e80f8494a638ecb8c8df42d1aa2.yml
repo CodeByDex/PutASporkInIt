@@ -1,0 +1,37 @@
+_id: req_d9016e80f8494a638ecb8c8df42d1aa2
+type: Request
+parentId: fld_e3293cc30f074f8bb9c1ba57bae4d2f6
+modified: 1682884884408
+created: 1682875245106
+url: http://localhost:3001/api/recipes/1
+name: Recipe Update
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"name": "Ted Lasso Bad Biscuits",
+    	"userID": 2,
+    	"description": "Bad Biscuits from a Bad Dude",
+    	"instructions": "you make the biscuits and have a bad time",
+    	"sourceURL": "I made it up again",
+    	"activeTime": 45,
+    	"activeTimeUOM": "minutes",
+    	"totalTime": 120,
+    	"totalTimeUOM": "hours",
+    	"complexity": "hard"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1682875254241
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

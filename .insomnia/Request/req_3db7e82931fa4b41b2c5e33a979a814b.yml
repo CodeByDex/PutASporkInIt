@@ -1,0 +1,21 @@
+_id: req_3db7e82931fa4b41b2c5e33a979a814b
+type: Request
+parentId: fld_290930c4c4ba4f3589fcbf23144fc5e7
+modified: 1682884911695
+created: 1682873911434
+url: http://localhost:3001/api/ingredients/
+name: Ingredient Get All
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1682874327781
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

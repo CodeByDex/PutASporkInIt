@@ -1,0 +1,37 @@
+_id: req_85abf17f0c80497c8c345cf3101ce51b
+type: Request
+parentId: fld_e3293cc30f074f8bb9c1ba57bae4d2f6
+modified: 1682884891294
+created: 1682874688700
+url: http://localhost:3001/api/recipes
+name: Recipe Create
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"name": "Ted Lasso Biscuits",
+    	"userID": 1,
+    	"description": "good biscuits from a good dude",
+    	"instructions": "you make the biscuits and have a good time",
+    	"sourceURL": "I made it up",
+    	"activeTime": 30,
+    	"activeTimeUOM": "minutes",
+    	"totalTime": 10,
+    	"totalTimeUOM": "hours",
+    	"complexity": "medium"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1682875254091
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

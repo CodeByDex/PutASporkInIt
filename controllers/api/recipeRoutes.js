@@ -16,4 +16,12 @@ router.post('/', (req, res) => {
     })
 })
 
+router.get('/', (req, res) => {
+    helper.SafeGetAll(res, Recipe, [])    
+})
+
+router.get('/:id', (req, res) => {
+    helper.SafeGetByID(req.params.id, res, Recipe, [])
+})
+
 module.exports = router;

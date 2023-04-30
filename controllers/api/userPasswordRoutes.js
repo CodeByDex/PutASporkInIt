@@ -1,10 +1,12 @@
 const router = require('express').Router();
 const {UserPassword, User} = require('../../models');
+const bcrypt = require('bcrypt')
 const helper = require('../util')
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
+    hash =  await bcrypt.hash(req.body.password, 5)
     helper.SafeCreate(res, UserPassword, {
-    password: req.body.password,
+    password: hash,
     userID: req.body.userID
     })
 })
@@ -17,9 +19,10 @@ router.get('/:id', (req, res) => {
     helper.SafeGetByID(req.params.id, res, UserPassword, [])
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
+    hash =  await bcrypt.hash(req.body.password, 5)
     helper.SafeUpdate(req.params.id, res, UserPassword, {
-        password: req.body.password,
+        password: hash,
         userID: req.body.userID
     })
 })

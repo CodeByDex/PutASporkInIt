@@ -1,12 +1,37 @@
 const router = require("express").Router();
+const { User, UserPassword, Recipe, Ingredient } = require('../models');
 
+
+// GET route for login page
 router.get('/login', (req, res) => {
     // if (req.session.loggedIn) {
     //   res.redirect('/');
     //   return;
-    // }
+    // }git
   
     res.render('login');
   });
+
+  // GET route for home page
+  router.get('/', (req, res) => {
+    res.render('home')
+  })
+
+
+  // GET route for dashboard page (user profile/account)
+router.get('/dashboard', (req, res) => {
+  res.render('dashboard')
+})
+
+  // GET route for recipe page
+  router.get('/recipe', (req, res) => {
+    res.render('recipe');
+  })
+
+  // GET route for browser page
+  router.get('/browse', (req, res) => {
+    res.render('browse');
+  })
+
 
 module.exports = router;

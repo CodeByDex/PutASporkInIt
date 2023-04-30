@@ -18,8 +18,10 @@ UserPassword.init(
        userID: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        references: {model: "User"},
-        key: "id"
+        references: {
+          model: "User",
+          key: "id"
+        }
        }
   },
   {

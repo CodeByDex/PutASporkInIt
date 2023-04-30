@@ -1,12 +1,12 @@
 const convert = require("convert-units");
 const qty = "qty";
 const excludedUOMs = [
-    // "mcg",
-    // "mg",
-    // "mt",
-    // "t",
-    // "m3",
-    // "c3",
+    "mcg",
+    "mg",
+    "mt",
+    "t",
+    "m3",
+    "c3",
     "cl",
     "dc",
     "kl",
@@ -21,9 +21,9 @@ const excludedUOMs = [
     "in3",
     "ft3",
     "yd3",
-    // "ns",
-    // "mu",
-    // "ms"
+    "ns",
+    "mu",
+    "ms"
 ];
 
 function GetAllIngredientUOMs() {

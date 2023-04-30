@@ -1,0 +1,29 @@
+_id: req_9a5d8d3371d846eea285d47efdd03377
+type: Request
+parentId: fld_290930c4c4ba4f3589fcbf23144fc5e7
+modified: 1682885023332
+created: 1682873718301
+url: http://localhost:3001/api/ingredients/
+name: Ingredient Create
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"name": "ham",
+    	"defaultUOM": "g"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1682874327731
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

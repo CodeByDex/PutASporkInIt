@@ -1,0 +1,29 @@
+_id: req_dbbe3a3cf5af461a980c9601f348aefc
+type: Request
+parentId: fld_8635863c561a4e42b5f76f82c4d9eaad
+modified: 1682884853926
+created: 1682873114393
+url: http://localhost:3001/api/users/1
+name: User Update
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"userName": "user2",
+    	"email": "user2@gmai.com"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1682873191444.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

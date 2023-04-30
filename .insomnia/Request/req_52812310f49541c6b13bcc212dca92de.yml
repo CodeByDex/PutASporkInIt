@@ -1,0 +1,21 @@
+_id: req_52812310f49541c6b13bcc212dca92de
+type: Request
+parentId: fld_8635863c561a4e42b5f76f82c4d9eaad
+modified: 1682884869948
+created: 1682875895638
+url: http://localhost:3001/api/userpassword/2
+name: User Password Get by User ID
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1682873191194.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

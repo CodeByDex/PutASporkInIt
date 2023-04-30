@@ -1,7 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const units = require("../utils/Units");
 
 class Recipe extends Model {}
+class RecipeIngredient extends Model {}
 
 Recipe.init(
   {
@@ -41,7 +43,10 @@ Recipe.init(
     },
     activeTimeUOM: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        isIn: [units.GetTimeUOMs().map(x=>x.abbr)]
+      }
     },
     totalTime: {
       type: DataTypes.DECIMAL,
@@ -49,7 +54,10 @@ Recipe.init(
     },
     totalTimeUOM: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        isIn: [units.GetTimeUOMs().map(x=>x.abbr)]
+      }
     },
     complexity: {
       type: DataTypes.STRING,
@@ -61,4 +69,51 @@ Recipe.init(
   }
 );
 
-module.exports = Recipe;
+RecipeIngredient.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    recipeID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "recipe",
+        key: "id"
+      }
+    },
+    ingredientID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model:"ingredient",
+        key: "id"
+      }
+    },
+    amount: {
+      type: DataTypes.DECIMAL(10,2),
+      allowNull: false,
+      validate: {
+        min: 0.01
+      }
+    },
+    UOM: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isIn: [units.GetAllIngredientUOMs().map(x=>x.abbr)]
+      }
+    }
+  },
+  {
+    sequelize
+  }
+)
+
+module.exports = {
+  Recipe,
+  RecipeIngredient
+};

@@ -1,0 +1,21 @@
+_id: req_48646a7fea1c4fe093f8f807821d97b2
+type: Request
+parentId: fld_8635863c561a4e42b5f76f82c4d9eaad
+modified: 1682884856512
+created: 1682872415282
+url: http://localhost:3001/api/users
+name: User Get All
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1682873191394.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

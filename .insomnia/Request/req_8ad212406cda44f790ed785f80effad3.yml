@@ -1,0 +1,21 @@
+_id: req_8ad212406cda44f790ed785f80effad3
+type: Request
+parentId: fld_e3293cc30f074f8bb9c1ba57bae4d2f6
+modified: 1682884886919
+created: 1682875073121
+url: http://localhost:3001/api/recipes/1
+name: Recipe Get by ID
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1682875254191
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

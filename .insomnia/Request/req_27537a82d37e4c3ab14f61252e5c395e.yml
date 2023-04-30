@@ -1,0 +1,21 @@
+_id: req_27537a82d37e4c3ab14f61252e5c395e
+type: Request
+parentId: fld_e3293cc30f074f8bb9c1ba57bae4d2f6
+modified: 1682884882440
+created: 1682875254291
+url: http://localhost:3001/api/recipes/1
+name: Recipe Delete
+description: ""
+method: DELETE
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1682875254291
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

@@ -1,0 +1,29 @@
+_id: req_3ccc0e400bf449018338b36ea7a8be2b
+type: Request
+parentId: fld_8635863c561a4e42b5f76f82c4d9eaad
+modified: 1682884872786
+created: 1682875892311
+url: http://localhost:3001/api/userpassword
+name: User Password Create
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"password": "password",
+    	"userID": 1
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+metaSortKey: -1682873191144.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

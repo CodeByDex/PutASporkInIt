@@ -1,0 +1,21 @@
+_id: req_73117640ddf14398b5935b37baeec076
+type: Request
+parentId: fld_8635863c561a4e42b5f76f82c4d9eaad
+modified: 1682884867020
+created: 1682876539620
+url: http://localhost:3001/api/userpassword/13
+name: User Password Delete
+description: ""
+method: DELETE
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1682873191294.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

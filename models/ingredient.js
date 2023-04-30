@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const units = require("../utils/Units");
 
 class Ingredient extends Model {}
 
@@ -19,7 +20,10 @@ Ingredient.init(
         defaultUOM: {
           type: DataTypes.STRING,
           allowNull: false,
-          },
+          validate: {
+            isIn: [units.GetAllIngredientUOMs().map(x => x.abbr)]
+          }
+        }
       },
       {
         sequelize,

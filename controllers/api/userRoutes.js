@@ -10,4 +10,12 @@ router.post('/', (req, res) => {
     email: req.body.email,
     })
 })
+
+router.get('/', (req, res) => {
+    helper.SafeGetAll(res, User, [])    
+})
+
+router.get('/:id', (req, res) => {
+    helper.SafeGetByID(req.params.id, res, User, [])
+})
 module.exports = router;

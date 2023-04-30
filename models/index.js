@@ -29,4 +29,4 @@ UserPassword.belongsTo(User, {
     foreignKey: "userID"
 });
 
-module.exports = { Recipe, Ingredient, User };
+module.exports = { Recipe, Ingredient, User, UserPassword };

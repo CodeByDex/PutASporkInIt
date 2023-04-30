@@ -25,4 +25,8 @@ router.put('/:id', (req, res) => {
         email: req.body.email
     })
 })
+
+router.delete('/:id', (req, res) => {
+    helper.SafeDelete(req.params.id, res, User)
+})
 module.exports = router;

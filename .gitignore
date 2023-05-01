@@ -131,3 +131,6 @@ dist
 
 # Used this statement because some team members are working on Mac
 **/.DS_Store
+
+# ignore helper test files
+test.js

@@ -3,7 +3,8 @@ module.exports = {
     SafeGetByID: SafeGetByID,
     SafeCreate: SafeCreate,
     SafeUpdate: SafeUpdate,
-    SafeDelete: SafeDelete
+    SafeDelete: SafeDelete,
+    SafeRequest: SafeRequest
 }
 
 async function SafeRequest(res, cb) {

@@ -5,10 +5,12 @@ const helper = require('../util')
 
 //create new user
 router.post('/', (req, res) => {
-    helper.SafeCreate(res, User, {
-    userName: req.body.userName,
-    email: req.body.email,
-    })
+
+    helper.SafeRequest(res, async (res) => {
+        const newUser = await User.createUser(req.body.userName, req.body.email, req.body.password)
+
+        res.json(newUser);
+    });
 })
 
 router.get('/', (req, res) => {

@@ -1,7 +1,7 @@
 _id: req_68320b8b2fcd4ecf942bc41e59aca1c1
 type: Request
 parentId: fld_8635863c561a4e42b5f76f82c4d9eaad
-modified: 1682884859587
+modified: 1682890156487
 created: 1682872432766
 url: http://localhost:3001/api/users
 name: User Create
@@ -11,8 +11,9 @@ body:
   mimeType: application/json
   text: |-
     {
-    	"userName": "user1",
-    	"email": "user1@gmail.com"
+    	"userName": "user4",
+    	"email": "user4@gmail.com",
+    	"password": "foo"
     }
 parameters: []
 headers:

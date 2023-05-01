@@ -16,9 +16,9 @@ const recipeData = [
         Cool completely. Re-slice them, if necessary, and serve.` ,
         sourceURL: "https://www.today.com/food/here-s-official-ted-lasso-biscuit-recipe-t230627",
         activeTime: 30,
-        activeTimeUOM: "minutes",
+        activeTimeUOM: "min",
         totalTime: 2,
-        totalTimeUOM: "hours",
+        totalTimeUOM: "h",
         complexity: "medium"
     }
 ];

@@ -4,7 +4,8 @@
   "description": "Node.js based web application for saving and managing recipes. ",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tailwindcss -i ./public/css/input.css -o ./public/css/style.css --watch"
   },
   "repository": {
     "type": "git",
@@ -33,5 +34,8 @@
     "handlebars": "^4.7.7",
     "mysql2": "^3.2.4",
     "sequelize": "^6.31.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
   }
 }

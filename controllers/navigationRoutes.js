@@ -13,8 +13,11 @@ router.get('/login', (req, res) => {
   });
 
   // GET route for home page
-  router.get('/', (req, res) => {
-    res.render('home')
+  router.get('/', async (req, res) => {
+    const recipes = await Recipe.findAll({})
+    // Pull in first three recipes in array
+    const topThreeRecipes = recipes.slice(0, 3)
+    res.render('home', { recipeContent: recipes, topRecipe: topThreeRecipes})
   })
 
 

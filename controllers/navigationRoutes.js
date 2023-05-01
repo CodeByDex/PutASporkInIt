@@ -17,7 +17,7 @@ router.get('/login', (req, res) => {
     const recipes = await Recipe.findAll({})
     // Pull in first three recipes in array
     const topThreeRecipes = recipes.slice(0, 3)
-    res.render('home', { recipeContent: recipes, topRecipe: topThreeRecipes})
+    res.render('home', { topRecipes: topThreeRecipes})
   })
 
 
@@ -27,13 +27,14 @@ router.get('/dashboard', (req, res) => {
 })
 
   // GET route for recipe page
-  router.get('/recipe', (req, res) => {
+  router.get('/recipe/:id', (req, res) => {
     res.render('recipe');
   })
 
   // GET route for browser page
-  router.get('/browse', (req, res) => {
-    res.render('browse');
+  router.get('/browse', async (req, res) => {
+    const recipes = await Recipe.findAll({})
+    res.render('browse', { recipeContent: recipes});
   })
 
 

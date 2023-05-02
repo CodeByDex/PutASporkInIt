@@ -17,7 +17,9 @@ router.get('/login', (req, res) => {
     const recipes = await Recipe.findAll({})
     // Pull in first three recipes in array
     const topThreeRecipes = recipes.slice(0, 3)
-    res.render('home', { topRecipes: topThreeRecipes})
+    const topRecipes = topThreeRecipes.map(obj => obj.get())
+    console.log(topRecipes)
+    res.render('home', { topRecipes: topRecipes})
   })
 
 

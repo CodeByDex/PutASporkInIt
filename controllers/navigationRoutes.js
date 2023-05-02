@@ -4,13 +4,13 @@ const { User, UserPassword, Recipe, Ingredient } = require('../models');
 
 // GET route for login page
 router.get('/login', (req, res) => {
-    // if (req.session.loggedIn) {
-    //   res.redirect('/');
-    //   return;
-    // }git
-  
-    res.render('login');
-  });
+  // if (req.session.loggedIn) {
+  //   res.redirect('/');
+  //   return;
+  // }
+
+  res.render('login');
+});
 
 // GET route for home page
 router.get('/', async (req, res) => {
@@ -29,8 +29,15 @@ router.get('/dashboard', (req, res) => {
 })
 
 // GET route for recipe page
-router.get('/recipe/:id', (req, res) => {
-  res.render('recipe');
+router.get('/recipe/:id', async (req, res) => {
+  const recipe = await Recipe.findByPk(req.params.id)
+  const recipeData = recipe.get()
+
+  // Capitalize first letter of complexity
+  recipeData.complexity = recipeData.complexity.charAt(0).toUpperCase() + recipeData.complexity.slice(1);
+  
+  console.log(recipeData)
+  res.render('recipe', {recipeData});
 })
 
 // GET route for browser page

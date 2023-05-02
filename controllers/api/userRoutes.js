@@ -9,7 +9,13 @@ router.post('/', (req, res) => {
     helper.SafeRequest(res, async (res) => {
         const newUser = await User.createUser(req.body.userName, req.body.email, req.body.password)
 
-        res.json(newUser);
+        req.session.save(() => {
+            req.session.userID = newUser.id,
+            req.session.loggedIn = true;
+        })
+
+        //todo: page is not redirecting after successful user create
+        res.redirect("/");
     });
 })
 

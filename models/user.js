@@ -10,6 +10,10 @@ class User extends Model {
   static async createUser(userName, email, password) {
     //TODO: Add Password Requirement Validations
 
+    if (password.length < 8) {      
+      throw new Error('Variable length must be at least 8 characters')
+    }
+
     const hash =  await bcrypt.hash(password, 5)
 
     //We want to make sure ceate user and password both occur

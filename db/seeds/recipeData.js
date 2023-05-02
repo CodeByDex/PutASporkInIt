@@ -284,7 +284,39 @@ const recipeData = [
     1 clove of garlic, minced
     Pinch of salt
     Pinch of pepper
-    1 ½ tbsp of canola oil (you can substitute this with other oils if you don’t have canola oil) 
+    1 ½ tbsp of canola oil (you can substitute this with other oils if you don't have canola oil) 
+    6 cups of chicken broth 
+    ½ cup of water
+    1 tbsp of soy sauce
+    2 packets of egg noodles
+    `,
+    instructions: `
+    1. Prepare all your ingredients separately beforehand for a smoother cooking experience. 
+    2. Dice the carrots and celery according to your desired size. 
+    3. Dice the onion and mince the garlic into small pieces. 
+    4. Combine the oil, onion, garlic, carrot and celery in the large pot and cook until the vegetables are soft. 
+    5. Add in salt and pepper. 
+    6. Once you smell the fragrance of the onion and garlic, add the chicken stock and water in, and bring the mixture to a boil. 
+    7. Add the soy sauce and noodles into the mix and cook for about 5 to 10 minutes more until the noodles are cooked through. 
+    8. Serve immediately. 
+    ` ,
+    sourceURL: "https://sethlui.com/simple-stay-home-recipes-kungfu-panda-secret-ingredient-noodle-soup/",
+    activeTime: 15,
+    activeTimeUOM: "min",
+    totalTime: 30,
+    totalTimeUOM: "min",
+    complexity: "easy"
+},
+{   name: "Car Panini(Family Guy)",
+    description: `From the hilarious animated movie KungFu Panda we bring you the one and only Special Ingredient Soup!`,
+    ingredients: `
+    2 carrots, peeled and diced
+    ¼ of an onion, diced
+    3 stalks of celery, diced
+    1 clove of garlic, minced
+    Pinch of salt
+    Pinch of pepper
+    1 ½ tbsp of canola oil (you can substitute this with other oils if you don't have canola oil) 
     6 cups of chicken broth 
     ½ cup of water
     1 tbsp of soy sauce

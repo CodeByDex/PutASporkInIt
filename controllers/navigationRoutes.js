@@ -12,13 +12,15 @@ router.get('/login', (req, res) => {
     res.render('login');
   });
 
-  // GET route for home page
-  router.get('/', async (req, res) => {
-    const recipes = await Recipe.findAll({})
-    // Pull in first three recipes in array
-    const topThreeRecipes = recipes.slice(0, 3)
-    res.render('home', { topRecipes: topThreeRecipes})
-  })
+// GET route for home page
+router.get('/', async (req, res) => {
+  const recipes = await Recipe.findAll({})
+  // Pull in first three recipes in array
+  const topThreeRecipes = recipes.slice(0, 3)
+  const topRecipes = topThreeRecipes.map(obj => obj.get())
+  console.log(topRecipes)
+  res.render('home', { topRecipes: topRecipes})
+})
 
 
   // GET route for dashboard page (user profile/account)

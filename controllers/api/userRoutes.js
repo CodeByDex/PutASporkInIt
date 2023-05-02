@@ -38,14 +38,19 @@ router.delete('/:id', (req, res) => {
     helper.SafeDelete(req.params.id, res, User)
 })
 
-router.post("/:id/Favorites", (req, res) => {
+router.post("/:userID/Favorites", (req, res) => {
     helper.SafeCreate(res, UserRecipeFavorite, {
-        userID: req.params.id,
+        userID: req.params.userID,
         recipeID: req.body.recipeID
     })
 });
 
-router.get("/:id/Favorites", (req, res) => {
-    helper.SafeGetAll(res, UserRecipeFavorite, [], {userID: req.params.id});
-})
+router.get("/:userID/Favorites", (req, res) => {
+    helper.SafeGetAll(res, UserRecipeFavorite, [], {userID: req.params.userID});
+});
+
+router.delete("/:userID/Favorites/:id", (req, res) => {
+    helper.SafeDelete(req.params.id, res, UserRecipeFavorite);
+});
+
 module.exports = router;

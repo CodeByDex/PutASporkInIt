@@ -1,5 +1,7 @@
 window.addEventListener("load", () => {
-    document.querySelector("#Create-Account").addEventListener("click", async () =>{
+    document.querySelector("#formSubmit").addEventListener("submit", async (event) =>{
+        event.preventDefault()
+
         const userName = document.querySelector("#newName").value;
         const email = document.querySelector("#newEmail").value;
         const password = document.querySelector("#newPassword").value;
@@ -15,8 +17,14 @@ window.addEventListener("load", () => {
                 email: email,
                 password: password
             })
+            .then(document.location.replace('/'))
+        
+            .then(console.log("hello"))
+        
         });
         
-        console.log(response);
+        
+        
     })
+    
 })

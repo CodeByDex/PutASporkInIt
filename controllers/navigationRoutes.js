@@ -4,10 +4,7 @@ const { User, UserPassword, Recipe, Ingredient, RecipeIngredient } = require('..
 
 // GET route for login page
 router.get('/login', (req, res) => {
-  // if (req.session.loggedIn) {
-  //   res.redirect('/');
-  //   return;
-  // }git
+
 
   res.render('login');
 });
@@ -17,7 +14,9 @@ router.get('/', async (req, res) => {
   const recipes = await Recipe.findAll({})
   // Pull in first three recipes in array
   const topThreeRecipes = recipes.slice(0, 3)
-  res.render('home', { topRecipes: topThreeRecipes })
+  const topRecipes = topThreeRecipes.map(obj => obj.get())
+  console.log(topRecipes)
+  res.render('home', {topRecipes})
 })
 
 
@@ -28,6 +27,7 @@ router.get('/dashboard', (req, res) => {
 
 // GET route for recipe page
 router.get('/recipe/:id', async (req, res) => {
+
   const recData = await Recipe.findByPk(req.params.id, {
     include: {
       model: RecipeIngredient,

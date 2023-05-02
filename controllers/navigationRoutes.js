@@ -19,25 +19,27 @@ router.get('/', async (req, res) => {
   const topThreeRecipes = recipes.slice(0, 3)
   const topRecipes = topThreeRecipes.map(obj => obj.get())
   console.log(topRecipes)
-  res.render('home', { topRecipes: topRecipes})
+  res.render('home', {topRecipes})
 })
 
 
-  // GET route for dashboard page (user profile/account)
+// GET route for dashboard page (user profile/account)
 router.get('/dashboard', (req, res) => {
   res.render('dashboard')
 })
 
-  // GET route for recipe page
-  router.get('/recipe/:id', (req, res) => {
-    res.render('recipe');
-  })
+// GET route for recipe page
+router.get('/recipe/:id', (req, res) => {
+  res.render('recipe');
+})
 
-  // GET route for browser page
-  router.get('/browse', async (req, res) => {
-    const recipes = await Recipe.findAll({})
-    res.render('browse', { recipeContent: recipes});
-  })
+// GET route for browser page
+router.get('/browse', async (req, res) => {
+  const recipes = await Recipe.findAll({})
+  const allRecipes = recipes.map(obj => obj.get())
+  console.log(allRecipes)
+  res.render('browse', {allRecipes});
+})
 
 
 module.exports = router;

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {User} = require('../../models');
+const {User, UserRecipeFavorite} = require('../../models');
 const helper = require('../util')
 
 
@@ -36,5 +36,16 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     helper.SafeDelete(req.params.id, res, User)
+})
+
+router.post("/:id/Favorites", (req, res) => {
+    helper.SafeCreate(res, UserRecipeFavorite, {
+        userID: req.params.id,
+        recipeID: req.body.recipeID
+    })
+});
+
+router.get("/:id/Favorites", (req, res) => {
+    helper.SafeGetAll(res, UserRecipeFavorite, [], {userID: req.params.id});
 })
 module.exports = router;

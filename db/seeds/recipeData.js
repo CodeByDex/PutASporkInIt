@@ -4,6 +4,11 @@ const recipeData = [
     {   name: "Ted's Biscuits",
         description: `Iconic Biscuit Recipe from Apple TV's series, "Ted Lasso".
         In the show, Ted Lasso, a small-time college football coach from the Midwest hired to coach a pro soccer team in England despite knowing nothing about soccer, tries to win over the team's owner, Rebecca Welton, by making his famous biscuit recipe. `,
+        ingredients: `
+        2 sticks (8 ounces) unsalted butter, plus more for the pan
+        3/4 cup powdered sugar
+        2 cups all-purpose flour
+        1/4 teaspoon coarse salt`,
         instructions: `Preheat oven to 300 F. 
         Sift flour and salt, mix into bowl and set aside. 
         Mix butter on high speed until fluffy (3 to 5 minutes). Gradually add sugar slowly, continuing to mix until pale and fluffy.
@@ -168,6 +173,140 @@ const recipeData = [
         totalTimeUOM: "min",
         complexity: "easy"
     },
+    {   name: "Flamming Fire Flakes(Avatar the Last Airbender)",
+        description: `From the hit American anime brings you one of the pride recipes of the Fire Nation.`,
+        ingredients: `
+        100 g long grain white rice
+        400 g water
+        ½ small cinnamon stick
+        ½ star anise pod
+        1 tsp fennel seeds
+        Generous shake Sichuan peppercorns
+        1 tsp cayenne pepper
+        1 tsp sweet paprika
+        `,
+        instructions: `
+        1. In a medium saucepan, cook long grain white rice in water for 15 minutes
+        2. Grind cinnamon stick, star anise, fennel seeds and Sichuan peppercorns into a fine powder then sift to remove large pieces
+        3. Mix in cayenne pepper and sweet paprika
+        4. Liquefy the cooked rice with few teaspoons of the spice mix
+        5. Pour onto a silicone liner then use a spatula to shape into a thin sheet
+        6. Put in a dehydrator under 122 degrees Fahrenheit for 2 hours
+        7. Peel off the sheet from the silicone liner and break off parts which are fully dehydrated
+        8. Put the still most parts back in dehydrator for 30 minutes
+        9. Break by hand into flakes
+        10. Deep fry in oil until puffed up then drain in paper towels to remove excess oil
+        11. Sprinkle with more of the spice mix and a bit of salt while warm
+     
+        
+        ` ,
+        sourceURL: "https://www.gmanetwork.com/entertainment/celebritylife/food/67172/how-to-make-flaming-fire-flakes-from-avatar-the-last-airbender/story",
+        activeTime: 45,
+        activeTimeUOM: "min",
+        totalTime: 3,
+        totalTimeUOM: "h",
+        complexity: "medium"
+    },
+    {   name: "Cheesy Blasters(30 Rock)",
+    description: `"You take a hot dog, stuff it with some Jack cheese, fold it in a pizza, you've got cheesy blasters!" From the critically acclaimed show 30 Rock is the Cheesy Blaster!`,
+    ingredients: `
+    Pizza dough
+    Flour
+    Spicy Italian Sausage
+    Pepperoni
+    Genoa salami
+    Hard salami
+    Low moisture mozzarella
+    Pizza sauce
+     Ricotta cheese
+    Eggs
+    `,
+    instructions: `
+    1. Make some pizza dough.
+    2. Cut dough into 4 equal pieces. Roll out one piece on a floured surface until it's a circle.
+    3. Once your dough is rolled out, cook some spicy italian sausage in a pan, and be sure to crumble it up.
+    4. While your sausage is cooking, dice up some pepperoni, genoa salami, and some hard salami (any 3 salamis will do).
+    5. Add some pizza sauce to your dough and top with some low moisture mozzarella followed by your 3 salamis, spicy Italian sausage, and some ricotta cheese.
+    6. Fold dough over and turn in the edges similar to an empanada. Cut three slits for steam in the top. Cover with an egg wash and place in a 500°F oven for about 20 minutes.
+    7. Let sit for 10-15 minutes to cool. Serve and enjoy!
+    ` ,
+    sourceURL: "https://www.bingingwithbabish.com/recipes/cheesyblasters",
+    activeTime: 30,
+    activeTimeUOM: "min",
+    totalTime: 1,
+    totalTimeUOM: "h",
+    complexity: "easy"
+},
+{   name: "Spaghetti Tacos(iCarly)",
+    description: `An iconic recipe that we all have wanted to try, here it is, the spaghetti tacos recipe!`,
+    ingredients: `
+    Basil
+    4 cloves garlic, chopped
+    1 tsp red pepper flakes
+    2 tsp dried oregano, divided in half
+    ½ small onion, minced
+    1 can San Marzano tomatoes
+    4 Tbsp tomato paste
+    Olive oil
+    1 pound ground beef
+    1 egg
+    1 cup Panko bread crumbs, divided
+    1 tsp garlic powder
+    1 tsp milk
+    1 box spaghetti
+    1 quart vegetable oil
+    2 Tbsp butter
+    Parmesan cheese, shredded
+    `,
+    instructions: `
+    1. For the sauce, add 2 Tbsp of olive oil to a deep saute pan along with ½ of a small onion. Cook until soft and translucent before adding 1 tsp each of red pepper flakes and dried oregano, 4 cloves of chopped garlic, and 4 Tbsp of tomato paste. Mix to combine.
+    2. In a food processor, add your San Marzano tomatoes and pulse 5 times before adding to your pan. Add your chopped basil turn to medium low and let cook for an hour stirring every 10 minutes.
+    3. For your meatballs combine 1 pound of ground beef with 1 egg, ½ cup panko bread crumbs, 1 tsp garlic powder, 1 tsp milk, and 1 tsp oregano. Mix with your hands to combine and then roll into 1 inch balls. Toss them in the rest of the breadcrumbs.
+    4. In a large pot, bring 1 quart of vegetable oil to 350°F and then add your meatballs. Cook for 3-5 minutes. Once cooked, remove and place on a wire rack over a rimmed baking sheet.
+    5. Cook your spaghetti until it's almost done, reserving ¼ cup of the pasta water.
+    6. In a saute pan add some of the sauce along with the pasta and ¼ cup of pasta water. Mix to combine and add 2 Tbsp of butter along with some salt and a good glug of olive oil. Mix or toss to combine
+    7. In a non stick pan add about 2 ounces of shredded parmesan cheese. Let it melt until the edges are starting to brown and then flip and cook for another 2 minutes. Remove from pan and place over a rolling pin and let it cool and harden. Once hardened add some pasta and sauce to it with your meatballs and top with some parmesan cheese.
+    8. Serve and enjoy!
+    ` ,
+    sourceURL: "https://www.bingingwithbabish.com/recipes/spaghettitaco",
+    activeTime: 20,
+    activeTimeUOM: "min",
+    totalTime: 45,
+    totalTimeUOM: "min",
+    complexity: "easy"
+},
+{   name: "Secrete Ingredient Soup(KungFu Panda)",
+    description: `From the hilarious animated movie KungFu Panda we bring you the one and only Special Ingredient Soup!`,
+    ingredients: `
+    2 carrots, peeled and diced
+    ¼ of an onion, diced
+    3 stalks of celery, diced
+    1 clove of garlic, minced
+    Pinch of salt
+    Pinch of pepper
+    1 ½ tbsp of canola oil (you can substitute this with other oils if you don’t have canola oil) 
+    6 cups of chicken broth 
+    ½ cup of water
+    1 tbsp of soy sauce
+    2 packets of egg noodles
+    `,
+    instructions: `
+    1. Prepare all your ingredients separately beforehand for a smoother cooking experience. 
+    2. Dice the carrots and celery according to your desired size. 
+    3. Dice the onion and mince the garlic into small pieces. 
+    4. Combine the oil, onion, garlic, carrot and celery in the large pot and cook until the vegetables are soft. 
+    5. Add in salt and pepper. 
+    6. Once you smell the fragrance of the onion and garlic, add the chicken stock and water in, and bring the mixture to a boil. 
+    7. Add the soy sauce and noodles into the mix and cook for about 5 to 10 minutes more until the noodles are cooked through. 
+    8. Serve immediately. 
+    ` ,
+    sourceURL: "https://sethlui.com/simple-stay-home-recipes-kungfu-panda-secret-ingredient-noodle-soup/",
+    activeTime: 15,
+    activeTimeUOM: "min",
+    totalTime: 30,
+    totalTimeUOM: "min",
+    complexity: "easy"
+},
 ];
 
 const seedRecipe = () => Recipe.bulkCreate(recipeData);

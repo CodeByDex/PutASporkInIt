@@ -24,10 +24,11 @@ async function SafeRequest(res, cb) {
     }
 }
 
-async function SafeGetAll(res, model, includes) {
+async function SafeGetAll(res, model, includes, whereClause) {
     SafeRequest(res, async (res) => {
         const modelData = await model.findAll({
-            include: includes
+            include: includes,
+            where: whereClause
         });
 
         res.json(modelData.map(x => x.get()));

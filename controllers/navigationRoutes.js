@@ -34,6 +34,7 @@ router.get('/dashboard', (req, res) => {
   // GET route for browser page
   router.get('/browse', async (req, res) => {
     const recipes = await Recipe.findAll({})
+    //TODO: Implement UserRecipeFavorite get conditionally if the user is logged in
     res.render('browse', { recipeContent: recipes});
   })
 

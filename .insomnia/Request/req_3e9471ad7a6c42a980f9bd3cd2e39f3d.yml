@@ -1,17 +1,17 @@
-_id: req_4a3ef5ca215540129fe9870de635db01
+_id: req_3e9471ad7a6c42a980f9bd3cd2e39f3d
 type: Request
-parentId: fld_8635863c561a4e42b5f76f82c4d9eaad
-modified: 1682891362435
-created: 1682873319997
-url: http://localhost:3001/api/users/5
-name: User Delete
+parentId: fld_45dd7ae417b14799962d8289a8b8b6b2
+modified: 1683065263579
+created: 1683065241619
+url: http://localhost:3001/api/users/1/Favorites
+name: Get UserFavoriteRecipe
 description: ""
-method: DELETE
+method: GET
 body: {}
 parameters: []
 headers: []
 authentication: {}
-metaSortKey: -1682873191494.5
+metaSortKey: -1683065241619
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

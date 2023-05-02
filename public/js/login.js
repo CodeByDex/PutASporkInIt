@@ -1,11 +1,9 @@
 window.addEventListener("load", () => {
     document.querySelector("#formSubmit").addEventListener("submit", async (event) =>{
         event.preventDefault()
-
         const userName = document.querySelector("#newName").value;
         const email = document.querySelector("#newEmail").value;
-        const password = document.querySelector("#newPassword").value;
-        console.log("Button Clicked!", userName, email, password)
+        const password = document.querySelector("#newPassword").value;        
 
         const response = await fetch("./api/users", {
             method: "POST",
@@ -16,15 +14,13 @@ window.addEventListener("load", () => {
                 userName: userName,
                 email: email,
                 password: password
-            })
-            .then(document.location.replace('/'))
-        
-            .then(console.log("hello"))
-        
+            })        
         });
         
-        
-        
-    })
-    
+        if (response.ok) {
+            document.location.replace('/');
+        } else {
+            // TODO add handling for bad response 
+        }       
+    })    
 })

@@ -8,7 +8,6 @@ class User extends Model {
 
 
   static async createUser(userName, email, password) {
-    //TODO: Add Password Requirement Validations
 
     if (password.length < 8) {      
       throw new Error('Variable length must be at least 8 characters')
@@ -49,6 +48,8 @@ class User extends Model {
   }
 }
 
+class UserRecipeFavorite extends Model {};
+
 User.init(
   {
     id: {
@@ -74,4 +75,36 @@ User.init(
   }
 );
 
-module.exports = User;
+UserRecipeFavorite.init({
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    userID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: User,
+        key: "id"
+      }
+    },
+    recipeID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "Recipe",
+        key: "id"
+      }
+    }
+  },
+  {
+    sequelize
+  }
+);
+
+module.exports = {
+  User,
+  UserRecipeFavorite
+};

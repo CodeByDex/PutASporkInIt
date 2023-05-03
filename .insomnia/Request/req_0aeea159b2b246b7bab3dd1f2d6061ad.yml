@@ -1,26 +1,24 @@
-_id: req_68320b8b2fcd4ecf942bc41e59aca1c1
+_id: req_0aeea159b2b246b7bab3dd1f2d6061ad
 type: Request
-parentId: fld_8635863c561a4e42b5f76f82c4d9eaad
-modified: 1683065211123
-created: 1682872432766
-url: http://localhost:3001/api/users
-name: User Create
+parentId: fld_45dd7ae417b14799962d8289a8b8b6b2
+modified: 1683065187029
+created: 1683065117436
+url: http://localhost:3001/api/users/1/Favorites
+name: Create User Favorite Recipe
 description: ""
 method: POST
 body:
   mimeType: application/json
   text: |-
     {
-    	"userName": "user4",
-    	"email": "user4@gmail.com",
-    	"password": "foobared"
+    	"recipeID": 1
     }
 parameters: []
 headers:
   - name: Content-Type
     value: application/json
 authentication: {}
-metaSortKey: -1682873191419.5
+metaSortKey: -1683065117436
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

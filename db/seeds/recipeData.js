@@ -4,6 +4,12 @@ const recipeData = [
     {   name: "Ted's Biscuits",
         description: `Iconic Biscuit Recipe from Apple TV's series, "Ted Lasso".
         In the show, Ted Lasso, a small-time college football coach from the Midwest hired to coach a pro soccer team in England despite knowing nothing about soccer, tries to win over the team's owner, Rebecca Welton, by making his famous biscuit recipe. `,
+        ingredients: `
+        2 cups all-purpose flour
+        1/4 teaspoons coarse salt
+        1 cup (2 sticks) unsalted butter, room temperature
+        3/4 cup confectioners' sugar
+        `,
         instructions: `Preheat oven to 300 F. 
         Sift flour and salt, mix into bowl and set aside. 
         Mix butter on high speed until fluffy (3 to 5 minutes). Gradually add sugar slowly, continuing to mix until pale and fluffy.

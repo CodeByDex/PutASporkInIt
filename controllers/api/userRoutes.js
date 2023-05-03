@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {User} = require('../../models');
+const {User, UserRecipeFavorite} = require('../../models');
 const helper = require('../util')
 
 
@@ -40,6 +40,7 @@ router.delete('/:id', (req, res) => {
     helper.SafeDelete(req.params.id, res, User)
 })
 
+
 router.post('/logout', (req, res) => {
     if (req.session.logged_in) {
       // Remove the session variables
@@ -51,4 +52,21 @@ router.post('/logout', (req, res) => {
     }
   });
   
-  module.exports = router;
+
+router.post("/:userID/Favorites", (req, res) => {
+    helper.SafeCreate(res, UserRecipeFavorite, {
+        userID: req.params.userID,
+        recipeID: req.body.recipeID
+    })
+});
+
+router.get("/:userID/Favorites", (req, res) => {
+    helper.SafeGetAll(res, UserRecipeFavorite, [], {userID: req.params.userID});
+});
+
+router.delete("/:userID/Favorites/:id", (req, res) => {
+    helper.SafeDelete(req.params.id, res, UserRecipeFavorite);
+});
+
+module.exports = router;
+

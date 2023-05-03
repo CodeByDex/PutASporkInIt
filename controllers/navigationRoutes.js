@@ -1,6 +1,9 @@
 const router = require("express").Router();
 const { User, UserPassword, Recipe, Ingredient, RecipeIngredient } = require('../models');
 
+/************************************************
+ * Unsecured
+ ************************************************/
 
 // GET route for login page -- Nathan
 router.get('/login', (req, res) => {
@@ -17,13 +20,6 @@ router.get('/', async (req, res) => {
   console.log(topRecipes)
   res.render('home', {topRecipes})
 })
-
-
-// GET route for dashboard page (user profile/account)
-router.get('/dashboard', (req, res) => {
-  res.render('dashboard')
-})
-
 
 // GET route for recipe page
 router.get('/recipe/:id', async (req, res) => {
@@ -59,5 +55,14 @@ router.get('/browse', async (req, res) => {
   res.render('browse', {allRecipes});
 })
 
+/**********************************************
+ * Secured Calls
+ **********************************************/
+router.use(helper.VerifyLoggedIn);
+
+// GET route for dashboard page (user profile/account)
+router.get('/dashboard', (req, res) => {
+  res.render('dashboard')
+})
 
 module.exports = router;

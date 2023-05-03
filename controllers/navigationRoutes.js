@@ -4,10 +4,8 @@ const { User, UserPassword, Recipe, Ingredient, RecipeIngredient } = require('..
 
 // GET route for login page -- Nathan
 router.get('/login', (req, res) => {
-  // if (req.session.loggedIn) {
-  //   res.redirect('/');
-  //   return;
-  // }git
+
+  res.render("login");
 });
 
 // GET route for home page

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, UserPassword, Recipe, Ingredient } = require('../models');
+const { User, UserPassword, Recipe, Ingredient, RecipeIngredient } = require('../models');
 
 
 // GET route for login page
@@ -7,7 +7,9 @@ router.get('/login', (req, res) => {
   // if (req.session.loggedIn) {
   //   res.redirect('/');
   //   return;
-  // }
+  // }git
+
+
 
   res.render('login');
 });
@@ -30,19 +32,32 @@ router.get('/dashboard', (req, res) => {
 
 // GET route for recipe page
 router.get('/recipe/:id', async (req, res) => {
-  const recipe = await Recipe.findByPk(req.params.id)
-  const recipeData = recipe.get()
+  const recData = await Recipe.findByPk(req.params.id, {
+    include: {
+      model: RecipeIngredient,
+      include: Ingredient
+    }
+  });
 
-  // Capitalize first letter of complexity
-  recipeData.complexity = recipeData.complexity.charAt(0).toUpperCase() + recipeData.complexity.slice(1);
-  
-  console.log(recipeData)
-  res.render('recipe', {recipeData});
+  let recipe = recData.get();
+  recipe.RecipeIngredients = recipe.RecipeIngredients.map(x => {
+    let recIng = x.get();
+    let ing = recIng.Ingredient.get();
+
+    return {
+      amount: recIng.amount,
+      UOM: recIng.UOM,
+      name: ing.name
+    };
+  })
+
+  res.render('recipe', recipe);
 })
 
 // GET route for browser page
 router.get('/browse', async (req, res) => {
   const recipes = await Recipe.findAll({})
+  //TODO: Implement UserRecipeFavorite get conditionally if the user is logged in
   const allRecipes = recipes.map(obj => obj.get())
   console.log(allRecipes)
   res.render('browse', {allRecipes});

@@ -8,8 +8,6 @@ router.get('/login', (req, res) => {
   //   res.redirect('/');
   //   return;
   // }git
-
-  res.render('login');
 });
 
 // GET route for home page

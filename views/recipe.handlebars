@@ -1,1 +1,55 @@
-<h1>Recipe Page</h1>
+{{!-- Recipe Header --}}
+<section class="bg-white dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl text-left lg:py-16 md:flex md:items-center md:gap-6 md:justify-between">
+        <div class="md:w-1/2">
+            <h1 class="mb-4 text-3xl font-extrabold tracking-tight leading-none text-gray-900 md:text-4xl lg:text-5xl dark:text-white">{{name}}</h1>
+            <p class="mb-4 text-md font-normal text-gray-500 lg:text-xl dark:text-gray-400">{{description}}</p>
+            <div class="mb-4 flex columns-3 gap-4 md:gap-12">
+                <div>
+                    <p class="text-sm font-semibold text-gray-600 lg:text-xl dark:text-gray-300">ACTIVE TIME</p>
+                    <p class="text-sm font-normal text-gray-500 lg:text-xl dark:text-gray-400">{{activeTime}} {{activeTimeUOM}}</p>
+                </div>
+                <div>
+                    <p class="text-sm font-semibold text-gray-600 lg:text-xl dark:text-gray-300">TOTAL TIME</p>
+                    <p class="text-sm font-normal text-gray-500 lg:text-xl dark:text-gray-400">{{totalTime}} {{totalTimeUOM}}</p>
+                </div>
+                <div>
+                    <p class="text-sm font-semibold text-gray-600 lg:text-xl dark:text-gray-300">COMPLEXITY</p>
+                    <p class="text-sm font-normal text-gray-500 lg:text-xl dark:text-gray-400">{{complexity}}</p>
+                </div>
+            </div>
+        </div>
+        {{!-- Recipe Image and Buttons Container --}}
+        <div class="image-container mb-4 md:w-1/2 md:mb-0 md:align-middle">
+            <img class="h-auto max-w-full mb-2" src="/images/placeholder-image.jpg" alt="image description">
+            <div class="flex columns-2 justify-between">
+                <a class="text-gray-500 text-lg"><i class="fa-regular fa-heart"></i></a>
+                <div class="flex columns-3 justify-between gap-2">
+                    <a class="text-gray-500 text-lg"><i class="fa-solid fa-thumbs-up"></i> 1,398</a>
+                    <p class="text-gray-500 text-lg"> | </p>
+                    <a class="text-gray-500 text-lg"><i class="fa-solid fa-thumbs-down"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{!-- Recipe Ingredients --}}
+<section class="bg-white dark:bg-gray-900">
+    <div class="py-4 px-4 mx-auto max-w-screen-xl text-left lg:py-12">
+            <h3 class="mb-4 text-xl font-bold tracking-tight leading-none text-gray-900 md:text-2xl lg:text-3xl dark:text-white">INGREDIENTS</h3>
+                    <ul>
+                    {{#each RecipeIngredients as |ingredient|}}
+                    {{> ingredient}}
+                    {{/each}}
+                    </ul>
+        </div>
+</section>
+        
+{{!-- Recipe Instructions --}}
+<section class="bg-white dark:bg-gray-900">
+    <div class="py-4 px-4 mx-auto max-w-screen-xl text-left lg:py-12">
+        <h3 class="mb-4 text-xl font-bold tracking-tight leading-none text-gray-900 md:text-2xl lg:text-3xl dark:text-white">INSTRUCTIONS</h3>
+        <p class="mb-4 text-md font-normal text-gray-500 lg:text-xl sm:px-16 dark:text-gray-400">{{{instructions}}}</p>
+    </div>
+</section>

@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { User, UserPassword, Recipe, Ingredient } = require('../models');
 
 
-// GET route for login page
+// GET route for login page -- Nathan
 router.get('/login', (req, res) => {
     // if (req.session.loggedIn) {
     //   res.redirect('/');
@@ -28,7 +28,7 @@ router.get('/dashboard', (req, res) => {
   res.render('dashboard')
 })
 
-  // GET route for recipe page
+  // GET route for recipe page -- Ryan
   router.get('/recipe/:id', (req, res) => {
     res.render('recipe');
   })

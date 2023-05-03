@@ -1,5 +1,5 @@
 window.addEventListener("load", () => {
-    document.querySelector("#formSubmit").addEventListener("submit", async (event) =>{
+    document.querySelector("#createAccount").addEventListener("submit", async (event) =>{
         event.preventDefault()
         const userName = document.querySelector("#newName").value;
         const email = document.querySelector("#newEmail").value;
@@ -24,3 +24,10 @@ window.addEventListener("load", () => {
         }       
     })    
 })
+
+// window.addEventListener("load", () => {
+//     document.querySelector("#signIn").addEventListener("submit", async (event) =>{
+//         console.log("hello")
+        
+//     })
+// })

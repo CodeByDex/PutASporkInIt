@@ -12,12 +12,10 @@ router.post('/', (req, res) => {
         req.session.save(() => {
             req.session.userID = newUser.id,
             req.session.loggedIn = true;
+            
+            res.json(newUser)
         })
        
-        res.json(newUser)
-
-        //todo: page is not redirecting after successful user create
-        
     });
 })
 
@@ -42,7 +40,7 @@ router.delete('/:id', (req, res) => {
 
 
 router.post('/logout', (req, res) => {
-    if (req.session.logged_in) {
+    if (req.session.loggedIn) {
       // Remove the session variables
       req.session.destroy(() => {
         res.status(204).end();

@@ -38,6 +38,8 @@ router.put('/:id', (req, res) => {
     })
 })
 
+router.use(helper.VerifyLoggedIn);
+
 router.delete('/:id', (req, res) => {
     helper.SafeDelete(req.params.id, res, Recipe)
 })

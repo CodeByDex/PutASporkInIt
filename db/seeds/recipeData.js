@@ -117,7 +117,7 @@ const recipeData = [
         instructions: `
         1. In a trifle bowl, dip each ladyfinger in milk for about 3 seconds and place them as the first layer.
         2. Once the layer of ladyfingers is placed, add in a layer of red jam of your choice and spread it evenly.
-       3. After the jam, add in a layer of fresh custard and make sure all the surface area is covered.
+        3. After the jam, add in a layer of fresh custard and make sure all the surface area is covered.
         4. Next, add in your raspberries and make sure that the raspberries are lined about the edges of the bowl.
         5. Now, add in the next layer of ladyfingers, the same way dipped in milk and make sure everything is covered.
         6. For the most interesting part! Add in your ground beef sauteed with peas and onions.
@@ -151,14 +151,10 @@ const recipeData = [
         4 leaves of butter lettuce
         `,
         instructions: `
-        1.
-        Make the Burger Patties: Heat a grill pan or sauté pan over medium heat. As it heats, combine ground beef, Old Bay, pepper and salt. Form into four equally sized patties, about 1/3 lb apiece. Set on a platter next to the stove-top. Coat the warmed grill pan with cooking spray and place patties on the pan, cooking each side about 4-5 minutes, or until cooked through to your desired doneness.
-        2.
-        Use a large star-shaped cookie cutter to cut each cheese slice into a star shape. Place the star-shaped cheese on each burger patty, in the last 30 seconds or so of cooking, so it melts a little. Set burger patties aside.
-        3.
-        Make King Neptune's Poseidon Powder Aioli: Stir mayo and Old Bay until thoroughly combined.
-        4.
-        Assemble the Sandwich: Spread Poseidon Powder Aioli on the bottom of each bun. Top with a burger patty, ketchup, mustard, pickles, onion slices, tomato and lettuce. Place the top bun on each burger. Serve.
+        1. Make the Burger Patties: Heat a grill pan or sauté pan over medium heat. As it heats, combine ground beef, Old Bay, pepper and salt. Form into four equally sized patties, about 1/3 lb apiece. Set on a platter next to the stove-top. Coat the warmed grill pan with cooking spray and place patties on the pan, cooking each side about 4-5 minutes, or until cooked through to your desired doneness.
+        2. Use a large star-shaped cookie cutter to cut each cheese slice into a star shape. Place the star-shaped cheese on each burger patty, in the last 30 seconds or so of cooking, so it melts a little. Set burger patties aside.
+        3. Make King Neptune's Poseidon Powder Aioli: Stir mayo and Old Bay until thoroughly combined.
+        4. Assemble the Sandwich: Spread Poseidon Powder Aioli on the bottom of each bun. Top with a burger patty, ketchup, mustard, pickles, onion slices, tomato and lettuce. Place the top bun on each burger. Serve.
         
         ` ,
         sourceURL: "https://www.delish.com/cooking/recipe-ideas/recipes/a48056/spongebob-inspired-krabby-patties-recipe/",

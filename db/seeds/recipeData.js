@@ -2,6 +2,7 @@ const { Recipe } = require('../../models');
 
 const recipeData = [
     {   name: "Ted's Biscuits",
+        seenIn: "Ted Lasso",
         description: `Iconic Biscuit Recipe from Apple TV's series, "Ted Lasso".
         In the show, Ted Lasso, a small-time college football coach from the Midwest hired to coach a pro soccer team in England despite knowing nothing about soccer, tries to win over the team's owner, Rebecca Welton, by making his famous biscuit recipe. `,
         ingredients: `
@@ -27,7 +28,8 @@ const recipeData = [
         totalTimeUOM: "h",
         complexity: "medium"
     },
-    {   name: "Baby you can chive my car(Bob's Burgers)",
+    {   name: "Baby you can chive my car",
+        seenIn: "Bob's Burgers",
         description: `Iconic Hamburger Recipe from the hit Show: "Bob's Burgers".
         Bob's Burgers is an animated sitcom. The show follows Bob Belcher and his family of 4 own hamburger restaurant and go on many various adventures.`,
         ingredients: `For Fried Pickles:
@@ -71,7 +73,8 @@ const recipeData = [
         totalTimeUOM: "min",
         complexity: "medium"
     },
-    {   name: "Kevin's Famous Chilli(The Office)",
+    {   name: "Kevin's Famous Chilli",
+        seenIn: "The Office",
         description: `The office is an American mockumentary sitcom series that depicts the everyday work lives of office employees at the Scranton Pennsylvania branch of a fictional paper company Dunder Mifflin. This episode starts with character Kevin coming into the office bringing his world famous chilli for the rest of the office.`,
         ingredients: `
         4 dried ancho chiles
@@ -108,7 +111,8 @@ const recipeData = [
         totalTimeUOM: "h",
         complexity: "medium"
     },
-    {   name: "Rachel's English Trifle(Friends)",
+    {   name: "Rachel's English Trifle",
+        seenIn: "Friends",
         description: `Memorable scene form the Friends where Rachel bring a dish to thanksgiving, but does not realize that the that she accidentally had pages stuck together and ends up combining to different recipes.`,
         ingredients: `
         1 Package Lady Fingers
@@ -138,7 +142,8 @@ const recipeData = [
         totalTimeUOM: "h",
         complexity: "medium"
     },
-    {   name: "Krabby Patty(Spongebob Squarepants)",
+    {   name: "Krabby Patty",
+        seenIn: "Spongebob Squarepants",
         description: `The iconic burger recipe from the classic tv cartoon Spongebob Squarepants.`,
         ingredients: `
         1 1/3 lb. ground beef (80 percent lean)

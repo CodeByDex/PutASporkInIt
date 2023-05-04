@@ -25,6 +25,10 @@ Recipe.init(
         key: "id"
       }
     },
+    seenIn: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
     description: {
       type: DataTypes.TEXT,
       allowNull: false
@@ -62,7 +66,7 @@ Recipe.init(
     complexity: {
       type: DataTypes.STRING,
       allowNull: false
-    }  
+    },
   },
   {
     sequelize

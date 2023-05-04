@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const {User} = require('../../models');
 const helper = require('../util')
+const bcrypt = require('bcrypt')
+const UserPassword = require('../../models/userPassword');
 
 
 //create new user
@@ -40,15 +42,42 @@ router.delete('/:id', (req, res) => {
     helper.SafeDelete(req.params.id, res, User)
 })
 
-router.post('/logout', (req, res) => {
-    if (req.session.logged_in) {
-      // Remove the session variables
-      req.session.destroy(() => {
-        res.status(204).end();
-      });
-    } else {
-      res.status(404).end();
+router.post('/login', async (req, res) => {
+
+
+    // req.session.save(() => {
+    //     req.session.user_id = userData.id;
+    //     req.session.loggedIn = true;
+        
+    //     res.json({ user: userData, message: 'You are now logged in!' });
+    //   });
+
+    const userData = await User.findOne({ where: { email: req.body.email}})
+    if (!userData) {
+        res
+            .status(400)
+            .json({ message: 'Incorrect email or password, please try again' });
+        return;
     }
-  });
+
+    const validPassword = await userData.checkPassword(req.body.password);
+    
+    if (!validPassword) {
+        res
+            .status(400)
+            .json({message: "wrong password"})
+        return;
+    }
+
+    req.session.save(() => {
+        req.session.user_id = userData.id;
+        req.session.loggedIn = true;
+    })
+
+
+    res.status(200).json({
+        message: "Logged in!"  
+    })
+});
   
   module.exports = router;

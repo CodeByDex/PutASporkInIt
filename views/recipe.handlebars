@@ -1,17 +1,22 @@
 {{!-- Recipe Header --}}
 <section class="bg-white dark:bg-gray-900">
-    <div class="py-8 px-4 mx-auto max-w-screen-xl text-left lg:py-16 md:flex md:items-center md:gap-6 md:justify-between">
+    <div
+        class="py-8 px-4 mx-auto max-w-screen-xl text-left lg:py-16 md:flex md:items-center md:gap-6 md:justify-between">
         <div class="md:w-1/2">
-            <h1 class="mb-4 text-3xl font-extrabold tracking-tight leading-none text-gray-900 md:text-4xl lg:text-5xl dark:text-white">{{name}}</h1>
+            <h1
+                class="mb-4 text-3xl font-extrabold tracking-tight leading-none text-gray-900 md:text-4xl lg:text-5xl dark:text-white">
+                {{name}}</h1>
             <p class="mb-4 text-md font-normal text-gray-500 lg:text-xl dark:text-gray-400">{{description}}</p>
             <div class="mb-4 flex columns-3 gap-4 md:gap-12">
                 <div>
                     <p class="text-sm font-semibold text-gray-600 lg:text-xl dark:text-gray-300">ACTIVE TIME</p>
-                    <p class="text-sm font-normal text-gray-500 lg:text-xl dark:text-gray-400">{{activeTime}} {{activeTimeUOM}}</p>
+                    <p class="text-sm font-normal text-gray-500 lg:text-xl dark:text-gray-400">{{activeTime}}
+                        {{activeTimeUOM}}</p>
                 </div>
                 <div>
                     <p class="text-sm font-semibold text-gray-600 lg:text-xl dark:text-gray-300">TOTAL TIME</p>
-                    <p class="text-sm font-normal text-gray-500 lg:text-xl dark:text-gray-400">{{totalTime}} {{totalTimeUOM}}</p>
+                    <p class="text-sm font-normal text-gray-500 lg:text-xl dark:text-gray-400">{{totalTime}}
+                        {{totalTimeUOM}}</p>
                 </div>
                 <div>
                     <p class="text-sm font-semibold text-gray-600 lg:text-xl dark:text-gray-300">COMPLEXITY</p>
@@ -37,19 +42,32 @@
 {{!-- Recipe Ingredients --}}
 <section class="bg-white dark:bg-gray-900">
     <div class="py-4 px-4 mx-auto max-w-screen-xl text-left lg:py-12">
-            <h3 class="mb-4 text-xl font-bold tracking-tight leading-none text-gray-900 md:text-2xl lg:text-3xl dark:text-white">INGREDIENTS</h3>
-                    <ul>
-                    {{#each RecipeIngredients as |ingredient|}}
-                    {{> ingredient}}
-                    {{/each}}
-                    </ul>
-        </div>
+        <h3
+            class="mb-4 text-xl font-bold tracking-tight leading-none text-gray-900 md:text-2xl lg:text-3xl dark:text-white">
+            INGREDIENTS</h3>
+        <table class="table-auto">
+            <thead >
+                <tr class="">
+                    <th class="p-2 text-sm font-semibold text-gray-600 lg:text-xl dark:text-gray-300">Ingredient</th>
+                    <th class="p-2 text-sm font-semibold text-gray-600 lg:text-xl dark:text-gray-300">Amount</th>
+                    <th class="p-2 text-sm font-semibold text-gray-600 lg:text-xl dark:text-gray-300">Unit</th>
+                </tr>
+            </thead>
+            <tbody>
+            {{#each RecipeIngredients as |ingredient|}}
+            {{> ingredient}}
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
 </section>
-        
+
 {{!-- Recipe Instructions --}}
 <section class="bg-white dark:bg-gray-900">
     <div class="py-4 px-4 mx-auto max-w-screen-xl text-left lg:py-12">
-        <h3 class="mb-4 text-xl font-bold tracking-tight leading-none text-gray-900 md:text-2xl lg:text-3xl dark:text-white">INSTRUCTIONS</h3>
+        <h3
+            class="mb-4 text-xl font-bold tracking-tight leading-none text-gray-900 md:text-2xl lg:text-3xl dark:text-white">
+            INSTRUCTIONS</h3>
         <p class="mb-4 text-md font-normal text-gray-500 lg:text-xl sm:px-16 dark:text-gray-400">{{{instructions}}}</p>
     </div>
 </section>

@@ -24,7 +24,8 @@ router.get('/', async (req, res) => {
 
 
 // GET route for dashboard page (user profile/account)
-router.get('/dashboard', (req, res) => {
+router.get('/dashboard', async (req, res) => {
+  //TODO: Implement UserRecipeFavorite and userName
   res.render('dashboard')
 })
 

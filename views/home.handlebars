@@ -1,7 +1,8 @@
+{{!-- Home Page Hero --}}
 <section class="bg-white dark:bg-gray-900">
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
-        <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">From your screen, to your plate</h1>
-        <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400">Here at PutASporkInIt our mission is to bring the magic of your favorite movies, TV shows, and video games to your plate, with mouth-watering recipes!</p>
+        <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">From your screen to your plate</h1>
+        <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400">Here at PutASporkInIt our mission is to bring the magic of your favorite movies, TV shows, and video games to your plate with mouth-watering recipes!</p>
         <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
             <a href="#" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800">
                 Browse All Recipes
@@ -10,47 +11,15 @@
         </div>
     </div>
 </section>
-
+{{!-- Featured Recipe Container --}}
 <section class="bg-white dark:bg-gray-900 lg:mx-4">
     <div class="py-4 px-4 max-w-screen-xl text-center lg:py-10 mx-auto">
         <h2 class="mb-2 tracking-tight text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Featured Recipes</h2>
     </div>
+    {{!-- Recipe Cards Container --}}
     <div class="px-4 sm:px-16 mx-auto md:flex md:columns-3 gap-4 justify-around">
-        <div class="pb-2">
-            <img class="h-auto max-w-full" src="../public/images/placeholder-image.jpg" alt="image description">
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Recipe Title</h3>
-            <div class="flex columns-2 justify-between">
-                <a class="text-gray-500"><i class="fa-regular fa-heart"></i></a>
-                <div class="flex columns-3 justify-between gap-2">
-                    <a class="text-gray-500"><i class="fa-solid fa-thumbs-up"></i> 1,398</a>
-                    <p class="text-gray-500"> | </p>
-                    <a class="text-gray-500"><i class="fa-solid fa-thumbs-down"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="pb-2">
-            <img class="h-auto max-w-full" src="../public/images/placeholder-image.jpg" alt="image description">
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Recipe Title</h3>
-            <div class="flex columns-2 justify-between">
-                <a class="text-gray-500"><i class="fa-regular fa-heart"></i></a>
-                <div class="flex columns-3 justify-between gap-2">
-                    <a class="text-gray-500"><i class="fa-solid fa-thumbs-up"></i> 1,398</a>
-                    <p class="text-gray-500"> | </p>
-                    <a class="text-gray-500"><i class="fa-solid fa-thumbs-down"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="pb-2">
-            <img class="h-auto max-w-full" src="../public/images/placeholder-image.jpg" alt="image description">
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Recipe Title</h3>
-            <div class="flex columns-2 justify-between">
-                <a class="text-gray-500"><i class="fa-regular fa-heart"></i></a>
-                <div class="flex columns-3 justify-between gap-2">
-                    <a class="text-gray-500"><i class="fa-solid fa-thumbs-up"></i> 1,398</a>
-                    <p class="text-gray-500"> | </p>
-                    <a class="text-gray-500"><i class="fa-solid fa-thumbs-down"></i></a>
-                </div>
-            </div>
-        </div>
+        {{#each topRecipes as |topRecipes|}}
+        {{> recipe-preview}}
+        {{/each}}
     </div>
 </section>

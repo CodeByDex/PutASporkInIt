@@ -13,9 +13,11 @@ router.post('/', (req, res) => {
             req.session.userID = newUser.id,
             req.session.loggedIn = true;
         })
+       
+        res.json(newUser)
 
         //todo: page is not redirecting after successful user create
-        res.redirect("/");
+        
     });
 })
 
@@ -38,6 +40,19 @@ router.delete('/:id', (req, res) => {
     helper.SafeDelete(req.params.id, res, User)
 })
 
+
+router.post('/logout', (req, res) => {
+    if (req.session.logged_in) {
+      // Remove the session variables
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    } else {
+      res.status(404).end();
+    }
+  });
+  
+
 router.post("/:userID/Favorites", (req, res) => {
     helper.SafeCreate(res, UserRecipeFavorite, {
         userID: req.params.userID,
@@ -54,3 +69,4 @@ router.delete("/:userID/Favorites/:id", (req, res) => {
 });
 
 module.exports = router;
+

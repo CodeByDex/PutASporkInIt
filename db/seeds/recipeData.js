@@ -6,10 +6,11 @@ const recipeData = [
         description: `Iconic Biscuit Recipe from Apple TV's series, "Ted Lasso".
         In the show, Ted Lasso, a small-time college football coach from the Midwest hired to coach a pro soccer team in England despite knowing nothing about soccer, tries to win over the team's owner, Rebecca Welton, by making his famous biscuit recipe. `,
         ingredients: `
-        2 sticks (8 ounces) unsalted butter, plus more for the pan
-        3/4 cup powdered sugar
         2 cups all-purpose flour
-        1/4 teaspoon coarse salt`,
+        1/4 teaspoons coarse salt
+        1 cup (2 sticks) unsalted butter, room temperature
+        3/4 cup confectioners' sugar
+        `,
         instructions: `Preheat oven to 300 F. 
         Sift flour and salt, mix into bowl and set aside. 
         Mix butter on high speed until fluffy (3 to 5 minutes). Gradually add sugar slowly, continuing to mix until pale and fluffy.
@@ -126,7 +127,7 @@ const recipeData = [
         instructions: `
         1. In a trifle bowl, dip each ladyfinger in milk for about 3 seconds and place them as the first layer.
         2. Once the layer of ladyfingers is placed, add in a layer of red jam of your choice and spread it evenly.
-       3. After the jam, add in a layer of fresh custard and make sure all the surface area is covered.
+        3. After the jam, add in a layer of fresh custard and make sure all the surface area is covered.
         4. Next, add in your raspberries and make sure that the raspberries are lined about the edges of the bowl.
         5. Now, add in the next layer of ladyfingers, the same way dipped in milk and make sure everything is covered.
         6. For the most interesting part! Add in your ground beef sauteed with peas and onions.
@@ -161,14 +162,10 @@ const recipeData = [
         4 leaves of butter lettuce
         `,
         instructions: `
-        1.
-        Make the Burger Patties: Heat a grill pan or sauté pan over medium heat. As it heats, combine ground beef, Old Bay, pepper and salt. Form into four equally sized patties, about 1/3 lb apiece. Set on a platter next to the stove-top. Coat the warmed grill pan with cooking spray and place patties on the pan, cooking each side about 4-5 minutes, or until cooked through to your desired doneness.
-        2.
-        Use a large star-shaped cookie cutter to cut each cheese slice into a star shape. Place the star-shaped cheese on each burger patty, in the last 30 seconds or so of cooking, so it melts a little. Set burger patties aside.
-        3.
-        Make King Neptune's Poseidon Powder Aioli: Stir mayo and Old Bay until thoroughly combined.
-        4.
-        Assemble the Sandwich: Spread Poseidon Powder Aioli on the bottom of each bun. Top with a burger patty, ketchup, mustard, pickles, onion slices, tomato and lettuce. Place the top bun on each burger. Serve.
+        1. Make the Burger Patties: Heat a grill pan or sauté pan over medium heat. As it heats, combine ground beef, Old Bay, pepper and salt. Form into four equally sized patties, about 1/3 lb apiece. Set on a platter next to the stove-top. Coat the warmed grill pan with cooking spray and place patties on the pan, cooking each side about 4-5 minutes, or until cooked through to your desired doneness.
+        2. Use a large star-shaped cookie cutter to cut each cheese slice into a star shape. Place the star-shaped cheese on each burger patty, in the last 30 seconds or so of cooking, so it melts a little. Set burger patties aside.
+        3. Make King Neptune's Poseidon Powder Aioli: Stir mayo and Old Bay until thoroughly combined.
+        4. Assemble the Sandwich: Spread Poseidon Powder Aioli on the bottom of each bun. Top with a burger patty, ketchup, mustard, pickles, onion slices, tomato and lettuce. Place the top bun on each burger. Serve.
         
         ` ,
         sourceURL: "https://www.delish.com/cooking/recipe-ideas/recipes/a48056/spongebob-inspired-krabby-patties-recipe/",

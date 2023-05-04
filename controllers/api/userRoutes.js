@@ -1,7 +1,10 @@
 const router = require('express').Router();
-const {User} = require('../../models');
+const { User, UserRecipeFavorite } = require('../../models');
 const helper = require('../util')
 
+/************************************************
+ * Unsecured
+ ***********************************************/
 
 //create new user
 router.post('/', (req, res) => {
@@ -11,30 +14,64 @@ router.post('/', (req, res) => {
 
         req.session.save(() => {
             req.session.userID = newUser.id,
-            req.session.loggedIn = true;
+                req.session.loggedIn = true;
+
+            res.json(newUser)
         })
 
-        //todo: page is not redirecting after successful user create
-        res.redirect("/");
     });
 })
 
 router.get('/', (req, res) => {
-    helper.SafeGetAll(res, User, [])    
+    helper.SafeGetAll(res, User, [])
 })
 
 router.get('/:id', (req, res) => {
     helper.SafeGetByID(req.params.id, res, User, [])
 })
 
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+        // Remove the session variables
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    } else {
+        res.status(404).end();
+    }
+});
+
+router.get("/:userID/Favorites", (req, res) => {
+    helper.SafeGetAll(res, UserRecipeFavorite, [], { userID: req.params.userID });
+});
+
+/**********************************************
+ * Secured Calls
+ **********************************************/
+
+router.use(helper.VerifyLoggedIn)
+
+router.post("/:userID/Favorites", (req, res) => {
+    helper.SafeCreate(res, UserRecipeFavorite, {
+        userID: req.params.userID,
+        recipeID: req.body.recipeID
+    })
+});
+
 router.put('/:id', (req, res) => {
     helper.SafeUpdate(req.params.id, res, User, {
         userName: req.body.userName,
         email: req.body.email
     })
-})
+});
 
 router.delete('/:id', (req, res) => {
     helper.SafeDelete(req.params.id, res, User)
-})
+});
+
+router.delete("/:userID/Favorites/:id", (req, res) => {
+    helper.SafeDelete(req.params.id, res, UserRecipeFavorite);
+});
+
 module.exports = router;
+

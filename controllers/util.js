@@ -4,8 +4,18 @@ module.exports = {
     SafeCreate: SafeCreate,
     SafeUpdate: SafeUpdate,
     SafeDelete: SafeDelete,
-    SafeRequest: SafeRequest
+    SafeRequest: SafeRequest,
+    VerifyLoggedIn: VerifyLoggedIn
 }
+
+function VerifyLoggedIn(req, res, next) {
+    if (!req.session.loggedIn) {
+        res.status(401).render("login");
+        return;
+    }
+
+    next();    
+};
 
 async function SafeRequest(res, cb) {
     try {
@@ -24,10 +34,11 @@ async function SafeRequest(res, cb) {
     }
 }
 
-async function SafeGetAll(res, model, includes) {
+async function SafeGetAll(res, model, includes, whereClause) {
     SafeRequest(res, async (res) => {
         const modelData = await model.findAll({
-            include: includes
+            include: includes,
+            where: whereClause
         });
 
         res.json(modelData.map(x => x.get()));

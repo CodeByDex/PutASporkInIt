@@ -22,6 +22,16 @@ router.get('/', async (req, res) => {
   res.render('home', {topRecipes})
 })
 
+
+
+// GET route for dashboard page (user profile/account)
+router.get('/dashboard', async (req, res) => {
+  //TODO: Implement UserRecipeFavorite and userName
+  res.render('dashboard')
+})
+
+
+
 // GET route for recipe page
 router.get('/recipe/:id', async (req, res) => {
   const recData = await Recipe.findByPk(req.params.id, {
@@ -32,6 +42,10 @@ router.get('/recipe/:id', async (req, res) => {
   });
 
   let recipe = recData.get();
+
+  // Capitalize first letter of complexity
+  recipe.complexity = recipe.complexity.charAt(0).toUpperCase() + recipe.complexity.slice(1);
+
   recipe.RecipeIngredients = recipe.RecipeIngredients.map(x => {
     let recIng = x.get();
     let ing = recIng.Ingredient.get();

@@ -41,3 +41,15 @@ window.addEventListener("load", () => {
         document.location.replace('/dashboard');
     })
 })
+
+
+// Favorite button
+const favoriteButton = document.querySelector(".favorite-button");
+favoriteButton.addEventListener("click", () => {
+    favoriteButton.querySelector('i').classList.toggle('fa-solid');
+    favoriteButton.querySelector('i').classList.toggle('fa-regular');
+    favoriteButton.querySelector('i').classList.toggle('dark:text-green-500');
+})
+
+
+

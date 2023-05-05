@@ -24,14 +24,6 @@ router.get('/', async (req, res) => {
 
 
 
-// GET route for dashboard page (user profile/account)
-router.get('/dashboard', async (req, res) => {
-  //TODO: Implement UserRecipeFavorite and userName
-  res.render('dashboard')
-})
-
-
-
 // GET route for recipe page
 router.get('/recipe/:id', async (req, res) => {
   const recData = await Recipe.findByPk(req.params.id, {

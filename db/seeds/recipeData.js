@@ -28,7 +28,7 @@ const recipeData = [
         totalTimeUOM: "h",
         complexity: "medium"
     },
-    {   name: "Baby you can chive my car",
+    {   name: "Baby You Can Chive My Car",
         seenIn: "Bob's Burgers",
         description: `Iconic Hamburger Recipe from the hit Show: "Bob's Burgers".
         Bob's Burgers is an animated sitcom. The show follows Bob Belcher and his family of 4 own hamburger restaurant and go on many various adventures.`,

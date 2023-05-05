@@ -1,3 +1,4 @@
+{{!-- Page Header --}}
 <section class="bg-white dark:bg-gray-900">
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
         <h1 class="mb-4 text-3xl font-extrabold tracking-tight leading-none text-gray-900 md:text-4xl lg:text-5xl dark:text-white">Browse Recipes</h1>
@@ -5,79 +6,12 @@
     </div>
 </section>
 
+{{!-- Recipe Card Container --}}
 <section class="bg-white dark:bg-gray-900 lg:mx-4">
     <div class="px-4 sm:px-16 mx-auto md:grid md:grid-cols-3 gap-4 justify-around">
-        <div class="recipe-card pb-2">
-            <img class="h-auto max-w-full" src="../public/images/placeholder-image.jpg" alt="image description">
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Recipe Title</h3>
-            <div class="flex columns-2 justify-between">
-                <a class="text-gray-500"><i class="fa-regular fa-heart"></i></a>
-                <div class="flex columns-3 justify-between gap-2">
-                    <a class="text-gray-500"><i class="fa-solid fa-thumbs-up"></i> 1,398</a>
-                    <p class="text-gray-500"> | </p>
-                    <a class="text-gray-500"><i class="fa-solid fa-thumbs-down"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="recipe-card pb-2">
-            <img class="h-auto max-w-full" src="../public/images/placeholder-image.jpg" alt="image description">
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Recipe Title</h3>
-            <div class="flex columns-2 justify-between">
-                <a class="text-gray-500"><i class="fa-regular fa-heart"></i></a>
-                <div class="flex columns-3 justify-between gap-2">
-                    <a class="text-gray-500"><i class="fa-solid fa-thumbs-up"></i> 1,398</a>
-                    <p class="text-gray-500"> | </p>
-                    <a class="text-gray-500"><i class="fa-solid fa-thumbs-down"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="recipe-card pb-2">
-            <img class="h-auto max-w-full" src="../public/images/placeholder-image.jpg" alt="image description">
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Recipe Title</h3>
-            <div class="flex columns-2 justify-between">
-                <a class="text-gray-500"><i class="fa-regular fa-heart"></i></a>
-                <div class="flex columns-3 justify-between gap-2">
-                    <a class="text-gray-500"><i class="fa-solid fa-thumbs-up"></i> 1,398</a>
-                    <p class="text-gray-500"> | </p>
-                    <a class="text-gray-500"><i class="fa-solid fa-thumbs-down"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="recipe-card pb-2">
-            <img class="h-auto max-w-full" src="../public/images/placeholder-image.jpg" alt="image description">
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Recipe Title</h3>
-            <div class="flex columns-2 justify-between">
-                <a class="text-gray-500"><i class="fa-regular fa-heart"></i></a>
-                <div class="flex columns-3 justify-between gap-2">
-                    <a class="text-gray-500"><i class="fa-solid fa-thumbs-up"></i> 1,398</a>
-                    <p class="text-gray-500"> | </p>
-                    <a class="text-gray-500"><i class="fa-solid fa-thumbs-down"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="recipe-card pb-2">
-            <img class="h-auto max-w-full" src="../public/images/placeholder-image.jpg" alt="image description">
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Recipe Title</h3>
-            <div class="flex columns-2 justify-between">
-                <a class="text-gray-500"><i class="fa-regular fa-heart"></i></a>
-                <div class="flex columns-3 justify-between gap-2">
-                    <a class="text-gray-500"><i class="fa-solid fa-thumbs-up"></i> 1,398</a>
-                    <p class="text-gray-500"> | </p>
-                    <a class="text-gray-500"><i class="fa-solid fa-thumbs-down"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="recipe-card pb-2">
-            <img class="h-auto max-w-full" src="../public/images/placeholder-image.jpg" alt="image description">
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Recipe Title</h3>
-            <div class="flex columns-2 justify-between">
-                <a class="text-gray-500"><i class="fa-regular fa-heart"></i></a>
-                <div class="flex columns-3 justify-between gap-2">
-                    <a class="text-gray-500"><i class="fa-solid fa-thumbs-up"></i> 1,398</a>
-                    <p class="text-gray-500"> | </p>
-                    <a class="text-gray-500"><i class="fa-solid fa-thumbs-down"></i></a>
-                </div>
-            </div>
-        </div>
+        {{!-- Recipe Card --}}
+        {{#each allRecipes as |recipe|}}
+        {{> recipe-preview}}
+        {{/each}}
     </div>
 </section>

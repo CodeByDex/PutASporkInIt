@@ -44,14 +44,6 @@ router.delete('/:id', (req, res) => {
 
 router.post('/login', async (req, res) => {
 
-
-    // req.session.save(() => {
-    //     req.session.user_id = userData.id;
-    //     req.session.loggedIn = true;
-        
-    //     res.json({ user: userData, message: 'You are now logged in!' });
-    //   });
-
     const userData = await User.findOne({ where: { email: req.body.email}})
     if (!userData) {
         res
@@ -72,12 +64,20 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
         req.session.user_id = userData.id;
         req.session.loggedIn = true;
-    })
-
-
-    res.status(200).json({
+        res.status(200).json({
         message: "Logged in!"  
+    })})    
+});
+
+router.post('/logout', async (req, res) => {
+
+    req.session.save(() => {
+        delete req.session.user_id;
+        req.session.loggedIn = false;
+        res.status(200).json({
+        message: "Logged out!"  
     })
+    })    
 });
   
   module.exports = router;

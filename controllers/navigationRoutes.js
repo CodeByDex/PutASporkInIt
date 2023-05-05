@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const helper = require('./util')
 const { User, UserPassword, Recipe, Ingredient, RecipeIngredient } = require('../models');
-const helper = require('./util')
 
 /************************************************
  * Unsecured
@@ -21,14 +20,6 @@ router.get('/', async (req, res) => {
   const topRecipes = topThreeRecipes.map(obj => obj.get())
   console.log(topRecipes)
   res.render('home', {topRecipes})
-})
-
-
-
-// GET route for dashboard page (user profile/account)
-router.get('/dashboard', async (req, res) => {
-  //TODO: Implement UserRecipeFavorite and userName
-  res.render('dashboard')
 })
 
 

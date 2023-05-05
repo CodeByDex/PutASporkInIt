@@ -1,11 +1,11 @@
 
 <div class="recipe-card pb-2 rounded drop-shadow-md">
     <a href="recipe/{{id}}"><img class="h-auto max-w-full" src="/images/placeholder-image.jpg" alt="image description"></a>
-    <div class="flex-row justify-between py-2 px-4 dark:bg-neutral-800">
-        <a href = "/recipe/{{id}}"><h3 class="text-2xl font-semibold text-neutral-900 dark:text-white">{{name}}</h3></a>
+    <div class="flex-row justify-between py-2 px-4 bg-neutral-50 dark:bg-neutral-800">
+        <a href = "/recipe/{{id}}"><h3 class="text-2xl font-semibold text-neutral-800 dark:text-white">{{name}}</h3></a>
         <h3 class="text-lg text-neutral-500 dark:text-neutral-400">{{seenIn}}</h3>
         <div class="flex columns-2 justify-between">
-            <a class="text-neutral-500 text-lg"><i class="fa-regular fa-heart"></i></a>
+            {{> favorite-button}}
             <div class="flex columns-3 justify-between gap-2">
                 <a class="text-neutral-500 text-lg"><i class="fa-solid fa-thumbs-up"></i> 1,398</a>
                 <p class="text-neutral-500 text-lg"> | </p>

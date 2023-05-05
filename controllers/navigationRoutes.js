@@ -12,6 +12,10 @@ router.get('/login', (req, res) => {
     res.render('login');
   });
 
+router.get('/newUser', (req, res) => {
+  res.render('newUser')
+})
+
   // GET route for home page
   router.get('/', async (req, res) => {
     const recipes = await Recipe.findAll({})

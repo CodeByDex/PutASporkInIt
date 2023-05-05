@@ -53,24 +53,24 @@ favoriteButton.addEventListener("click", () => {
 
 
 // Dark mode
-const sunIcon = document.querySelector(".sun");
-const moonIcon = document.querySelector(".moon");
+// const sunIcon = document.querySelector(".sun");
+// const moonIcon = document.querySelector(".moon");
 
-const themeSwitch = () => {
-    if (document.documentElement.classList.contains('dark')) {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem("theme", "light");
-        return;
-    } else {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem("theme", "dark");
-    };
-};
+// const themeSwitch = () => {
+//     if (document.documentElement.classList.contains('dark')) {
+//         document.documentElement.classList.remove('dark');
+//         localStorage.setItem("theme", "light");
+//         return;
+//     } else {
+//         document.documentElement.classList.add('dark');
+//         localStorage.setItem("theme", "dark");
+//     };
+// };
 
-sunIcon.addEventListener("click", () => {
-    themeSwitch();
-});
+// sunIcon.addEventListener("click", () => {
+//     themeSwitch();
+// });
 
-moonIcon.addEventListener("click", () => {
-    themeSwitch();
-});
+// moonIcon.addEventListener("click", () => {
+//     themeSwitch();
+// });

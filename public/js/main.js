@@ -80,7 +80,7 @@ favoriteButtons.forEach(favoriteButton => {
 
             // Send unfavorited recipe to database to be deleted
             const response = await fetch('./api/users/:userID/Favorites"', {
-                method: 'PUT',
+                method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' 
                 },
                 body: JSON.stringify({
@@ -97,6 +97,7 @@ favoriteButtons.forEach(favoriteButton => {
             });  
         } else {
             // TO DO
+            console.log ("Something very odd happened")
         }  
     });
 });

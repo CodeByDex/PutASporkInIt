@@ -38,7 +38,4 @@ router.get('/dashboard', (req, res) => {
     res.render('browse', { recipeContent: recipes});
   })
 
-// router.get('*', (req, res) => {
-//   res.render('404');
-// })
 module.exports = router;

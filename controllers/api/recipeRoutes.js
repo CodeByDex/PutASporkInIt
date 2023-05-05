@@ -21,8 +21,14 @@ router.get('/', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
+    helper.SafeRequest(res, async (res) => {
+        let recipe = {}
+        recipe.id = req.params.id
+    
+        if(!isNaN(recipe.id) && recipe.id != -1) {
+          recipe = await getRecipeViewModel(recipe.id)
     helper.SafeGetByID(req.params.id, res, Recipe, [])
-})
+}
 
 router.put('/:id', (req, res) => {
     helper.SafeUpdate(req.params.id, res, Recipe, {

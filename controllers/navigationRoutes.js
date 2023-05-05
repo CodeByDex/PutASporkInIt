@@ -21,12 +21,26 @@ router.get('/', async (req, res) => {
 
 // GET route for dashboard page (user profile/account)
 router.get('/dashboard', (req, res) => {
+  helper.SafeRequest(res, async (res) => {
+    let recipe = {}
+    recipe.id = req.params.id
+
+    if(!isNaN(recipe.id) && recipe.id != -1) {
+      recipe = await getRecipeViewModel(recipe.id)
+    }
+  })   
   res.render('dashboard')
 })
 
 
 // GET route for recipe page
 router.get('/recipe/:id', async (req, res) => {
+  helper.SafeRequest(res, async (res) => {
+    let recipe = {}
+    recipe.id = req.params.id
+
+    if(!isNaN(recipe.id) && recipe.id != -1) {
+      recipe = await getRecipeViewModel(recipe.id);
   const recData = await Recipe.findByPk(req.params.id, {
     include: {
       model: RecipeIngredient,
@@ -47,11 +61,18 @@ router.get('/recipe/:id', async (req, res) => {
     };
   })
 
-  res.render('recipe', recipe);
-})
+  res.render('recipe', recipe)
+}
 
 // GET route for browser page
 router.get('/browse', async (req, res) => {
+  helper.SafeRequest(res, async (res) => {
+    let recipe = {}
+    recipe.id = req.params.id
+
+    if(!isNaN(recipe.id) && recipe.id != -1) {
+      recipe = await getRecipeViewModel(recipe.id)
+    };
   const recipes = await Recipe.findAll({})
   //TODO: Implement UserRecipeFavorite get conditionally if the user is logged in
   const allRecipes = recipes.map(obj => obj.get())

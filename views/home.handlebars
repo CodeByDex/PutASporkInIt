@@ -14,10 +14,10 @@
 {{!-- Featured Recipe Container --}}
 <section class="bg-green-50 dark:bg-neutral-900 lg:mx-4">
     <div class="py-4 px-4 max-w-screen-xl text-center lg:py-10 mx-auto">
-        <h2 class="mb-2 tracking-tight text-3xl md:text-4xl font-bold text-green-500 dark:text-white">Featured Recipes</h2>
+        <h2 class="mb-2 tracking-tight text-3xl md:text-4xl font-bold text-neutral-800 dark:text-white">Featured Recipes</h2>
     </div>
     {{!-- Recipe Cards Container --}}
-    <div class="px-4 sm:px-16 mx-auto md:flex md:columns-3 gap-4 justify-around">
+    <div class="px-4 sm:px-16 mx-auto max-w-screen-xl md:flex md:columns-3 gap-4 justify-around">
         {{#each topRecipes as |topRecipes|}}
         {{> recipe-preview}}
         {{/each}}

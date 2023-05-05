@@ -48,11 +48,57 @@ const favoriteButtons = document.querySelectorAll(".favorite-button");
 
 // If a Favorite Button is clicked, toggle heart between being filled or unfilled
 favoriteButtons.forEach(favoriteButton => {
-    favoriteButton.addEventListener("click", () => {
+    favoriteButton.addEventListener("click", async (event) => {
         favoriteButton.querySelector('i').classList.toggle('fa-solid');
         favoriteButton.querySelector('i').classList.toggle('fa-regular');
         favoriteButton.querySelector('i').classList.toggle('dark:text-green-500');
-    })
-})
+
+        // commented out this userID until user middleware code is added
+        // const userID = event.target.dataset.userid;
+        const userID = 1;
+        const recipeID = event.target.dataset.recipeid;
+        
+        if (favoriteButton.querySelector('i').classList === 'fa-solid') {
+            // Send favorited or to database
+        const response = await fetch('./api/users/:userID/Favorites"', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' 
+            },
+            body: JSON.stringify({
+                userID: userID,
+                recipeID: recipeID
+            }) 
+        })   
+            .then(response => {
+                if (response.ok) {
+                    console.log("the favorited recipe was sent to user database")
+                } else {
+                    alert(response.statusText);
+                }  
+            });
+        } else if (favoriteButton.querySelector('i').classList === 'fa-regular') {
+
+            // Send unfavorited recipe to database to be deleted
+            const response = await fetch('./api/users/:userID/Favorites"', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' 
+                },
+                body: JSON.stringify({
+                    userID: userID,
+                    recipeID: recipeID
+                })  
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log("the unfavorited recipe was sent to user database")
+                } else {
+                    alert(response.statusText);
+                }  
+            });  
+        } else {
+            // TO DO
+        }  
+    });
+});
 
 

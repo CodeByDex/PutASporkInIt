@@ -1,7 +1,8 @@
+
 <div class="recipe-card pb-2 rounded drop-shadow-md">
     <a href="recipe/{{id}}"><img class="h-auto max-w-full" src="/images/placeholder-image.jpg" alt="image description"></a>
     <div class="flex-row justify-between py-2 px-4 dark:bg-neutral-800">
-        <h3 class="text-2xl font-semibold text-neutral-900 dark:text-white">{{name}}</h3>
+        <a href = "/recipe/{{id}}"><h3 class="text-2xl font-semibold text-neutral-900 dark:text-white">{{name}}</h3></a>
         <h3 class="text-lg text-neutral-500 dark:text-neutral-400">{{seenIn}}</h3>
         <div class="flex columns-2 justify-between">
             {{> favorite-button}}
@@ -13,3 +14,5 @@
         </div>
     </div>
 </div>
+
+<script src="./recipePreview.js"></script>

@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
 
 // GET route for recipe page
 router.get('/recipe/:id', async (req, res) => {
-  let recipe = await getRecipeViewModel(req.params.id);
+  let recipe = await getRecipeViewModel(req.params.id, req);
 
   res.render('recipe', recipe);
 })
@@ -56,7 +56,7 @@ router.get("/recipe/:id/edit", async (req, res) => {
     recipe.id = req.params.id
 
     if (!isNaN(recipe.id) && recipe.id != -1) {
-      recipe = await getRecipeViewModel(recipe.id);
+      recipe = await getRecipeViewModel(recipe.id, req);
     };
 
     res.render('recipe-edit', recipe);
@@ -99,7 +99,7 @@ async function renderRecipe(recipesToRender, req) {
   return recipes;
 }
 
-async function getRecipeViewModel(id) {
+async function getRecipeViewModel(id, req) {
   const recData = await Recipe.findByPk(id, {
     include: {
       model: RecipeIngredient,
@@ -107,7 +107,9 @@ async function getRecipeViewModel(id) {
     }
   });
 
-  let recipe = recData.get();
+  let recipe = await renderRecipe([recData], req);
+
+  recipe = recipe[0];
 
   // Capitalize first letter of complexity
   recipe.complexity = recipe.complexity.charAt(0).toUpperCase() + recipe.complexity.slice(1);

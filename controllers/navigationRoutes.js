@@ -68,25 +68,26 @@ router.use(helper.VerifyLoggedIn);
 
 // GET route for dashboard page (user profile/account)
 router.get('/dashboard', async (req, res) => {
-  const userFavorites = await UserRecipeFavorite.findAll({
-    where: {
-      userID: req.session.userID
-    },
-    include: {
-      model: Recipe
-    }
+  helper.SafeRequest(res, async (res) => {
+    const userFavorites = await UserRecipeFavorite.findAll({
+      where: {
+        userID: req.session.userID
+      },
+      include: {
+        model: Recipe
+      }
+    })
+   const userRecipeFav = userFavorites.map(obj => obj.get().Recipe.get())
+  
+   const userRecipes = await Recipe.findAll({
+      where: {
+        userID: req.session.userID
+      },
+   })
+  
+    const x = userRecipes.map(obj => obj.get())
+    res.render('dashboard', {userRecipeFav, userRecipes: x})
   })
- const userRecipeFav = userFavorites.map(obj => obj.get().Recipe.get())
-
- const userRecipes = await Recipe.findAll({
-    where: {
-      userID: req.session.userID
-    },
- })
-
-  const x = userRecipes.map(obj => obj.get())
-
-  res.render('dashboard', {userRecipeFav, userRecipes: x})
 })
 
 async function getRecipeViewModel(id) {

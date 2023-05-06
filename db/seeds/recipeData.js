@@ -175,7 +175,7 @@ const recipeData = [
         totalTimeUOM: "min",
         complexity: "easy"
     },
-    {   name: "Flamming Fire Flakes",
+    {   name: "Flaming Fire Flakes",
         seenIn: "Avatar the Last Airbender",
         description: `From the hit American anime brings you one of the pride recipes of the Fire Nation.`,
         ingredients: `
@@ -280,7 +280,7 @@ const recipeData = [
         totalTimeUOM: "min",
         complexity: "easy"
     },
-    {   name: "Secrete Ingredient Soup",
+    {   name: "Secret Ingredient Soup",
         seenIn: "KungFu Panda",
         description: `From the hilarious animated movie KungFu Panda we bring you the one and only Special Ingredient Soup!`,
         ingredients: `

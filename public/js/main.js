@@ -1,22 +1,21 @@
 window.addEventListener("load", () => {
     const btnLogout = document.querySelector("#logout");
 
-    if(btnLogout)
-    {
-        btnLogout.addEventListener("click", async () =>{
+    if (btnLogout) {
+        btnLogout.addEventListener("click", async () => {
             document.location.replace('/login');
-            
+
             const response = await fetch('./api/users/logout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
             });
-            
+
             if (response.ok) {
-            // If successfully logged out, redirect to the login page
-            document.location.replace('/login')
-            
+                // If successfully logged out, redirect to the login page
+                document.location.replace('/login')
+
             } else {
-            alert(response.statusText);
+                alert(response.statusText);
             }
         })
     }
@@ -29,34 +28,37 @@ const favoriteButtons = document.querySelectorAll(".favorite-button");
 // If a Favorite Button is clicked, toggle heart between being filled or unfilled
 favoriteButtons.forEach(favoriteButton => {
     favoriteButton.addEventListener("click", async (event) => {
+
+        const userID = getCookieValue("userID");
+        if (isNaN(userID)) {
+            return;
+        }
+
         event.target.classList.toggle('fa-solid');
         event.target.classList.toggle('fa-regular');
         event.target.classList.toggle('dark:text-green-500');
 
-        const userID = event.target.dataset.userid;
-        if (isNan(userID)){
-            return
-        }
         const recipeID = event.target.dataset.recipeid;
-        
+
         if (event.target.classList.contains('fa-solid')) {
             // Send favorited to database
-        const response = await fetch(`/api/users/${userID}/Favorites`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' 
-            },
-            body: JSON.stringify({
-                recipeID: recipeID
-            }) 
-        })   
-            .then(response => {
-                if (response.ok()) {
-                    console.log(response)
-                    // favoriteid logic goes here
-                } else {
-                    alert(response.statusText);
-                }  
+            const response = await fetch(`/api/users/${userID}/Favorites`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    recipeID: recipeID
+                })
             });
+
+            if (response.ok) {
+                console.log(response)
+                // favoriteid logic goes here
+            } else {
+                alert(response.statusText);
+            }
+
         } else if (event.target.classList.contains('fa-regular')) {
 
             // // Send unfavorited recipe to database to be deleted
@@ -77,8 +79,8 @@ favoriteButtons.forEach(favoriteButton => {
             // });  
         } else {
             // TO DO
-            console.log ("Something very odd happened")
-        }  
+            console.log("Something very odd happened")
+        }
     });
 });
 // Dark mode

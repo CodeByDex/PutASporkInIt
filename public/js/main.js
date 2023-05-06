@@ -55,7 +55,6 @@ favoriteButtons.forEach(favoriteButton => {
             if (response.ok) {
                 const responseData = await response.json()
                 event.target.dataset.favoriteid = responseData.id
-                console.log(responseData.id)
             } else {
                 alert(response.statusText);
             }
@@ -65,14 +64,15 @@ favoriteButtons.forEach(favoriteButton => {
             // // Send unfavorited recipe to database to be deleted
             const response = await fetch(`/api/users/${userID}/Favorites/${favoriteID}`, {
                 method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' 
+                headers: {
+                    'Content-Type': 'application/json'
                 }
             })
             if (response.ok) {
-                    console.log(response)
-                } else {
-                    alert(response.statusText);
-                }  
+                event.target.dataset.favoriteid = 0;
+            } else {
+                alert(response.statusText);
+            }
         } else {
             // TO DO
             console.log("Something very odd happened")

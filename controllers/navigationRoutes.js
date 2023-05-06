@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
         },
       })
       if (userFavorites == null) {
-        recipe.favoriteid = -1
+        recipe.favoriteid = 0
       }
       else {
         const userFavRecipe = userFavorites.get()

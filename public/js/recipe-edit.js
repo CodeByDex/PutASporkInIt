@@ -1,8 +1,6 @@
 window.addEventListener("load", () => {
-    const recipeForm = document.querySelector("#recipeform");
-
-    recipeForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
+    document.querySelector("#recipeform").addEventListener("submit", async (event) =>{
+        event.preventDefault()
 
         const id = event.target.dataset.recipeid;
         const name = document.querySelector("#recipeName").value;
@@ -16,17 +14,19 @@ window.addEventListener("load", () => {
 
         console.log(id, name, seenIn, description, activeTime, activeTimeUOM, totalTime, totalTimeUOM, complexity);
 
+        let method = "POST";
         let uriSuffix = "";
-        let method = "POST"
-        if (id !== -1){
-            uriSuffix = `/${id}`;
-            method = "PUT"
-        }
 
-        const response = await fetch(`./api/recipes${uriSuffix}`, {
+        if (id != -1) {
+            method = "PUT";
+            uriSuffix = `/${id}`;
+        };
+
+
+        const response = await fetch(`/api/recipes${uriSuffix}`, {
             method: method,
             headers: {
-                "content=type": "application/json"
+                "content-type": "application/json"
             },
             body: JSON.stringify({
                 name,
@@ -39,10 +39,13 @@ window.addEventListener("load", () => {
                 totalTime,
                 totalTimeUOM,
                 complexity
-            })
+            })        
         });
-
-
-
-    })
-});
+        
+        if (response.ok) {
+            alert("Recipe Saved Successfully");
+        } else {
+            alert("Error Saving Recipe"); 
+        }       
+    })    
+})

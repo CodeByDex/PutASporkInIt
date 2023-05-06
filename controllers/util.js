@@ -9,10 +9,10 @@ module.exports = {
 }
 
 function VerifyLoggedIn(req, res, next) {
-    if (!req.session.loggedIn) {
-        res.status(401).render("login");
-        return;
-    }
+    // if (!req.session.loggedIn) {
+    //     res.status(401).render("login");
+    //     return;
+    // }
 
     next();    
 };

@@ -16,7 +16,7 @@ window.addEventListener("load", () => {
         let method = "POST";
         let uriSuffix = "";
 
-        if (id !== -1) {
+        if (id != -1) {
             method = "PUT";
             uriSuffix = `/${id}`;
         };

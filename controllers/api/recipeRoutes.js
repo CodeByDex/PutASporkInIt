@@ -22,6 +22,8 @@ router.use(helper.VerifyLoggedIn);
 router.post('/', (req, res) => {
     helper.SafeCreate(res, Recipe, {
         name: req.body.name,
+        userID: req.session.userID,
+        seenIn: req.body.seenIn,
         description: req.body.description,
         instructions: req.body.instructions,
         sourceURL: req.body.sourceURL,
@@ -36,6 +38,8 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
     helper.SafeUpdate(req.params.id, res, Recipe, {
         name: req.body.name,
+        userID: req.session.userID,
+        seenIn: req.body.seenIn,
         description: req.body.description,
         instructions: req.body.instructions,
         sourceURL: req.body.sourceURL,

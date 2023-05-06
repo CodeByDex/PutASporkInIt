@@ -9,11 +9,10 @@ module.exports = {
 }
 
 function VerifyLoggedIn(req, res, next) {
-    //TODO Fix way this works
-    // if (!req.session.loggedIn) {
-    //     res.status(401).render("login");
-    //     return;
-    // }
+    if (!req.session.loggedIn) {
+        res.status(401).render("login");
+        return;
+    }
 
     next();    
 };

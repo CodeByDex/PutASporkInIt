@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const helper = require('./util')
-const { User, Recipe, Ingredient, RecipeIngredient } = require('../models');
+const { User, Recipe, Ingredient, RecipeIngredient, UserRecipeFavorite } = require('../models');
 
 
 /************************************************
@@ -27,6 +27,7 @@ router.get('/', async (req, res) => {
   res.render('home', {topRecipes})
 });
 
+// GET route to edit a recipe
 router.get("/recipe/:id/edit", async (req, res) => {
 
   helper.SafeRequest(res, async (res) => {
@@ -66,8 +67,26 @@ router.get('/browse', async (req, res) => {
 router.use(helper.VerifyLoggedIn);
 
 // GET route for dashboard page (user profile/account)
-router.get('/dashboard', (req, res) => {
-  res.render('dashboard')
+router.get('/dashboard', async (req, res) => {
+  const userFavorites = await UserRecipeFavorite.findAll({
+    where: {
+      userID: req.session.userID
+    },
+    include: {
+      model: Recipe
+    }
+  })
+ const userRecipeFav = userFavorites.map(obj => obj.get().Recipe.get())
+
+ const userRecipes = await Recipe.findAll({
+    where: {
+      userID: req.session.userID
+    },
+ })
+
+  const x = userRecipes.map(obj => obj.get())
+
+  res.render('dashboard', {userRecipeFav, userRecipes: x})
 })
 
 async function getRecipeViewModel(id) {
@@ -87,7 +106,6 @@ async function getRecipeViewModel(id) {
     let recIng = x.get();
     let ing = recIng.Ingredient.get();
 
-
     return {
       amount: recIng.amount,
       UOM: recIng.UOM,
@@ -96,6 +114,8 @@ async function getRecipeViewModel(id) {
   });
 
   return recipe;
+
+ 
 }
 
 module.exports = router;

@@ -67,6 +67,7 @@ router.use(helper.VerifyLoggedIn);
 
 // GET route for dashboard page (user profile/account)
 router.get('/dashboard', (req, res) => {
+  
   res.render('dashboard')
 })
 

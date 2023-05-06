@@ -33,9 +33,10 @@ favoriteButtons.forEach(favoriteButton => {
         event.target.classList.toggle('fa-regular');
         event.target.classList.toggle('dark:text-green-500');
 
-        // commented out this userID until user middleware code is added
-        // const userID = event.target.dataset.userid;
-        const userID = 1;
+        const userID = event.target.dataset.userid;
+        if (isNan(userID)){
+            return
+        }
         const recipeID = event.target.dataset.recipeid;
         
         if (event.target.classList.contains('fa-solid')) {

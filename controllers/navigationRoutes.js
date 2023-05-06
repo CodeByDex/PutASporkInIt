@@ -15,17 +15,6 @@ router.get('/newUser', (req, res) => {
   res.render('newUser')
 })
 
-// GET route for home page
-router.get('/', async (req, res) => {
-  const recipes = await Recipe.findAll({})
-  // Pull in first three recipes in array
-  const topThreeRecipes = recipes.slice(0, 3)
-  if (!req.session.loggedIn) {
-    req.session.loggedIn = false
-  }
-  res.render('home', { topRecipes: topThreeRecipes, loggedIn: true})
-})
-
 
 // GET route for home page
 router.get('/', async (req, res) => {

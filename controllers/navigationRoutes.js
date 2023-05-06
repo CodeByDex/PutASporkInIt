@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const helper = require('./util')
-const { User, UserPassword, Recipe, Ingredient, RecipeIngredient } = require('../models');
+const { User, Recipe, Ingredient, RecipeIngredient } = require('../models');
 
 /************************************************
  * Unsecured
@@ -8,9 +8,13 @@ const { User, UserPassword, Recipe, Ingredient, RecipeIngredient } = require('..
 
 // GET route for login page -- Nathan
 router.get('/login', (req, res) => {
-
   res.render("login");
 });
+
+router.get('/newUser', (req, res) => {
+  res.render('newUser')
+})
+
 
 // GET route for home page
 router.get('/', async (req, res) => {
@@ -21,8 +25,6 @@ router.get('/', async (req, res) => {
   console.log(topRecipes)
   res.render('home', {topRecipes})
 })
-
-
 
 // GET route for recipe page
 router.get('/recipe/:id', async (req, res) => {

@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const helper = require('./util')
 const { User, UserPassword, Recipe, Ingredient, RecipeIngredient } = require('../models');
-const helper = require('./util');
 
 
 /************************************************
@@ -67,8 +66,6 @@ router.get('/dashboard', (req, res) => {
   res.render('dashboard')
 })
 
-module.exports = router;
-
 async function getRecipeViewModel(id) {
   const recData = await Recipe.findByPk(id, {
     include: {
@@ -96,3 +93,5 @@ async function getRecipeViewModel(id) {
 
   return recipe;
 }
+
+module.exports = router;

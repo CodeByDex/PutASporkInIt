@@ -6,7 +6,7 @@
                 <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                     Edit Your Recipe
                 </h1>
-                <form id="recipeForm" class="space-y-4 md:space-y-6 " data-RecipeID="{{id}}" action="#" method="POST">
+                <form id="recipeform" class="space-y-4 md:space-y-6 " data-recipeid="{{id}}" target="_self" method="POST">
                     <div>
                         <label for="recipeName"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Recipe Name:</label>
@@ -66,3 +66,5 @@
         </div>
     </div>
 </section>
+
+<script src="/js/recipe-edit.js"></script>

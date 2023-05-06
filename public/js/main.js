@@ -34,51 +34,63 @@ favoriteButtons.forEach(favoriteButton => {
             return;
         }
 
-        event.target.classList.toggle('fa-solid');
-        event.target.classList.toggle('fa-regular');
-        event.target.classList.toggle('dark:text-green-500');
-
         const recipeID = event.target.dataset.recipeid;
 
-        if (event.target.classList.contains('fa-solid')) {
+        if (!event.target.classList.contains('fa-solid')) {
             // Send favorited to database
-            const response = await fetch(`/api/users/${userID}/Favorites`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    recipeID: recipeID
-                })
-            });
+            await addToFavorites(userID, recipeID, event);
 
-            if (response.ok) {
-                const responseData = await response.json()
-                event.target.dataset.favoriteid = responseData.id
-            } else {
-                alert(response.statusText);
-            }
-
-        } else if (event.target.classList.contains('fa-regular')) {
-            const favoriteID = event.target.dataset.favoriteid
-            // // Send unfavorited recipe to database to be deleted
-            const response = await fetch(`/api/users/${userID}/Favorites/${favoriteID}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            if (response.ok) {
-                event.target.dataset.favoriteid = 0;
-            } else {
-                alert(response.statusText);
-            }
+        } else if (!event.target.classList.contains('fa-regular')) {
+            await removeFromFavorites(event, userID);
         } else {
             // TO DO
             console.log("Something very odd happened")
         }
     });
 });
+
+async function removeFromFavorites(event, userID) {
+    const favoriteID = event.target.dataset.favoriteid;
+    // // Send unfavorited recipe to database to be deleted
+    const response = await fetch(`/api/users/${userID}/Favorites/${favoriteID}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    if (response.ok) {
+        toggleFavoriteDisplay(event);
+        event.target.dataset.favoriteid = 0;
+    } else {
+        alert(response.statusText);
+    }
+}
+
+async function addToFavorites(userID, recipeID, event) {
+    const response = await fetch(`/api/users/${userID}/Favorites`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            recipeID: recipeID
+        })
+    });
+
+    if (response.ok) {
+        toggleFavoriteDisplay(event);
+        const responseData = await response.json();
+        event.target.dataset.favoriteid = responseData.id;
+    } else {
+        alert(response.statusText);
+    }
+}
+
+function toggleFavoriteDisplay(event) {
+    event.target.classList.toggle('fa-solid');
+    event.target.classList.toggle('fa-regular');
+    event.target.classList.toggle('dark:text-green-500');
+}
 // Dark mode
 // const sunIcon = document.querySelector(".sun");
 // const moonIcon = document.querySelector(".moon");

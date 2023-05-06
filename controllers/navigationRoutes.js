@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const helper = require('./util')
+const units = require("../utils/Units");
 const { User, UserPassword, Recipe, Ingredient, RecipeIngredient } = require('../models');
 
 
@@ -49,6 +50,10 @@ router.get("/recipe/:id/edit", async (req, res) => {
     if(!isNaN(recipe.id) && recipe.id != -1) {
       recipe = await getRecipeViewModel(recipe.id);
     };
+
+    recipe.timeUOMs = units.GetTimeUOMs().map(x => {
+      return {value: x.abbr, display: x.singular}
+    })
   
     res.render('recipe-edit', recipe);
 

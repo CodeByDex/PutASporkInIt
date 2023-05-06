@@ -23,6 +23,64 @@ window.addEventListener("load", () => {
 })
 
 
+// Identify Favorite button Class Elements
+const favoriteButtons = document.querySelectorAll(".favorite-button");
+
+// If a Favorite Button is clicked, toggle heart between being filled or unfilled
+favoriteButtons.forEach(favoriteButton => {
+    favoriteButton.addEventListener("click", async (event) => {
+        event.target.classList.toggle('fa-solid');
+        event.target.classList.toggle('fa-regular');
+        event.target.classList.toggle('dark:text-green-500');
+
+        const userID = event.target.dataset.userid;
+        if (isNan(userID)){
+            return
+        }
+        const recipeID = event.target.dataset.recipeid;
+        
+        if (event.target.classList.contains('fa-solid')) {
+            // Send favorited to database
+        const response = await fetch(`/api/users/${userID}/Favorites`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' 
+            },
+            body: JSON.stringify({
+                recipeID: recipeID
+            }) 
+        })   
+            .then(response => {
+                if (response.ok()) {
+                    console.log(response)
+                    // favoriteid logic goes here
+                } else {
+                    alert(response.statusText);
+                }  
+            });
+        } else if (event.target.classList.contains('fa-regular')) {
+
+            // // Send unfavorited recipe to database to be deleted
+            // const response = await fetch(`/api/users/${userID}/Favorites`, {
+            //     method: 'DELETE',
+            //     headers: { 'Content-Type': 'application/json' 
+            //     },
+            //     body: JSON.stringify({
+            //         recipeID: recipeID
+            //     })  
+            // })
+            // .then(response => {
+            //     if (response.ok) {
+            //         console.log("the unfavorited recipe was sent to user database")
+            //     } else {
+            //         alert(response.statusText);
+            //     }  
+            // });  
+        } else {
+            // TO DO
+            console.log ("Something very odd happened")
+        }  
+    });
+});
 // Dark mode
 // const sunIcon = document.querySelector(".sun");
 // const moonIcon = document.querySelector(".moon");

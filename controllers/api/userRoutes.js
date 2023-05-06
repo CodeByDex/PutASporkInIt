@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { User, UserRecipeFavorite } = require('../../models');
 const helper = require('../util')
-const bcrypt = require('bcrypt')
 const UserPassword = require('../../models/userPassword');
 
 /************************************************
@@ -74,9 +73,6 @@ router.delete('/:id', (req, res) => {
 router.delete("/:userID/Favorites/:id", (req, res) => {
     helper.SafeDelete(req.params.id, res, UserRecipeFavorite);
 });
-
-module.exports = router;
-
 
 router.post('/login', async (req, res) => {
 

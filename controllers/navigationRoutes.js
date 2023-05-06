@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const helper = require('./util')
-const { User, UserPassword, Recipe, Ingredient, RecipeIngredient } = require('../models');
+const { User, Recipe, Ingredient, RecipeIngredient } = require('../models');
+
 
 /************************************************
  * Unsecured
@@ -8,9 +9,13 @@ const { User, UserPassword, Recipe, Ingredient, RecipeIngredient } = require('..
 
 // GET route for login page -- Nathan
 router.get('/login', (req, res) => {
-
   res.render("login");
 });
+
+router.get('/newUser', (req, res) => {
+  res.render('newUser')
+})
+
 
 // GET route for home page
 router.get('/', async (req, res) => {
@@ -20,35 +25,28 @@ router.get('/', async (req, res) => {
   const topRecipes = topThreeRecipes.map(obj => obj.get())
   console.log(topRecipes)
   res.render('home', {topRecipes})
+});
+
+router.get("/recipe/:id/edit", async (req, res) => {
+
+  helper.SafeRequest(res, async (res) => {
+
+    let recipe = {};
+  
+    recipe.id = req.params.id
+  
+    if(!isNaN(recipe.id) && recipe.id != -1) {
+      recipe = await getRecipeViewModel(recipe.id);
+    };
+  
+    res.render('recipe-edit', recipe);
+
+  })
 })
-
-
 
 // GET route for recipe page
 router.get('/recipe/:id', async (req, res) => {
-  const recData = await Recipe.findByPk(req.params.id, {
-    include: {
-      model: RecipeIngredient,
-      include: Ingredient
-    }
-  });
-
-  let recipe = recData.get();
-
-  // Capitalize first letter of complexity
-  recipe.complexity = recipe.complexity.charAt(0).toUpperCase() + recipe.complexity.slice(1);
-
-  recipe.RecipeIngredients = recipe.RecipeIngredients.map(x => {
-    let recIng = x.get();
-    let ing = recIng.Ingredient.get();
-
-
-    return {
-      amount: recIng.amount,
-      UOM: recIng.UOM,
-      name: ing.name
-    };
-  })
+  let recipe = await getRecipeViewModel(req.params.id);
 
   res.render('recipe', recipe);
 })
@@ -71,5 +69,33 @@ router.use(helper.VerifyLoggedIn);
 router.get('/dashboard', (req, res) => {
   res.render('dashboard')
 })
+
+async function getRecipeViewModel(id) {
+  const recData = await Recipe.findByPk(id, {
+    include: {
+      model: RecipeIngredient,
+      include: Ingredient
+    }
+  });
+
+  let recipe = recData.get();
+
+  // Capitalize first letter of complexity
+  recipe.complexity = recipe.complexity.charAt(0).toUpperCase() + recipe.complexity.slice(1);
+
+  recipe.RecipeIngredients = recipe.RecipeIngredients.map(x => {
+    let recIng = x.get();
+    let ing = recIng.Ingredient.get();
+
+
+    return {
+      amount: recIng.amount,
+      UOM: recIng.UOM,
+      name: ing.name
+    };
+  });
+
+  return recipe;
+}
 
 module.exports = router;

@@ -28,7 +28,7 @@ const recipeData = [
         totalTimeUOM: "h",
         complexity: "medium"
     },
-    {   name: "Baby you can chive my car",
+    {   name: "Baby You Can Chive My Car",
         seenIn: "Bob's Burgers",
         description: `Iconic Hamburger Recipe from the hit Show: "Bob's Burgers".
         Bob's Burgers is an animated sitcom. The show follows Bob Belcher and his family of 4 own hamburger restaurant and go on many various adventures.`,
@@ -175,7 +175,7 @@ const recipeData = [
         totalTimeUOM: "min",
         complexity: "easy"
     },
-    {   name: "Flamming Fire Flakes",
+    {   name: "Flaming Fire Flakes",
         seenIn: "Avatar the Last Airbender",
         description: `From the hit American anime brings you one of the pride recipes of the Fire Nation.`,
         ingredients: `
@@ -280,7 +280,7 @@ const recipeData = [
         totalTimeUOM: "min",
         complexity: "easy"
     },
-    {   name: "Secrete Ingredient Soup",
+    {   name: "Secret Ingredient Soup",
         seenIn: "KungFu Panda",
         description: `From the hilarious animated movie KungFu Panda we bring you the one and only Special Ingredient Soup!`,
         ingredients: `

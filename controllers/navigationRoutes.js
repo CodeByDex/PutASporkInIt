@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
   // Pull in first three recipes in array
   const topThreeRecipes = recipes.slice(0, 3)
   const topRecipes = topThreeRecipes.map(obj => obj.get())
-  console.log(topRecipes)
+
   res.render('home', {topRecipes})
 });
 
@@ -56,7 +56,7 @@ router.get('/browse', async (req, res) => {
   const recipes = await Recipe.findAll({})
   //TODO: Implement UserRecipeFavorite get conditionally if the user is logged in
   const allRecipes = recipes.map(obj => obj.get())
-  console.log(allRecipes)
+
   res.render('browse', {allRecipes});
 })
 

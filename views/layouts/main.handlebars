@@ -37,18 +37,18 @@
                 <a href="/browse" class="block py-2 pl-3 pr-4 text-neutral-900 rounded hover:bg-neutral-100 md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-neutral-700 dark:hover:text-white md:dark:hover:bg-transparent">Browse Recipes</a>
             </li>
             {{!-- Conditionally renders login or logout links --}}
-            {{!-- {{#if logged_in}} --}}
+            {{#if loggedIn}}
             <li>
                 <a id="dashBoard" href="/dashboard" class="block py-2 pl-3 pr-4 text-neutral-900 rounded hover:bg-neutral-100 md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-neutral-700 dark:hover:text-white md:dark:hover:bg-transparent">Dashboard</a>
             </li>
             <li>
                 <a href="#" id="logout" class="block py-2 pl-3 pr-4 text-neutral-900 rounded hover:bg-neutral-100 md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-neutral-700 dark:hover:text-white md:dark:hover:bg-transparent">Logout</a>
             </li>
-            {{!-- {{#else}} --}}
+            {{else}}
             <li>
                 <a href="/login" id="login" class="block py-2 pl-3 pr-4 text-neutral-900 rounded hover:bg-neutral-100 md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-neutral-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
             </li>
-            {{!-- {{/if}} --}}
+            {{/if}}
 
             {{!-- Dark mode toggle buttons --}}
             {{!-- <li>

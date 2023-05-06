@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const helper = require('./util')
-const { User, Recipe, Ingredient, RecipeIngredient } = require('../models');
+const { User, Recipe, Ingredient, RecipeIngredient, UserRecipeFavorite } = require('../models');
 
 
 /************************************************
@@ -22,9 +22,26 @@ router.get('/', async (req, res) => {
   const recipes = await Recipe.findAll({})
   // Pull in first three recipes in array
   const topThreeRecipes = recipes.slice(0, 3)
-  const topRecipes = topThreeRecipes.map(obj => obj.get())
-
-  res.render('home', {topRecipes})
+  const topRecipes = await Promise.all(topThreeRecipes.map(async (obj) => {
+    let recipe = obj.get()
+    if (req.session.loggedIn) {
+      const userFavorites = await UserRecipeFavorite.findOne({
+        where: {
+          userID: req.session.userID,
+          recipeID: recipe.id
+        },
+      })
+      if (userFavorites == null) {
+        recipe.favoriteid = -1
+      }
+      else {
+        const userFavRecipe = userFavorites.get()
+        recipe.favoriteid = userFavRecipe.id
+      }
+    }
+    return recipe
+  }))
+  res.render('home', { topRecipes })
 });
 
 router.get("/recipe/:id/edit", async (req, res) => {
@@ -32,13 +49,13 @@ router.get("/recipe/:id/edit", async (req, res) => {
   helper.SafeRequest(res, async (res) => {
 
     let recipe = {};
-  
+
     recipe.id = req.params.id
-  
-    if(!isNaN(recipe.id) && recipe.id != -1) {
+
+    if (!isNaN(recipe.id) && recipe.id != -1) {
       recipe = await getRecipeViewModel(recipe.id);
     };
-  
+
     res.render('recipe-edit', recipe);
 
   })
@@ -57,7 +74,7 @@ router.get('/browse', async (req, res) => {
   //TODO: Implement UserRecipeFavorite get conditionally if the user is logged in
   const allRecipes = recipes.map(obj => obj.get())
 
-  res.render('browse', {allRecipes});
+  res.render('browse', { allRecipes });
 })
 
 /**********************************************

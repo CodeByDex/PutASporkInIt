@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { User, UserRecipeFavorite } = require('../../models');
 const helper = require('../util')
+const bcrypt = require('bcrypt')
+const UserPassword = require('../../models/userPassword');
 
 /************************************************
  * Unsecured
@@ -75,3 +77,43 @@ router.delete("/:userID/Favorites/:id", (req, res) => {
 
 module.exports = router;
 
+
+router.post('/login', async (req, res) => {
+
+    const userData = await User.findOne({ where: { email: req.body.email}})
+    if (!userData) {
+        res
+            .status(400)
+            .json({ message: 'Incorrect email or password, please try again' });
+        return;
+    }
+
+    const validPassword = await userData.checkPassword(req.body.password);
+    
+    if (!validPassword) {
+        res
+            .status(400)
+            .json({message: "wrong password"})
+        return;
+    }
+
+    req.session.save(() => {
+        req.session.user_id = userData.id;
+        req.session.loggedIn = true;
+        res.status(200).json({
+        message: "Logged in!"  
+    })})    
+});
+
+router.post('/logout', async (req, res) => {
+
+    req.session.save(() => {
+        delete req.session.user_id;
+        req.session.loggedIn = false;
+        res.status(200).json({
+        message: "Logged out!"  
+    })
+    })    
+});
+  
+module.exports = router;

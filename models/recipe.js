@@ -88,7 +88,12 @@ Recipe.init(
         if (!recipe.thumbnailURL) {
           recipe.thumbnailURL = "https://i.ibb.co/h23wxGn/placeholder-image.jpg";
         }
-      }
+      },
+      beforeUpdate: async (recipe) => {
+        if (!recipe.thumbnailURL) {
+          recipe.thumbnailURL = "https://i.ibb.co/h23wxGn/placeholder-image.jpg";
+        }
+      },
     }
   }
 );

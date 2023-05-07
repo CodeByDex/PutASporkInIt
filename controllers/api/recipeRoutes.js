@@ -19,19 +19,23 @@ router.get('/:id', (req, res) => {
 })
 
 router.get('/:id/votes', (req, res) => {
-    helper.SafeRequest(res, async (res) => {
+    if (isNaN(req.params.id) && req.params.id > 0) {
+        helper.SafeRequest(res, async (res) => {
 
-        const voteData = await RecipeUserVote.findAll({ where: { recipeID: req.params.id } })
+            const voteData = await RecipeUserVote.findAll({ where: { recipeID: req.params.id } })
 
-        let voteResults;
-        if (!voteData) {
-            voteResults = []
-        }
-        else {
-            voteResults = voteData.map(obj => obj.get())
-        }
-        res.json({ voteResults })
-    })
+            let voteResults;
+            if (!voteData) {
+                voteResults = []
+            }
+            else {
+                voteResults = voteData.map(obj => obj.get())
+            }
+            res.json({ voteResults })
+        });
+    } else {
+        res.status(500).json('id must be greater than 0')
+    }
 })
 
 /************************************************
@@ -86,44 +90,46 @@ router.delete('/:id', (req, res) => {
     } else {
         res.status(500).json('id must be greater than 0')
     }
-})
+});
+
 router.post('/:id/votes', (req, res) => {
     if (!isNaN(req.params.id) && req.params.id > 0) {
         helper.SafeCreate(res, RecipeUserVote, {
-        recipeID: req.params.id,
-        userID: req.session.userID,
-        vote: req.body.vote
-    })
-} else {
-    res.status(500).json('id must be greater than 0')
-}
-})
+            recipeID: req.params.id,
+            userID: req.session.userID,
+            vote: req.body.vote
+        })
+    } else {
+        res.status(500).json('id must be greater than 0')
+    }
+});
 
 router.put('/:id/votes', (req, res) => {
     if (!isNaN(req.params.id) && req.params.id > 0) {
-    helper.SafeRequest(res, async(res) => {
-    let vote = await RecipeUserVote.findOne( {where: { recipeID: req.params.id, userID: req.session.userID }})
+        helper.SafeRequest(res, async (res) => {
+            let vote = await RecipeUserVote.findOne({ where: { recipeID: req.params.id, userID: req.session.userID } })
 
-    vote.set({vote: req.body.vote})
+            vote.set({ vote: req.body.vote })
 
-    vote = await vote.save()
+            vote = await vote.save()
 
-    res.json(vote)
-    })
-} else {
-    res.status().json('id must be greater than 0')
-}
-})
+            res.json(vote)
+        })
+    } else {
+        res.status().json('id must be greater than 0')
+    }
+});
 
 router.delete('/:id/votes', (req, res) => {
     if (!isNaN(req.params.id) && req.params.id > 0) {
-    helper.SafeRequest(res, async(res) => {
+        helper.SafeRequest(res, async (res) => {
 
-   const voteResult = await RecipeUserVote.destroy({ where: { recipeID: req.params.id, userID: req.session.userID }})
-    res.json(voteResult)
-    })
-}
-
-})
+            const voteResult = await RecipeUserVote.destroy({ where: { recipeID: req.params.id, userID: req.session.userID } })
+            res.json(voteResult)
+        })
+    } else {
+        res.status().json('id must be greater than 0')
+    }
+});
 
 module.exports = router;

@@ -44,11 +44,11 @@ router.get('/recipe/:id', async (req, res) => {
 // GET route for browser page
 router.get('/browse', async (req, res) => {
   helper.SafeRequest(res, async (res) => {
-  const recipes = await Recipe.findAll({})
+    const recipes = await Recipe.findAll({})
 
-  const allRecipes = await renderRecipe(recipes, req);
+    const allRecipes = await renderRecipe(recipes, req);
 
-  res.render('browse', { allRecipes });
+    res.render('browse', { allRecipes });
   })
 })
 
@@ -178,11 +178,4 @@ async function getRecipeViewModel(id, req) {
   return recipe;
 };
 
-// GET route for browser page
-router.get('/browse', async (req, res) => {
-  const recipes = await Recipe.findAll({})
-  //TODO: Implement UserRecipeFavorite get conditionally if the user is logged in
-  const allRecipes = recipes.map(obj => obj.get())
 
-  res.render('browse', { allRecipes });
-})

@@ -20,7 +20,7 @@ window.addEventListener("load", () => {
         if (response.ok) {
             document.location.replace('/');
         } else {
-            // TODO add handling for bad response 
+            alert("Error Creating Account");
         }       
     })    
 })

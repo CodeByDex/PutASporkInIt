@@ -42,10 +42,10 @@ app.use((err, req, res, next) => {
 
 app.use(routes);
 
-app.use("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "public/404.html"))
-})
-
+app.use('*', (req, res) => {
+    res.status(404).render('404');
+  })
+  
 sequelize.sync({force: false})
     .then(() => {
         app.listen(PORT, () => console.log(`App Now Listening on ${PORT}`));

@@ -38,11 +38,11 @@ function GetAllIngredientUOMs() {
     convert().list("mass").map(x => uom.push(x));
     convert().list("volume").map(x => uom.push(x));
 
-    return uom;
+    return uom.filter(x => !excludedUOMs.includes(x.abbr));
 }
 
 function GetTimeUOMs() {
-    return convert().list("time");
+    return convert().list("time").filter(x => !excludedUOMs.includes(x.abbr))
 }
 
 /**

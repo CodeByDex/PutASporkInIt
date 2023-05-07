@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { Recipe } = require('../../models');
+const { request } = require('express');
+const { Recipe, RecipeUserVote } = require('../../models');
 const helper = require('../util')
 
 /************************************************
@@ -11,6 +12,22 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
     helper.SafeGetByID(req.params.id, res, Recipe, [])
+})
+
+router.get('/:id/votes', (req, res) => {
+    helper.SafeRequest(res, async(res) => {
+        
+        const voteData = await RecipeUserVote.findAll({ where: { recipeID: req.params.id }})
+        
+        let voteResults;
+        if(!voteData){
+            voteResults =[]
+        }
+        else {
+            voteResults=voteData.map(obj => obj.get())
+        }
+        res.json({voteResults}) 
+    })
 })
 
 /************************************************
@@ -53,6 +70,35 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     helper.SafeDelete(req.params.id, res, Recipe)
+})
+
+router.post('/:id/votes', (req, res) => {
+    helper.SafeCreate(res, RecipeUserVote, {
+        recipeID: req.params.id,
+        userID: req.session.userID,
+        vote: req.body.vote
+    })
+})
+
+router.put('/:id/votes', (req, res) => {
+    helper.SafeRequest(res, async(res) => {
+    let vote = await RecipeUserVote.findOne( {where: { recipeID: req.params.id, userID: req.session.userID }})
+    
+    vote.set({vote: req.body.vote})
+
+    vote = await vote.save()
+    
+    res.json(vote)
+    })
+})
+
+router.delete('/:id/votes', (req, res) => {
+    helper.SafeRequest(res, async(res) => {
+
+   const voteResult = await RecipeUserVote.destroy({ where: { recipeID: req.params.id, userID: req.session.userID }})
+    res.json(voteResult)
+    })
+    
 })
 
 module.exports = router;

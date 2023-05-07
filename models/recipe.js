@@ -4,6 +4,7 @@ const units = require("../utils/Units");
 
 class Recipe extends Model {}
 class RecipeIngredient extends Model {}
+class RecipeUserVote extends Model {}
 
 Recipe.init(
   {
@@ -117,7 +118,45 @@ RecipeIngredient.init(
   }
 )
 
+RecipeUserVote.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    recipeID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "recipe",
+        key: "id"
+      }
+    },
+    userID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "User",
+        key: "id"
+      }
+    },
+    vote: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        isIn: [-1, 1]
+      }
+    }
+  },
+  {
+    sequelize
+  }
+)
+
 module.exports = {
   Recipe,
-  RecipeIngredient
+  RecipeIngredient,
+  RecipeUserVote
 };

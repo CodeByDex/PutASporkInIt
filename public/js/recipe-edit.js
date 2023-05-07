@@ -3,10 +3,10 @@ window.addEventListener("load", () => {
         await recipeSave(event);       
     });
 
-    const activetimeUOM = document.querySelector("#testName");
+    const activetimeUOM = document.querySelector("#recipeActiveTimeUOM");
     activetimeUOM.value =  activetimeUOM.dataset.value;
 
-    const totalTimeUOM = document.querySelector("#testName2");
+    const totalTimeUOM = document.querySelector("#recipeTotalTimeUOM");
     totalTimeUOM.value =  totalTimeUOM.dataset.value;
 
 });

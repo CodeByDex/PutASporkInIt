@@ -33,6 +33,10 @@ Recipe.init(
       type: DataTypes.TEXT,
       allowNull: false
     },
+    ingredients: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
     instructions: {
       type: DataTypes.TEXT,
       allowNull: false

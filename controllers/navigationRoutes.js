@@ -36,7 +36,7 @@ router.get("/recipe/:id/edit", async (req, res) => {
   
     recipe.id = req.params.id
   
-    if(!isNaN(recipe.id) && recipe.id != -1) {
+    if(!isNaN(recipe.id) && recipe.id != 0) {
       recipe = await getRecipeViewModel(recipe.id);
     };
   

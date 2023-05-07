@@ -11,6 +11,9 @@ window.addEventListener("load", () => {
         const totalTime = document.querySelector("#recipeTotalTime").value;
         const totalTimeUOM = document.querySelector("#recipeTotalTimeUOM").value;
         const complexity = document.querySelector("#recipeComplexity").value;
+        const ingredients = document.querySelector("#recipeIngredients").value;
+        const instructions = document.querySelector("#recipeInstructions").value;
+        const thumbnailURL = document.querySelector("#recipeThumbnail").value;
 
         console.log(id, name, seenIn, description, activeTime, activeTimeUOM, totalTime, totalTimeUOM, complexity);
 
@@ -32,15 +35,15 @@ window.addEventListener("load", () => {
                 name,
                 seenIn,
                 description,
-                ingredients: "",
-                instructions: "",
+                ingredients,
+                instructions,
                 sourceURL: "",
                 activeTime,
                 activeTimeUOM,
                 totalTime,
                 totalTimeUOM,
                 complexity,
-                thumbnailURL: ""
+                thumbnailURL
             })        
         });
         

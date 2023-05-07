@@ -26,24 +26,6 @@ router.get('/', async (req, res) => {
   res.render('home', { topRecipes })
 });
 
-// GET route to edit a recipe
-router.get("/recipe/:id/edit", async (req, res) => {
-
-  helper.SafeRequest(res, async (res) => {
-
-    let recipe = {};
-  
-    recipe.id = req.params.id
-  
-    if(!isNaN(recipe.id) && recipe.id != 0) {
-      recipe = await getRecipeViewModel(recipe.id);
-    };
-  
-    res.render('recipe-edit', recipe);
-
-  })
-})
-
 // GET route for recipe page
 router.get('/recipe/:id', async (req, res) => {
   let recipe = await getRecipeViewModel(req.params.id, req);

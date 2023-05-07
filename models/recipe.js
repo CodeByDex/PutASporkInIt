@@ -25,6 +25,11 @@ Recipe.init(
         key: "id"
       }
     },
+    thumbnailURL: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      defaultValue: "https://i.ibb.co/h23wxGn/placeholder-image.jpg"
+    },
     seenIn: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -77,7 +82,14 @@ Recipe.init(
     }
   },
   {
-    sequelize
+    sequelize,
+    hooks: {
+      beforeCreate: async (recipe) => {
+        if (!recipe.thumbnailURL) {
+          recipe.thumbnailURL = "https://i.ibb.co/h23wxGn/placeholder-image.jpg";
+        }
+      }
+    }
   }
 );
 

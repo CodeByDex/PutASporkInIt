@@ -204,7 +204,6 @@ router.get('/dashboard', async (req, res) => {
   })
 })
 
-<<<<<<<<< Temporary merge branch 1
 async function getRecipeViewModel(id) {
   const recData = await Recipe.findByPk(id, {
     include: {
@@ -230,10 +229,6 @@ async function getRecipeViewModel(id) {
   });
 
   return recipe;
-
- 
 }
 
-=========
->>>>>>>>> Temporary merge branch 2
 module.exports = router;

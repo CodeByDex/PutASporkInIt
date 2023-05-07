@@ -2,6 +2,7 @@ const { Recipe } = require('../../models');
 
 const recipeData = [
     {   name: "Ted's Biscuits",
+        thumbnailURL: "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/id7HrHnc7xfc/v4/-1x-1.jpg",
         seenIn: "Ted Lasso",
         description: `Iconic Biscuit Recipe from Apple TV's series, "Ted Lasso".
         In the show, Ted Lasso, a small-time college football coach from the Midwest hired to coach a pro soccer team in England despite knowing nothing about soccer, tries to win over the team's owner, Rebecca Welton, by making his famous biscuit recipe. `,
@@ -28,6 +29,7 @@ const recipeData = [
         complexity: "medium"
     },
     {   name: "Baby You Can Chive My Car",
+        thumbnailURL: "https://i.ytimg.com/vi/EgBven7G0Xk/maxresdefault.jpg",
         seenIn: "Bob's Burgers",
         description: `Iconic Hamburger Recipe from the hit Show: "Bob's Burgers".
         Bob's Burgers is an animated sitcom. The show follows Bob Belcher and his family of 4 own hamburger restaurant and go on many various adventures.`,
@@ -72,7 +74,8 @@ const recipeData = [
         totalTimeUOM: "min",
         complexity: "medium"
     },
-    {   name: "Kevin's Famous Chilli",
+    {   name: "Kevin's Famous Chili",
+        thumbnailURL: "https://i.ytimg.com/vi/WcYG-5b7448/maxresdefault.jpg",
         seenIn: "The Office",
         description: `The office is an American mockumentary sitcom series that depicts the everyday work lives of office employees at the Scranton Pennsylvania branch of a fictional paper company Dunder Mifflin. This episode starts with character Kevin coming into the office bringing his world famous chilli for the rest of the office.`,
         ingredients: `4 dried ancho chiles
@@ -110,6 +113,7 @@ const recipeData = [
         complexity: "medium"
     },
     {   name: "Rachel's English Trifle",
+        thumbnailURL: "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2019/9/5/FN_Friends-Trifle_heather-baird_4x3_H.jpg.rend.hgtvcom.616.462.suffix/1567714947094.jpeg",
         seenIn: "Friends",
         description: `Memorable scene form the Friends where Rachel bring a dish to thanksgiving, but does not realize that the that she accidentally had pages stuck together and ends up combining to different recipes.`,
         ingredients: `1 Package Lady Fingers
@@ -140,6 +144,7 @@ const recipeData = [
         complexity: "medium"
     },
     {   name: "Krabby Patty",
+        thumbnailURL: "https://www.wikihow.com/images/thumb/b/b1/Make-a-Krabby-Patty-Step-14-Version-5.jpg/aid1004609-v4-1200px-Make-a-Krabby-Patty-Step-14-Version-5.jpg",
         seenIn: "Spongebob Squarepants",
         description: `The iconic burger recipe from the classic tv cartoon Spongebob Squarepants.`,
         ingredients: `1 1/3 lb. ground beef (80 percent lean)
@@ -172,6 +177,7 @@ const recipeData = [
         complexity: "easy"
     },
     {   name: "Flaming Fire Flakes",
+        thumbnailURL: "https://images.squarespace-cdn.com/content/v1/5ba3eeed755be24d0ec5e917/1579606389321-ONSLX3T1ESMD6S9C2C87/fireflakes.jpg?format=1000w",
         seenIn: "Avatar the Last Airbender",
         description: `From the hit American anime brings you one of the pride recipes of the Fire Nation.`,
         ingredients: `100 g long grain white rice
@@ -206,6 +212,7 @@ const recipeData = [
         complexity: "medium"
     },
     {   name: "Cheesy Blasters",
+        thumbnailURL: "https://i.ytimg.com/vi/atLL2Yzi3bg/maxresdefault.jpg",
         seenIn: "30 Rock",
         description: `"You take a hot dog, stuff it with some Jack cheese, fold it in a pizza, you've got cheesy blasters!" From the critically acclaimed show 30 Rock is the Cheesy Blaster!`,
         ingredients: `Pizza dough
@@ -236,6 +243,7 @@ const recipeData = [
         complexity: "easy"
     },
     {   name: "Spaghetti Tacos",
+        thumbnailURL: "https://images-gmi-pmc.edge-generalmills.com/7dd22523-eea7-435c-a68d-a052b00e65bf.jpg",
         seenIn: "iCarly",
         description: `An iconic recipe that we all have wanted to try, here it is, the spaghetti tacos recipe!`,
         ingredients: `Basil
@@ -274,6 +282,7 @@ const recipeData = [
         complexity: "easy"
     },
     {   name: "Secret Ingredient Soup",
+        thumbnailURL: "https://sethlui.com/wp-content/uploads/2020/06/simple-stay-home-recipes-kungfu-panda-secret-ingredient-noodles-9.jpg",
         seenIn: "KungFu Panda",
         description: `From the hilarious animated movie KungFu Panda we bring you the one and only Special Ingredient Soup!`,
         ingredients: `2 carrots, peeled and diced
@@ -306,6 +315,7 @@ const recipeData = [
         complexity: "easy"
     },
     {   name: "Car Panini",
+        thumbnailURL: "https://www.cartooncuisine.com/wp-content/uploads/2019/01/Peter-Griffin-Car-Panini-3.jpg",
         seenIn: "Family Guy",
         description: `One of the many hilarious moments from the animated series is when Peter is making his specialty, the car panini.`,
         ingredients: `White bread
@@ -330,6 +340,7 @@ const recipeData = [
         complexity: "easy"
     },
     {   name: "Flanders Hot Cocoa",
+        thumbnailURL: "https://i.ytimg.com/vi/Z8-0nCsmT8w/maxresdefault.jpg",
         seenIn: "The Simpsons Movie",
         description: `Probably one of the most appetizing things you've ever seen on tv, Ned Flanders hot cocoa recipe.`,
         ingredients: `Whole milk
@@ -370,6 +381,7 @@ const recipeData = [
         complexity: "easy"
     },
     {   name: "Rum French Toast",
+        thumbnailURL: "https://images.squarespace-cdn.com/content/v1/590be7fd15d5dbc6bf3e22d0/1516812819097-GHL87EBZTPDQ2LRWQ368/Screen+Shot+2018-01-24+at+10.53.03+AM.png?format=1500w",
         seenIn: "Mad Men",
         description: `This recipe for rum french toast comes from a scene in season four where Sally wakes up early to make breakfast for her father. Unknowingly, she mistook a bottle of rum for syrup. She asks if tastes bad in which Don shrugged and replied “no…” and continued to enjoy his breakfast.`,
         ingredients: `2 slices - thick white bread
@@ -397,6 +409,7 @@ const recipeData = [
         complexity: "easy"
     },
     {   name: "Meat Tornado",
+        thumbnailURL: "https://images.squarespace-cdn.com/content/v1/590be7fd15d5dbc6bf3e22d0/1598374781435-AVSRM9VEOBR47IU09S75/Screen+Shot+2020-08-25+at+11.56.34+AM.png?format=2500w",
         seenIn: "Parks & Rec",
         description: `"You had me at meat tornado"`,
         ingredients: `1 lb 93% Ground Beef
@@ -433,6 +446,7 @@ const recipeData = [
         complexity: "medium"
     },
     {   name: "Ratatouille",
+        thumbnailURL: "https://static.onecms.io/wp-content/uploads/sites/43/2022/09/01/disneys-ratatouille-ddmfs-4x3-0747.jpg",
         seenIn: "Ratatouille",
         description: `The Disney classic that made us all hungry after watching it, we bring you a french delicacy, Ratatouille.`,
         ingredients: `4 tbsp olive oil
@@ -467,6 +481,7 @@ const recipeData = [
         complexity: "medium"
     },
     {   name: "Bubba's Shrimp",
+        thumbnailURL: "https://copykat.com/wp-content/uploads/2022/07/Bubba-Gump-Shrimp-Photo-1.jpg",
         seenIn: "Forrest Gump",
         description: `From the classic film Forrest Gump, we bring you the legendary shrimp recipe from Bubba Gumps.`,
         ingredients: `Broth:
@@ -507,6 +522,7 @@ const recipeData = [
         complexity: "easy"
     },
     {   name: "Shawarma",
+        thumbnailURL: "https://www.koimoi.com/wp-content/new-galleries/2020/04/avengers-endgame-trivia-17-captain-america-refused-to-eat-in-the-post-credits-shawarma-scene-of-the-avengers-heres-why-001.jpg",
         seenIn: "The Avengers",
         description: `Even have to eat, and when they do they go with an incredible arabic dish, Shawarma.`,
         ingredients: `1 kg / 2 lb chicken thigh fillets , skinless and boneless (Note 3)
@@ -553,6 +569,7 @@ const recipeData = [
         complexity: "easy"
     },
     {   name: "Fish Fingers",
+        thumbnailURL: "https://images.squarespace-cdn.com/content/v1/559dc96be4b099333339097f/1436406043192-ZH4U1RZY8GXOF6JWJ962/image-asset.jpeg?format=1000w",
         seenIn: "Doctor Who",
         description: `A delicious recipe from the eleventh doctor in the Doctor Who franchise.`,
         ingredients: `4 large eggs separated, at room temperature
@@ -631,6 +648,7 @@ const recipeData = [
         complexity: "medium"
     },
     {   name: "Enchiladas",
+        thumbnailURL: "https://easyfood.ie/wp-content/uploads/2023/01/moira-roses-enchiladas_banner-image-2160x1270.jpg",
         seenIn: "Schitts Creek",
         description: `From the hilarious TV Show Schitts Creek we bring you Moira's enchilada recipe! And remember, don't forget to "fold in the cheese."`,
         ingredients: `Salsa Roja Ingredients:

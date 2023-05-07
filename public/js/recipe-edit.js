@@ -16,6 +16,7 @@ async function recipeSave(event) {
 
     const id = event.target.dataset.recipeid;
     const name = document.querySelector("#recipeName").value;
+    const thumbnailURL = document.querySelector("#recipeThumbnail").value;
     const seenIn = document.querySelector("#recipeSeenIn").value;
     const description = document.querySelector("#recipeDescription").value;
     const activeTime = document.querySelector("#recipeActiveTime").value;
@@ -23,6 +24,8 @@ async function recipeSave(event) {
     const totalTime = document.querySelector("#recipeTotalTime").value;
     const totalTimeUOM = document.querySelector("#recipeTotalTimeUOM").value;
     const complexity = document.querySelector("#recipeComplexity").value;
+    const ingredients = document.querySelector("#recipeIngredients").value;
+    const instructions = document.querySelector("#recipeInstructions").value;
 
     let method = "POST";
     let uriSuffix = "";
@@ -40,15 +43,17 @@ async function recipeSave(event) {
         },
         body: JSON.stringify({
             name,
+            thumbnailURL,
             seenIn,
             description,
-            instructions: "",
+            instructions,
             sourceURL: "",
             activeTime,
             activeTimeUOM,
             totalTime,
             totalTimeUOM,
-            complexity
+            complexity,
+            ingredients,
         })
     });
 

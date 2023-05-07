@@ -24,7 +24,9 @@
         </div>
         {{!-- Recipe Image and Buttons Container --}}
         <div class="image-container mb-4 w-full md:w-1/2 md:mb-0 md:align-middle">
-            <img class="h-auto max-w-full mb-2" src="/images/placeholder-image.jpg" alt="image description">
+            <div class="w-full h-0 relative mb-2" style="padding-bottom: 56.25%">
+                <img class="absolute inset-0 w-full h-full object-cover" src="{{thumbnailURL}}" alt="image description">
+            </div>
             <div class="flex columns-2 justify-between px-2">
                 {{> favorite-button}}
                 <div class="flex columns-3 justify-between gap-2">

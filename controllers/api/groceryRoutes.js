@@ -2,8 +2,6 @@ const router = require('express').Router();
 const {UserGroceryList} = require('../../models');
 const helper = require('../util');
 
-router.use(helper.VerifyLoggedIn);
-
 router.post('/', (req, res) => {
 helper.SafeCreate(res, UserGroceryList, {
     totalAmount: req.body.totalAmount,

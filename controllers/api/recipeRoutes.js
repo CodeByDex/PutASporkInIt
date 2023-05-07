@@ -71,12 +71,21 @@ router.delete('/:id', (req, res) => {
     helper.SafeDelete(req.params.id, res, Recipe)
 })
 
-router.post('/:id/votes', (req, res) =>{
+router.post('/:id/votes', (req, res) => {
     helper.SafeCreate(res, RecipeUserVote, {
         recipeID: req.params.id,
         userID: req.session.userID,
         vote: req.body.vote
     })
+})
+
+router.delete('/:id/votes', (req, res) => {
+    helper.SafeRequest(res, async(res) => {
+
+   const voteResult = RecipeUserVote.destroy({ where: { recipeID: req.params.id, userID: req.session.userID }})
+    res.json(voteResult)
+    })
+    
 })
 
 module.exports = router;

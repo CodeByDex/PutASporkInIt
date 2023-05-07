@@ -10,29 +10,30 @@ router.post('/', async (req, res) => {
             password: hash,
             userID: req.body.userID
         })
-    })
+    }),
 
-    router.get('/', (req, res) => {
-        helper.SafeGetAll(res, UserPassword, [])
-    })
+        router.get('/', (req, res) => {
+            helper.SafeGetAll(res, UserPassword, []);
+        }),
 
-    router.get('/:id', (req, res) => {
-        helper.SafeGetByID(req.params.id, res, UserPassword, [])
-        if (!isNaN(req.params.id) && req.params.id > 0);
-    })
+        router.get('/:id', (req, res) => {
+            helper.SafeGetByID(req.params.id, res, UserPassword, []);
+            if (!isNaN(req.params.id) && req.params.id > 0) 
+    }),
 
-    router.put('/:id', async (req, res) => {
-        hash = await bcrypt.hash(req.body.password, 5)
-        helper.SafeUpdate(req.params.id, res, UserPassword, {
-            password: hash,
-            userID: req.body.userID
-        });
-        if (!isNaN(req.params.id) && req.params.id > 0);
-    })
+        router.put('/:id', async (req, res) => {
+            hash = await bcrypt.hash(req.body.password, 5)
+            helper.SafeUpdate(req.params.id, res, UserPassword, {
+                password: hash,
+                userID: req.body.userID
+            });
+            if (!isNaN(req.params.id) && req.params.id > 0);
+        }
+    }),
 
     router.delete('/:id', (req, res) => {
         helper.SafeDelete(req.params.id, res, UserPassword)
         if (!isNaN(req.params.id) && req.params.id > 0);
-    })
+    }),
 
     module.exports = router;

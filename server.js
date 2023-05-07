@@ -6,7 +6,8 @@ const session = require("express-session");
 
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
-const helpers = require('./utils/helpers')
+const helpers = require('./utils/helpers');
+const middleware = require("./utils/middleware");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -31,6 +32,13 @@ app.set("view engine", "handlebars");
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use([middleware.localLoggedIn, middleware.localUserId]);
+
+app.use((err, req, res, next) => {
+    console.log(`Unhandled error: ${err}`);
+    res.status(500).sendFile(path.join(__dirname, "public/404.html"));
+});
 
 app.use(routes);
 

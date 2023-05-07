@@ -1,7 +1,11 @@
 const router = require('express').Router();
 const { User, UserRecipeFavorite } = require('../../models');
 const helper = require('../util')
+const UserPassword = require('../../models/userPassword');
 
+/************************************************
+ * Unsecured
+ ***********************************************/
 
 //create new user
 router.post('/', (req, res) => {
@@ -40,8 +44,8 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     helper.SafeDelete(req.params.id, res, User)
+    if (!isNaN(req.params.id) && req.params.id > 0);
 })
-if (!isNaN(req.params.id) && req.params.id > 0);
 
 
 router.post('/logout', (req, res) => {
@@ -54,8 +58,8 @@ router.post('/logout', (req, res) => {
         } else {
             res.status(404).end();
         }
-    })
-});
+    });
+})
 
 
 router.post("/:userID/Favorites", (req, res) => {
@@ -77,4 +81,3 @@ router.delete("/:userID/Favorites/:id", (req, res) => {
 });
 
 module.exports = router;
-

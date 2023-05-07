@@ -30,7 +30,8 @@ const sequelize = process.env.JAWSDB_URL
                 underscored: false,
                 freezeTableName: true,
                 timestamps: true
-            }
+            },
+            logging: false
         }
         );
 

@@ -4,9 +4,14 @@ const bcrypt = require('bcrypt')
 const UserPassword = require('./userPassword');
 
 class User extends Model {
-  //TODO: Add VerifyPassword method
 
-
+  async checkPassword(password) {
+    const UP = await UserPassword.findOne({ where: { userID: this.id}});
+    console.log(UP.password);
+    const passwordCheck = await bcrypt.compareSync(password, UP.password);
+    return passwordCheck;
+  }
+  
   static async createUser(userName, email, password) {
 
     if (password.length < 8) {      

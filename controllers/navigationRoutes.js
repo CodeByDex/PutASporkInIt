@@ -1,12 +1,21 @@
 const router = require("express").Router();
-const { User, UserPassword, Recipe, Ingredient, RecipeIngredient } = require('../models');
+const helper = require('./util')
+const { User, Recipe, Ingredient, RecipeIngredient } = require('../models');
 
+
+/************************************************
+ * Unsecured
+ ************************************************/
 
 // GET route for login page -- Nathan
 router.get('/login', (req, res) => {
-
   res.render("login");
 });
+
+router.get('/newUser', (req, res) => {
+  res.render('newUser')
+})
+
 
 // GET route for home page
 router.get('/', async (req, res) => {
@@ -14,10 +23,47 @@ router.get('/', async (req, res) => {
   // Pull in first three recipes in array
   const topThreeRecipes = recipes.slice(0, 3)
   const topRecipes = topThreeRecipes.map(obj => obj.get())
-  console.log(topRecipes)
-  res.render('home', {topRecipes})
+
+  res.render('home', { topRecipes })
+});
+
+router.get("/recipe/:id/edit", async (req, res) => {
+
+  helper.SafeRequest(res, async (res) => {
+
+    let recipe = {};
+
+    recipe.id = req.params.id
+
+    if (!isNaN(recipe.id) && recipe.id != -1) {
+      recipe = await getRecipeViewModel(recipe.id);
+    };
+
+    res.render('recipe-edit', recipe);
+
+  })
 })
 
+// GET route for recipe page
+router.get('/recipe/:id', async (req, res) => {
+  let recipe = await getRecipeViewModel(req.params.id);
+
+  res.render('recipe', recipe);
+})
+
+// GET route for browser page
+router.get('/browse', async (req, res) => {
+  const recipes = await Recipe.findAll({})
+  //TODO: Implement UserRecipeFavorite get conditionally if the user is logged in
+  const allRecipes = recipes.map(obj => obj.get())
+
+  res.render('browse', { allRecipes });
+})
+
+/**********************************************
+ * Secured Calls
+ **********************************************/
+router.use(helper.VerifyLoggedIn);
 
 // GET route for dashboard page (user profile/account)
 router.get('/dashboard', (req, res) => {
@@ -25,23 +71,16 @@ router.get('/dashboard', (req, res) => {
     let recipe = {}
     recipe.id = req.params.id
 
-    if(!isNaN(recipe.id) && recipe.id != -1) {
+    if (!isNaN(recipe.id) && recipe.id != -1) {
       recipe = await getRecipeViewModel(recipe.id)
     }
-  })   
+  })
   res.render('dashboard')
 })
 
+async function getRecipeViewModel(id) {
+  const recData = await Recipe.findByPk(id, {
 
-// GET route for recipe page
-router.get('/recipe/:id', async (req, res) => {
-  helper.SafeRequest(res, async (res) => {
-    let recipe = {}
-    recipe.id = req.params.id
-
-    if(!isNaN(recipe.id) && recipe.id != -1) {
-      recipe = await getRecipeViewModel(recipe.id);
-  const recData = await Recipe.findByPk(req.params.id, {
     include: {
       model: RecipeIngredient,
       include: Ingredient
@@ -49,6 +88,10 @@ router.get('/recipe/:id', async (req, res) => {
   });
 
   let recipe = recData.get();
+
+  // Capitalize first letter of complexity
+  recipe.complexity = recipe.complexity.charAt(0).toUpperCase() + recipe.complexity.slice(1);
+
   recipe.RecipeIngredients = recipe.RecipeIngredients.map(x => {
     let recIng = x.get();
     let ing = recIng.Ingredient.get();
@@ -59,26 +102,26 @@ router.get('/recipe/:id', async (req, res) => {
       UOM: recIng.UOM,
       name: ing.name
     };
-  })
+  });
 
-  res.render('recipe', recipe)
+
+  return recipe;
 }
-
 // GET route for browser page
 router.get('/browse', async (req, res) => {
   helper.SafeRequest(res, async (res) => {
     let recipe = {}
     recipe.id = req.params.id
 
-    if(!isNaN(recipe.id) && recipe.id != -1) {
+    if (!isNaN(recipe.id) && recipe.id != -1) {
       recipe = await getRecipeViewModel(recipe.id)
     };
-  const recipes = await Recipe.findAll({})
-  //TODO: Implement UserRecipeFavorite get conditionally if the user is logged in
-  const allRecipes = recipes.map(obj => obj.get())
-  console.log(allRecipes)
-  res.render('browse', {allRecipes});
+    const recipes = await Recipe.findAll({})
+    //TODO: Implement UserRecipeFavorite get conditionally if the user is logged in
+    const allRecipes = recipes.map(obj => obj.get())
+    console.log(allRecipes)
+    res.render('browse', { allRecipes });
+  })
 })
 
-
-module.exports = router;
+  module.exports = router;

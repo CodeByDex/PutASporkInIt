@@ -30,21 +30,29 @@ router.get('/', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-    helper.SafeGetByID(req.params.id, res, User, [])
+    if (!isNaN(req.params.id) && req.params.id > 0) {
+        helper.SafeGetByID(req.params.id, res, User, [])
+    } else {
+        res.json('id must be greater than 0')
+    }
 })
-if (!isNaN(req.params.id) && req.params.id > 0);
-
 router.put('/:id', (req, res) => {
+    if (!isNaN(req.params.id) && req.params.id > 0) {
     helper.SafeUpdate(req.params.id, res, User, {
         userName: req.body.userName,
         email: req.body.email
     })
-    if (!isNaN(req.params.id) && req.params.id > 0);
+} else {
+    res.json('id must be greater than 0')
+}
 })
 
 router.delete('/:id', (req, res) => {
+    if (!isNaN(req.params.id) && req.params.id > 0) {
     helper.SafeDelete(req.params.id, res, User)
-    if (!isNaN(req.params.id) && req.params.id > 0);
+    } else {
+        res.json('id must be greater than 0')
+    }
 })
 
 
@@ -63,21 +71,30 @@ router.post('/logout', (req, res) => {
 
 
 router.post("/:userID/Favorites", (req, res) => {
+    if (!isNaN(req.params.id) && req.params.id > 0) {
     helper.SafeCreate(res, UserRecipeFavorite, {
         userID: req.params.userID,
         recipeID: req.body.recipeID
     })
-    if (!isNaN(req.params.id) && req.params.id > 0);
+} else {
+    res.json('id must be greater than 0')
+}
 });
 
 router.get("/:userID/Favorites", (req, res) => {
+    if (!isNaN(req.params.id) && req.params.id > 0) {
     helper.SafeGetAll(res, UserRecipeFavorite, [], { userID: req.params.userID });
-    if (!isNaN(req.params.id) && req.params.id > 0);
+    } else {
+        res.json('id must be greater than 0')
+    }
 });
 
 router.delete("/:userID/Favorites/:id", (req, res) => {
+    if (!isNaN(req.params.id) && req.params.id > 0) {
     helper.SafeDelete(req.params.id, res, UserRecipeFavorite);
-    if (!isNaN(req.params.id) && req.params.id > 0);
+    } else {
+        res.json('id must be greater than 0')
+    }
 });
 
 module.exports = router;

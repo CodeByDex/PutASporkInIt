@@ -1,6 +1,18 @@
 window.addEventListener("load", () => {
     document.querySelector("#recipeform").addEventListener("submit", async (event) =>{
-        event.preventDefault()
+        await recipeSave(event);       
+    });
+
+    const activetimeUOM = document.querySelector("#recipeActiveTimeUOM");
+    activetimeUOM.value =  activetimeUOM.dataset.value;
+
+    const totalTimeUOM = document.querySelector("#recipeTotalTimeUOM");
+    totalTimeUOM.value =  totalTimeUOM.dataset.value;
+
+});
+
+async function recipeSave(event) {
+    event.preventDefault();
 
         const id = event.target.dataset.recipeid;
         const name = document.querySelector("#recipeName").value;
@@ -11,16 +23,11 @@ window.addEventListener("load", () => {
         const totalTime = document.querySelector("#recipeTotalTime").value;
         const totalTimeUOM = document.querySelector("#recipeTotalTimeUOM").value;
         const complexity = document.querySelector("#recipeComplexity").value;
-        const ingredients = document.querySelector("#recipeIngredients").value;
-        const instructions = document.querySelector("#recipeInstructions").value;
-        const thumbnailURL = document.querySelector("#recipeThumbnail").value;
 
-        console.log(id, name, seenIn, description, activeTime, activeTimeUOM, totalTime, totalTimeUOM, complexity);
+    let method = "POST";
+    let uriSuffix = "";
 
-        let method = "POST";
-        let uriSuffix = "";
-
-        if (id != 0) {
+        if (id != -1) {
             method = "PUT";
             uriSuffix = `/${id}`;
         };
@@ -35,15 +42,13 @@ window.addEventListener("load", () => {
                 name,
                 seenIn,
                 description,
-                ingredients,
-                instructions,
+                instructions: "",
                 sourceURL: "",
                 activeTime,
                 activeTimeUOM,
                 totalTime,
                 totalTimeUOM,
-                complexity,
-                thumbnailURL
+                complexity
             })        
         });
         

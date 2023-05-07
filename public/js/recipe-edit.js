@@ -17,7 +17,7 @@ window.addEventListener("load", () => {
         let method = "POST";
         let uriSuffix = "";
 
-        if (id != -1) {
+        if (id != 0) {
             method = "PUT";
             uriSuffix = `/${id}`;
         };
@@ -32,13 +32,15 @@ window.addEventListener("load", () => {
                 name,
                 seenIn,
                 description,
+                ingredients: "",
                 instructions: "",
                 sourceURL: "",
                 activeTime,
                 activeTimeUOM,
                 totalTime,
                 totalTimeUOM,
-                complexity
+                complexity,
+                thumbnailURL: ""
             })        
         });
         

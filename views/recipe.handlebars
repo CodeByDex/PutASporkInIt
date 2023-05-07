@@ -4,10 +4,10 @@
         <div class="w-full md:w-1/2">
             <h1 class="mb-2 text-3xl font-extrabold tracking-tight leading-none text-neutral-800 md:text-4xl lg:text-5xl dark:text-white">{{name}}</h1>
             {{#if seenIn}}
-            <p class="text-2xl mb-4 font-semibold text-neutral-600 dark:text-neutral-300">As seen on: {{seenIn}}</p>
+            <p class="text-2xl mb-1 font-semibold text-neutral-600 dark:text-white"><span class="text-xl font-semibold text-green-500 lg:text-xl dark:text-green-500">AS SEEN ON</span> {{seenIn}}</p>
             {{/if}}
             {{#if userName}}
-            <p class="text-1xl mb-4 font-semibold text-neutral-600 dark:text-neutral-300">Recipe by: {{userName}}</p>
+            <p class="text-sm mb-8 font-normal lg:text-xl text-neutral-500 dark:text-neutral-400"><span class="text-sm font-semibold text-green-500 lg:text-xl dark:text-green-500">CREATED BY</span> {{userName}}</p>
             {{/if}}
             <p class="mb-4 text-md font-normal text-neutral-500 lg:text-xl dark:text-neutral-400">{{description}}</p>
             <div class="mb-4 flex columns-3 gap-4 md:gap-12">

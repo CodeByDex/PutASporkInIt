@@ -103,14 +103,13 @@ upvoteButtons.forEach(upvoteButton => {
 
         const recipeID = event.target.dataset.recipeid;
         
-
         if (!event.target.classList.contains('fa-solid')) {
             // Send favorited to database
-            await addUpvote(userID, recipeID, event);
+            await addUpvote(recipeID, event);
 
         } else if (!event.target.classList.contains('fa-regular')) {
 
-            await removeUpvote(userID);
+            await removeUpvote(recipeID, event);
         } else {
             // TO DO
             console.log("Something very very odd happened")
@@ -129,11 +128,11 @@ downvoteButtons.forEach(downvoteButton => {
 
         if (!event.target.classList.contains('fa-solid')) {
             // Send favorited to database
-            await addDownvote(userID, recipeID, event);
+            await addDownvote(recipeID, event);
 
         } else if (!event.target.classList.contains('fa-regular')) {
 
-            await removeDownvote(userID);
+            await removeDownvote(recipeID, event);
         } else {
             // TO DO
             console.log("Something very very odd happened")
@@ -154,11 +153,10 @@ async function addUpvote(recipeID, event) {
         })
     });
     
-
     if (response.ok) {
         toggleUpvoteDisplay(event);
         console.log(response)
-        const responseData = await response;
+        const responseData = await response.json();
         event.target.dataset.vote = responseData.id;
     } else {
         alert(response.statusText);
@@ -187,7 +185,9 @@ async function addDownvote(recipeID, event) {
 }
 
 async function removeDownvote(recipeID, event) {
-    const response = deleteVote(recipeID)
+    const response = await deleteVote(recipeID)
+    console.log(response)
+
     if (response.ok) {
         toggleDownvoteDisplay(event);
         event.target.dataset.vote = 0;
@@ -197,9 +197,10 @@ async function removeDownvote(recipeID, event) {
 }
 
 async function removeUpvote(recipeID, event) {
-    const response = deleteVote(recipeID)
+    const response = await deleteVote(recipeID)
+    console.log(response)
     if (response.ok) {
-        toggleDownvoteDisplay(event);
+        toggleUpvoteDisplay(event);
         event.target.dataset.vote = 0;
     } else {
         alert(response.statusText);
@@ -218,15 +219,19 @@ async function deleteVote(recipeID) {
 }
 
 function toggleUpvoteDisplay(event) {
-    // event.target.classList.toggle('fa-solid');
-    // event.target.classList.toggle('fa-regular');
-    // event.target.classList.toggle('dark:text-green-500');
+    console.log(event.classList)
+    event.target.classList.toggle('fa-solid');
+    event.target.classList.toggle('fa-regular');
+    event.target.classList.toggle('dark:text-green-500');
+    // downvoteButtons.classList.remove('fa-solid');
 }
 
 function toggleDownvoteDisplay(event) {
-    // event.target.classList.toggle('fa-solid');
-    // event.target.classList.toggle('fa-regular');
-    // event.target.classList.toggle('dark:text-red-500');
+    console.log(event.target.classList)
+    event.target.classList.toggle('fa-solid');
+    event.target.classList.toggle('fa-regular');
+    event.target.classList.toggle('dark:text-red-500');
+    // upvoteButtons.classList.remove('fa-solid');
 }
 
 // Dark mode

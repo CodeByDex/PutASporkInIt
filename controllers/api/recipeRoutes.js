@@ -78,7 +78,6 @@ router.post('/:id/votes', (req, res) => {
         userID: req.session.userID,
         vote: req.body.vote
     })
-    res.json(vote)
 })
 
 router.put('/:id/votes', (req, res) => {

@@ -71,4 +71,12 @@ router.delete('/:id', (req, res) => {
     helper.SafeDelete(req.params.id, res, Recipe)
 })
 
+router.post('/:id/votes', (req, res) =>{
+    helper.SafeCreate(res, RecipeUserVote, {
+        recipeID: req.params.id,
+        userID: req.session.userID,
+        vote: req.body.vote
+    })
+})
+
 module.exports = router;

@@ -146,10 +146,4 @@ router.get('/dashboard', (req, res) => {
   res.render('dashboard')
 })
 
-
-//GET route for wildcard, render 404 page
-router.get('*', (req, res) => {
-  res.render('404');
-})
-
 module.exports = router;

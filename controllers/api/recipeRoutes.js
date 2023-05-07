@@ -46,13 +46,15 @@ router.post('/', (req, res) => {
         userID: req.session.userID,
         seenIn: req.body.seenIn,
         description: req.body.description,
+        ingredients: req.body.ingredients,
         instructions: req.body.instructions,
         sourceURL: req.body.sourceURL,
         activeTime: req.body.activeTime,
         activeTimeUOM: req.body.activeTimeUOM,
         totalTime: req.body.totalTime,
         totalTimeUOM: req.body.totalTimeUOM,
-        complexity: req.body.complexity
+        complexity: req.body.complexity,
+        thumbnailURL: req.body.thumbnailURL
     })
 })
 
@@ -63,13 +65,15 @@ router.put('/:id', (req, res) => {
             userID: req.session.userID,
             seenIn: req.body.seenIn,
             description: req.body.description,
+            ingredients: req.body.ingredients,
             instructions: req.body.instructions,
             sourceURL: req.body.sourceURL,
             activeTime: req.body.activeTime,
             activeTimeUOM: req.body.activeTimeUOM,
             totalTime: req.body.totalTime,
             totalTimeUOM: req.body.totalTimeUOM,
-            complexity: req.body.complexity
+            complexity: req.body.complexity,
+            thumbnailURL: req.body.thumbnailURL
         })
     } else {
         res.status(500).json('id must be greater than 0')

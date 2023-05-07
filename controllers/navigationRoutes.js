@@ -166,9 +166,8 @@ async function getRecipeViewModel(id, req) {
       UOM: recIng.UOM,
       name: ing.name
     };
-  });
+  })
 
   return recipe;
-
- 
 }
+

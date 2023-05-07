@@ -29,7 +29,9 @@
         </div>
         {{!-- Recipe Image and Buttons Container --}}
         <div class="image-container mb-4 w-full md:w-1/2 md:mb-0 md:align-middle">
-            <img class="h-auto max-w-full mb-2" src="/images/placeholder-image.jpg" alt="image description">
+            <div class="w-full h-0 relative mb-2" style="padding-bottom: 56.25%">
+                <img class="absolute inset-0 w-full h-full object-cover" src="{{thumbnailURL}}" alt="image description">
+            </div>
             <div class="flex columns-2 justify-between px-2">
                 {{> favorite-button}}
                 <div class="flex columns-3 justify-between gap-2">
@@ -45,10 +47,12 @@
 {{!-- Recipe Ingredients --}}
 <section class="bg-neutral-100 dark:bg-neutral-900">
     <div class="py-4 px-4 mx-auto max-w-screen-xl text-left lg:py-12">
-        <h3
-            class="mb-4 text-xl font-bold tracking-tight leading-none text-neutral-900 md:text-2xl lg:text-3xl dark:text-white">
-            INGREDIENTS</h3>
-        <table class="table-auto">
+        <h3 class="mb-4 text-xl font-bold tracking-tight leading-none text-neutral-900 md:text-2xl lg:text-3xl dark:text-white">INGREDIENTS</h3>
+        <div class="md:columns-2">
+            <p class="mb-4 text-md font-normal text-neutral-500 lg:text-xl sm:px-16 dark:text-neutral-400 whitespace-pre-line">{{ingredients}}</p>
+        </div>
+        
+        {{!-- <table class="table-auto">
             <thead >
                 <tr class="">
                     <th class="p-2 text-sm font-semibold text-neutral-600 lg:text-xl dark:text-neutral-300">Ingredient</th>
@@ -61,7 +65,7 @@
             {{> ingredient}}
             {{/each}}
             </tbody>
-        </table>
+        </table> --}}
     </div>
 </section>
 

@@ -1,13 +1,13 @@
 window.addEventListener("load", () => {
-    document.querySelector("#recipeform").addEventListener("submit", async (event) =>{
-        await recipeSave(event);       
+    document.querySelector("#recipeform").addEventListener("submit", async (event) => {
+        await recipeSave(event);
     });
 
     const activetimeUOM = document.querySelector("#recipeActiveTimeUOM");
-    activetimeUOM.value =  activetimeUOM.dataset.value;
+    activetimeUOM.value = activetimeUOM.dataset.value;
 
     const totalTimeUOM = document.querySelector("#recipeTotalTimeUOM");
-    totalTimeUOM.value =  totalTimeUOM.dataset.value;
+    totalTimeUOM.value = totalTimeUOM.dataset.value;
 
 });
 
@@ -16,6 +16,7 @@ async function recipeSave(event) {
 
     const id = event.target.dataset.recipeid;
     const name = document.querySelector("#recipeName").value;
+    const thumbnailURL = document.querySelector("#recipeThumbnail").value;
     const seenIn = document.querySelector("#recipeSeenIn").value;
     const description = document.querySelector("#recipeDescription").value;
     const activeTime = document.querySelector("#recipeActiveTime").value;
@@ -23,14 +24,17 @@ async function recipeSave(event) {
     const totalTime = document.querySelector("#recipeTotalTime").value;
     const totalTimeUOM = document.querySelector("#recipeTotalTimeUOM").value;
     const complexity = document.querySelector("#recipeComplexity").value;
+    const ingredients = document.querySelector("#recipeIngredients").value;
+    const instructions = document.querySelector("#recipeInstructions").value;
 
     let method = "POST";
     let uriSuffix = "";
 
-    if (id != -1) {
+    if (id != 0) {
         method = "PUT";
         uriSuffix = `/${id}`;
     };
+
 
     const response = await fetch(`/api/recipes${uriSuffix}`, {
         method: method,
@@ -39,15 +43,17 @@ async function recipeSave(event) {
         },
         body: JSON.stringify({
             name,
+            thumbnailURL,
             seenIn,
             description,
-            instructions: "",
+            instructions,
             sourceURL: "",
             activeTime,
             activeTimeUOM,
             totalTime,
             totalTimeUOM,
-            complexity
+            complexity,
+            ingredients,
         })
     });
 
@@ -58,4 +64,3 @@ async function recipeSave(event) {
         alert("Error Saving Recipe");
     }
 }
-

@@ -1,7 +1,5 @@
 const router = require("express").Router();
-const helper = require('./util')
 const { User, UserPassword, Recipe, Ingredient, RecipeIngredient } = require('../models');
-const helper = require('./util')
 
 /************************************************
  * Unsecured
@@ -51,14 +49,12 @@ router.get('/recipe/:id', async (req, res) => {
     let recIng = x.get();
     let ing = recIng.Ingredient.get();
 
-
     return {
       amount: recIng.amount,
       UOM: recIng.UOM,
       name: ing.name
     };
   })
-
   res.render('recipe', recipe);
 })
 
@@ -76,9 +72,17 @@ router.get('/browse', async (req, res) => {
  **********************************************/
 router.use(helper.VerifyLoggedIn);
 
+
+
 // GET route for dashboard page (user profile/account)
 router.get('/dashboard', (req, res) => {
   res.render('dashboard')
+})
+
+
+//GET route for wildcard, render 404 page
+router.get('*', (req, res) => {
+  res.render('404');
 })
 
 module.exports = router;

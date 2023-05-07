@@ -1,6 +1,7 @@
 window.addEventListener("load", () => {
     document.querySelector("#recipeform").addEventListener("submit", async (event) =>{
         event.preventDefault()
+
         const id = event.target.dataset.recipeid;
         const name = document.querySelector("#recipeName").value;
         const seenIn = document.querySelector("#recipeSeenIn").value;

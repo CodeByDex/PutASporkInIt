@@ -1,5 +1,5 @@
 {{!-- Home Page Hero --}}
-<section class="bg-green-50 dark:bg-neutral-900">
+<section class="bg-neutral-100 dark:bg-neutral-900">
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
         <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-neutral-800 md:text-5xl lg:text-6xl dark:text-white">From Your Screen to Your Plate</h1>
         <p class="mb-8 text-lg font-normal text-neutral-500 lg:text-xl sm:px-16 lg:px-48 dark:text-neutral-400">Here at PutASporkInIt our mission is to bring the magic of your favorite movies, TV shows, and video games to your plate with mouth-watering recipes!</p>
@@ -12,12 +12,12 @@
     </div>
 </section>
 {{!-- Featured Recipe Container --}}
-<section class="bg-green-50 dark:bg-neutral-900 lg:mx-4">
+<section class="bg-neutral-100 dark:bg-neutral-900 lg:mx-4">
     <div class="py-4 px-4 max-w-screen-xl text-center lg:py-10 mx-auto">
-        <h2 class="mb-2 tracking-tight text-3xl md:text-4xl font-bold text-green-500 dark:text-white">Featured Recipes</h2>
+        <h2 class="mb-2 tracking-tight text-3xl md:text-4xl font-bold text-neutral-800 dark:text-white">Featured Recipes</h2>
     </div>
     {{!-- Recipe Cards Container --}}
-    <div class="px-4 sm:px-16 mx-auto md:flex md:columns-3 gap-4 justify-around">
+    <div class="px-4 sm:px-16 mx-auto max-w-screen-xl md:flex md:columns-3 gap-4 justify-around">
         {{#each topRecipes as |topRecipes|}}
         {{> recipe-preview}}
         {{/each}}

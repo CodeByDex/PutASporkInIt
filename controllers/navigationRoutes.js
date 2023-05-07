@@ -1,8 +1,7 @@
 const router = require("express").Router();
 const helper = require('./util')
 const units = require("../utils/Units");
-const { User, UserPassword, Recipe, Ingredient, RecipeIngredient } = require('../models');
-
+const { User, Recipe, Ingredient, RecipeIngredient } = require('../models');
 
 /************************************************
  * Unsecured
@@ -17,17 +16,6 @@ router.get('/newUser', (req, res) => {
   res.render('newUser')
 })
 
-// GET route for home page
-router.get('/', async (req, res) => {
-  const recipes = await Recipe.findAll({})
-  // Pull in first three recipes in array
-  const topThreeRecipes = recipes.slice(0, 3)
-  if (!req.session.loggedIn) {
-    req.session.loggedIn = false
-  }
-  res.render('home', { topRecipes: topThreeRecipes, loggedIn: true})
-})
-
 
 // GET route for home page
 router.get('/', async (req, res) => {
@@ -35,7 +23,7 @@ router.get('/', async (req, res) => {
   // Pull in first three recipes in array
   const topThreeRecipes = recipes.slice(0, 3)
   const topRecipes = topThreeRecipes.map(obj => obj.get())
-  console.log(topRecipes)
+
   res.render('home', {topRecipes})
 });
 
@@ -72,7 +60,7 @@ router.get('/browse', async (req, res) => {
   const recipes = await Recipe.findAll({})
   //TODO: Implement UserRecipeFavorite get conditionally if the user is logged in
   const allRecipes = recipes.map(obj => obj.get())
-  console.log(allRecipes)
+
   res.render('browse', {allRecipes});
 })
 

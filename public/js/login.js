@@ -4,7 +4,7 @@ window.addEventListener("load", () => {
         const email = document.querySelector("#email").value
         const password = document.querySelector("#password").value
 
-        const response = await fetch('./api/users/login', {
+        const response = await fetch('/api/users/login', {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -17,8 +17,8 @@ window.addEventListener("load", () => {
         if (response.ok) {
             document.location.replace('/');
         } else {
-            // TODO add handling for bad response 
+            alert("Error Loggin In");
+            console.log(response);
         }
-        document.location.replace('/')
     })    
 })

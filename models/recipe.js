@@ -76,10 +76,6 @@ Recipe.init(
       type: DataTypes.STRING,
       allowNull: false
     },
-    thumbnailURL: {
-      type: DataTypes.STRING,
-      allowNull: true
-    }
   },
   {
     sequelize,

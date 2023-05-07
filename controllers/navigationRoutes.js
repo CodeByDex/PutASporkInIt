@@ -125,7 +125,7 @@ async function getRecipeViewModel(id, req) {
     };
   })
   res.render('recipe', recipe);
-})
+};
 
 // GET route for browser page
 router.get('/browse', async (req, res) => {
@@ -140,8 +140,6 @@ router.get('/browse', async (req, res) => {
  * Secured Calls
  **********************************************/
 router.use(helper.VerifyLoggedIn);
-
-
 
 // GET route for dashboard page (user profile/account)
 router.get('/dashboard', (req, res) => {

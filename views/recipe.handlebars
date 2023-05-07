@@ -40,10 +40,12 @@
 {{!-- Recipe Ingredients --}}
 <section class="bg-neutral-100 dark:bg-neutral-900">
     <div class="py-4 px-4 mx-auto max-w-screen-xl text-left lg:py-12">
-        <h3
-            class="mb-4 text-xl font-bold tracking-tight leading-none text-neutral-900 md:text-2xl lg:text-3xl dark:text-white">
-            INGREDIENTS</h3>
-        <table class="table-auto">
+        <h3 class="mb-4 text-xl font-bold tracking-tight leading-none text-neutral-900 md:text-2xl lg:text-3xl dark:text-white">INGREDIENTS</h3>
+        <div class="md:columns-2">
+            <p class="mb-4 text-md font-normal text-neutral-500 lg:text-xl sm:px-16 dark:text-neutral-400 whitespace-pre-line">{{ingredients}}</p>
+        </div>
+        
+        {{!-- <table class="table-auto">
             <thead >
                 <tr class="">
                     <th class="p-2 text-sm font-semibold text-neutral-600 lg:text-xl dark:text-neutral-300">Ingredient</th>
@@ -56,7 +58,7 @@
             {{> ingredient}}
             {{/each}}
             </tbody>
-        </table>
+        </table> --}}
     </div>
 </section>
 

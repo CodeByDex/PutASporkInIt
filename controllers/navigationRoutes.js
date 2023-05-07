@@ -52,20 +52,20 @@ router.get("/recipe/:id/edit", async (req, res) => {
   helper.SafeRequest(res, async (res) => {
 
     let recipe = {};
-  
+
     recipe.id = req.params.id
-  
-    if(!isNaN(recipe.id) && recipe.id != -1) {
-      recipe = await getRecipeViewModel(recipe.id);
+
+    if (!isNaN(recipe.id) && recipe.id != 0) {
+      recipe = await getRecipeViewModel(recipe.id, req);
     } else {
       recipe.activeTimeUOM = "min";
       recipe.totalTimeUOM = "h";
     };
 
     recipe.timeUOMs = units.GetTimeUOMs().map(x => {
-      return {value: x.abbr, display: x.singular}
+      return { value: x.abbr, display: x.singular }
     })
-  
+
     res.render('recipe-edit', recipe);
 
   })
@@ -88,16 +88,16 @@ router.get('/dashboard', async (req, res) => {
         model: Recipe
       }
     })
-   const userRecipeFav = userFavorites.map(obj => obj.get().Recipe.get())
-  
-   const userRecipes = await Recipe.findAll({
+    const userRecipeFav = userFavorites.map(obj => obj.get().Recipe.get())
+
+    const userRecipes = await Recipe.findAll({
       where: {
         userID: req.session.userID
       },
-   })
-   
+    })
+
     const x = userRecipes.map(obj => obj.get())
-    res.render('dashboard', {userRecipeFav, userRecipes: x, userName: user.userName})
+    res.render('dashboard', { userRecipeFav, userRecipes: x, userName: user.userName })
   })
 })
 
@@ -175,8 +175,65 @@ router.get('/browse', async (req, res) => {
 router.use(helper.VerifyLoggedIn);
 
 // GET route for dashboard page (user profile/account)
-router.get('/dashboard', (req, res) => {
-  res.render('dashboard')
+router.get('/dashboard', async (req, res) => {
+  helper.SafeRequest(res, async (res) => {
+    const user = await User.findOne({
+      where: {
+        id: req.session.userID
+      },
+      attributes: ['userName']
+    })
+    const userFavorites = await UserRecipeFavorite.findAll({
+      where: {
+        userID: req.session.userID
+      },
+      include: {
+        model: Recipe
+      }
+    })
+   const userRecipeFav = userFavorites.map(obj => obj.get().Recipe.get())
+  
+   const userRecipes = await Recipe.findAll({
+      where: {
+        userID: req.session.userID
+      },
+   })
+   
+    const x = userRecipes.map(obj => obj.get())
+    res.render('dashboard', {userRecipeFav, userRecipes: x, userName: user.userName})
+  })
 })
 
+<<<<<<<<< Temporary merge branch 1
+async function getRecipeViewModel(id) {
+  const recData = await Recipe.findByPk(id, {
+    include: {
+      model: RecipeIngredient,
+      include: Ingredient
+    }
+  });
+
+  let recipe = recData.get();
+
+  // Capitalize first letter of complexity
+  recipe.complexity = recipe.complexity.charAt(0).toUpperCase() + recipe.complexity.slice(1);
+
+  recipe.RecipeIngredients = recipe.RecipeIngredients.map(x => {
+    let recIng = x.get();
+    let ing = recIng.Ingredient.get();
+
+    return {
+      amount: recIng.amount,
+      UOM: recIng.UOM,
+      name: ing.name
+    };
+  });
+
+  return recipe;
+
+ 
+}
+
+=========
+>>>>>>>>> Temporary merge branch 2
 module.exports = router;

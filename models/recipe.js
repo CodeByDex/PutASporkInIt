@@ -33,6 +33,10 @@ Recipe.init(
       type: DataTypes.TEXT,
       allowNull: false
     },
+    ingredients: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
     instructions: {
       type: DataTypes.TEXT,
       allowNull: false
@@ -67,6 +71,10 @@ Recipe.init(
       type: DataTypes.STRING,
       allowNull: false
     },
+    thumbnailURL: {
+      type: DataTypes.STRING,
+      allowNull: true
+    }
   },
   {
     sequelize

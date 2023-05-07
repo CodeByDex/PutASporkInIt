@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Recipe } = require('../../models');
+const { Recipe, RecipeUserVote } = require('../../models');
 const helper = require('../util')
 
 /************************************************
@@ -11,6 +11,22 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
     helper.SafeGetByID(req.params.id, res, Recipe, [])
+})
+
+router.get('/:id/votes', (req, res) => {
+    helper.SafeRequest(res, async(res) => {
+        
+        const voteData = await RecipeUserVote.findAll({ where: { recipeID: req.params.id }})
+        
+        let voteResults;
+        if(!voteData){
+            voteResults =[]
+        }
+        else {
+            voteResults=voteData.map(obj => obj.get())
+        }
+        res.json({voteResults}) 
+    })
 })
 
 /************************************************

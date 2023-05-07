@@ -24,8 +24,6 @@ async function recipeSave(event) {
     const totalTimeUOM = document.querySelector("#recipeTotalTimeUOM").value;
     const complexity = document.querySelector("#recipeComplexity").value;
 
-    console.log(id, name, seenIn, description, activeTime, activeTimeUOM, totalTime, totalTimeUOM, complexity);
-
     let method = "POST";
     let uriSuffix = "";
 

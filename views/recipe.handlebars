@@ -3,7 +3,12 @@
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-left lg:py-16 md:flex md:columns-2 md:items-center md:gap-6 md:justify-between">
         <div class="w-full md:w-1/2">
             <h1 class="mb-2 text-3xl font-extrabold tracking-tight leading-none text-neutral-800 md:text-4xl lg:text-5xl dark:text-white">{{name}}</h1>
-            <p class="text-2xl mb-4 font-semibold text-neutral-600 dark:text-neutral-300">{{seenIn}}</p>
+            {{#if seenIn}}
+            <p class="text-2xl mb-4 font-semibold text-neutral-600 dark:text-neutral-300">As seen on: {{seenIn}}</p>
+            {{/if}}
+            {{#if userName}}
+            <p class="text-1xl mb-4 font-semibold text-neutral-600 dark:text-neutral-300">Recipe by: {{userName}}</p>
+            {{/if}}
             <p class="mb-4 text-md font-normal text-neutral-500 lg:text-xl dark:text-neutral-400">{{description}}</p>
             <div class="mb-4 flex columns-3 gap-4 md:gap-12">
                 <div>

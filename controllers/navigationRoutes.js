@@ -134,10 +134,13 @@ async function renderRecipe(recipesToRender, req) {
 
 async function getRecipeViewModel(id, req) {
   const recData = await Recipe.findByPk(id, {
-    include: {
+    include: [{
       model: RecipeIngredient,
       include: Ingredient
-    }
+      }, {
+        model: User
+      }
+    ]
   });
 
   let recipe = await renderRecipe([recData], req);
@@ -157,6 +160,10 @@ async function getRecipeViewModel(id, req) {
       name: ing.name
     };
   })
+
+  recipe.userName = recipe.User ? recipe.User.get().userName : null;
+
+  console.log(recipe);
 
   return recipe;
 };

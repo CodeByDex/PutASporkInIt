@@ -58,7 +58,8 @@ async function recipeSave(event) {
     });
 
     if (response.ok) {
-        alert("Recipe Saved Successfully");
+        let resData = await response.json();
+        window.location.href = `/recipe/${resData.id}`;
     } else {
         alert("Error Saving Recipe");
     }

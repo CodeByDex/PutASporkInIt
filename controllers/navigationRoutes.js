@@ -118,13 +118,32 @@ async function getRecipeViewModel(id, req) {
     let recIng = x.get();
     let ing = recIng.Ingredient.get();
 
-
     return {
       amount: recIng.amount,
       UOM: recIng.UOM,
       name: ing.name
     };
-  });
+  })
+  res.render('recipe', recipe);
+};
 
-  return recipe;
-}
+// GET route for browser page
+router.get('/browse', async (req, res) => {
+  const recipes = await Recipe.findAll({})
+  //TODO: Implement UserRecipeFavorite get conditionally if the user is logged in
+  const allRecipes = recipes.map(obj => obj.get())
+  console.log(allRecipes)
+  res.render('browse', {allRecipes});
+})
+
+/**********************************************
+ * Secured Calls
+ **********************************************/
+router.use(helper.VerifyLoggedIn);
+
+// GET route for dashboard page (user profile/account)
+router.get('/dashboard', (req, res) => {
+  res.render('dashboard')
+})
+
+module.exports = router;

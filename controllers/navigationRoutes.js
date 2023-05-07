@@ -124,7 +124,8 @@ async function getRecipeViewModel(id, req) {
       name: ing.name
     };
   })
-  res.render('recipe', recipe);
+
+  return recipe;
 };
 
 // GET route for browser page

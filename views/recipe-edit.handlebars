@@ -5,7 +5,8 @@
                 <h1 class="text-xl font-bold leading-tight tracking-tight text-neutral-900 md:text-2xl dark:text-white">
                     Edit Your Recipe
                 </h1>
-                <form id="recipeform" class="space-y-4 md:space-y-6 " data-recipeid="{{id}}" target="_self" method="POST">
+                <form id="recipeform" class="space-y-4 md:space-y-6 " data-recipeid="{{id}}" target="_self"
+                    method="POST">
                     <div>
                         <label for="recipeName"
                             class="block mb-2 text-sm font-medium text-neutral-900 dark:text-white">Recipe Name</label>
@@ -35,10 +36,14 @@
                             placeholder="30" required="" value="{{activeTime}}">
 
                         <label for="recipeActiveTimeUOM"
-                            class="block mb-2 text-sm font-medium text-neutral-900 dark:text-white">UOM</label>
-                        <input type="text" name="recipeActiveTimeUOM" id="recipeActiveTimeUOM"
-                            class="bg-neutral-50 border border-neutral-300 text-neutral-900 sm:text-sm rounded-lg focus:ring-green-500 focus:border-neutral-300 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white caret-green-500"
-                            placeholder="min" required="" value="{{activeTimeUOM}}">
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">UOM</label>
+                        <select
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            id="recipeActiveTimeUOM" name="recipeActiveTimeUOM" data-value="{{activeTimeUOM}}">
+                            {{#each timeUOMs as |option|}}
+                            <option value="{{option.value}}">{{option.display}}</option>
+                            {{/each}}
+                        </select>
                     </div>
                     <div class="columns-2">
                         <label for="recipeTotalTime"
@@ -48,10 +53,14 @@
                             placeholder="1" required="" value="{{totalTime}}">
 
                         <label for="recipeTotalTimeUOM"
-                            class="block mb-2 text-sm font-medium text-neutral-900 dark:text-white">UOM</label>
-                        <input type="text" name="recipeTotalTimeUOM" id="recipeTotalTimeUOM"
-                            class="bg-neutral-50 border border-neutral-300 text-neutral-900 sm:text-sm rounded-lg focus:ring-green-500 focus:border-neutral-300 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white caret-green-500"
-                            placeholder="h" required="" value="{{totalTimeUOM}}">
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">UOM</label>
+                        <select
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            id="recipeTotalTimeUOM" name="recipeTotalTimeUOM" data-value="{{totalTimeUOM}}">
+                            {{#each timeUOMs as |option|}}
+                            <option value="{{option.value}}">{{option.display}}</option>
+                            {{/each}}
+                        </select>
                     </div>
                     <div>
                         <label for="recipeComplexity"

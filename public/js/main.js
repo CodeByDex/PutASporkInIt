@@ -89,6 +89,146 @@ function toggleFavoriteDisplay(event) {
     event.target.classList.toggle('fa-regular');
     event.target.classList.toggle('dark:text-green-500');
 }
+
+// Identify upvote/downvote buttons
+const upvoteButtons = document.querySelectorAll(".upvote-button");
+const downvoteButtons = document.querySelectorAll(".downvote-button");
+
+upvoteButtons.forEach(upvoteButton => {
+    upvoteButton.addEventListener("click", async (event) => {
+        const userID = getCookieValue("userID");
+        if (isNaN(userID)) {
+            return;
+        }
+
+        const recipeID = event.target.dataset.recipeid;
+        
+
+        if (!event.target.classList.contains('fa-solid')) {
+            // Send favorited to database
+            await addUpvote(userID, recipeID, event);
+
+        } else if (!event.target.classList.contains('fa-regular')) {
+
+            await removeUpvote(userID);
+        } else {
+            // TO DO
+            console.log("Something very very odd happened")
+        }
+})})
+
+downvoteButtons.forEach(downvoteButton => {
+    downvoteButton.addEventListener("click", async (event) => {
+        const userID = getCookieValue("userID");
+        if (isNaN(userID)) {
+            return;
+        }
+
+        const recipeID = event.target.dataset.recipeid;
+        
+
+        if (!event.target.classList.contains('fa-solid')) {
+            // Send favorited to database
+            await addDownvote(userID, recipeID, event);
+
+        } else if (!event.target.classList.contains('fa-regular')) {
+
+            await removeDownvote(userID);
+        } else {
+            // TO DO
+            console.log("Something very very odd happened")
+        }
+})})
+
+
+
+async function addUpvote(recipeID, event) {
+    await deleteVote(recipeID)
+    const response = await fetch(`/api/recipes/1/votes/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            vote: 1
+        })
+    });
+    
+
+    if (response.ok) {
+        toggleUpvoteDisplay(event);
+        console.log(response)
+        const responseData = await response;
+        event.target.dataset.vote = responseData.id;
+    } else {
+        alert(response.statusText);
+    }
+}
+
+async function addDownvote(recipeID, event) {
+    await deleteVote(recipeID)
+    const response = await fetch(`/api/recipes/${recipeID}/votes/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            vote: -1
+        })
+    });
+
+    if (response.ok) {
+        toggleDownvoteDisplay(event);
+        const responseData = await response.json();
+        event.target.dataset.vote = responseData.id;
+    } else {
+        alert(response.statusText);
+    }
+}
+
+async function removeDownvote(recipeID, event) {
+    const response = deleteVote(recipeID)
+    if (response.ok) {
+        toggleDownvoteDisplay(event);
+        event.target.dataset.vote = 0;
+    } else {
+        alert(response.statusText);
+    }
+}
+
+async function removeUpvote(recipeID, event) {
+    const response = deleteVote(recipeID)
+    if (response.ok) {
+        toggleDownvoteDisplay(event);
+        event.target.dataset.vote = 0;
+    } else {
+        alert(response.statusText);
+    }
+}
+
+
+async function deleteVote(recipeID) {
+    const response = await fetch(`/api/recipes/${recipeID}/votes/`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }, 
+    })
+    return response
+}
+
+function toggleUpvoteDisplay(event) {
+    // event.target.classList.toggle('fa-solid');
+    // event.target.classList.toggle('fa-regular');
+    // event.target.classList.toggle('dark:text-green-500');
+}
+
+function toggleDownvoteDisplay(event) {
+    // event.target.classList.toggle('fa-solid');
+    // event.target.classList.toggle('fa-regular');
+    // event.target.classList.toggle('dark:text-red-500');
+}
+
 // Dark mode
 // const sunIcon = document.querySelector(".sun");
 // const moonIcon = document.querySelector(".moon");

@@ -3,7 +3,6 @@ window.addEventListener("load", () => {
 
     if (btnLogout) {
         btnLogout.addEventListener("click", async () => {
-            document.location.replace('/login');
 
             const response = await fetch('./api/users/logout', {
                 method: 'POST',
@@ -13,7 +12,6 @@ window.addEventListener("load", () => {
             if (response.ok) {
                 // If successfully logged out, redirect to the login page
                 document.location.replace('/login')
-
             } else {
                 alert(response.statusText);
             }

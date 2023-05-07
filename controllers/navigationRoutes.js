@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const helper = require('./util')
+const units = require("../utils/Units");
 const { User, Recipe, Ingredient, RecipeIngredient, UserRecipeFavorite } = require('../models');
-
 
 /************************************************
  * Unsecured
@@ -52,13 +52,20 @@ router.get("/recipe/:id/edit", async (req, res) => {
   helper.SafeRequest(res, async (res) => {
 
     let recipe = {};
-
+  
     recipe.id = req.params.id
-
-    if (!isNaN(recipe.id) && recipe.id != -1) {
-      recipe = await getRecipeViewModel(recipe.id, req);
+  
+    if(!isNaN(recipe.id) && recipe.id != -1) {
+      recipe = await getRecipeViewModel(recipe.id);
+    } else {
+      recipe.activeTimeUOM = "min";
+      recipe.totalTimeUOM = "h";
     };
 
+    recipe.timeUOMs = units.GetTimeUOMs().map(x => {
+      return {value: x.abbr, display: x.singular}
+    })
+  
     res.render('recipe-edit', recipe);
 
   })

@@ -18,28 +18,38 @@ router.get('/newUser', (req, res) => {
 
 // GET route for home page
 router.get('/', async (req, res) => {
-  const recipes = await Recipe.findAll({})
-  // Pull in first three recipes in array
-  const topThreeRecipes = recipes.slice(0, 3)
-  const topRecipes = await renderRecipe(topThreeRecipes, req);
+  helper.SafeRequest(res, async (res) => {
+    const recipes = await Recipe.findAll({})
+    // Pull in first three recipes in array
+    const topThreeRecipes = recipes.slice(0, 3)
+    const topRecipes = await renderRecipe(topThreeRecipes, req);
 
-  res.render('home', { topRecipes })
+    res.render('home', { topRecipes })
+  })
 });
 
 // GET route for recipe page
 router.get('/recipe/:id', async (req, res) => {
-  let recipe = await getRecipeViewModel(req.params.id, req);
+  if (!isNaN(req.params.id) && req.params.id > 0) {
+    helper.SafeRequest(res, async (res) => {
+      let recipe = await getRecipeViewModel(req.params.id, req);
 
-  res.render('recipe', recipe);
+      res.render('recipe', recipe);
+    })
+  } else {
+    res.json('id must be greater than 0')
+  }
 })
 
 // GET route for browser page
 router.get('/browse', async (req, res) => {
+  helper.SafeRequest(res, async (res) => {
   const recipes = await Recipe.findAll({})
 
   const allRecipes = await renderRecipe(recipes, req);
 
   res.render('browse', { allRecipes });
+  })
 })
 
 /**********************************************
@@ -54,8 +64,8 @@ router.get("/recipe/:id/edit", async (req, res) => {
     let recipe = {};
 
     recipe.id = req.params.id
-  
-    if(!isNaN(recipe.id) && recipe.id != -1) {
+
+    if (!isNaN(recipe.id) && recipe.id != -1) {
       recipe = await getRecipeViewModel(recipe.id, req);
     } else {
       recipe.activeTimeUOM = "min";
@@ -63,7 +73,7 @@ router.get("/recipe/:id/edit", async (req, res) => {
     };
 
     recipe.timeUOMs = units.GetTimeUOMs().map(x => {
-      return {value: x.abbr, display: x.singular}
+      return { value: x.abbr, display: x.singular }
     })
     res.render('recipe-edit', recipe);
 
@@ -110,9 +120,9 @@ async function getRecipeViewModel(id, req) {
     include: [{
       model: RecipeIngredient,
       include: Ingredient
-      }, {
-        model: User
-      }
+    }, {
+      model: User
+    }
     ]
   });
 
@@ -213,4 +223,4 @@ router.get('/browse', async (req, res) => {
   })
 })
 
-  module.exports = router;
+module.exports = router;

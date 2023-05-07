@@ -10,30 +10,40 @@ router.post('/', async (req, res) => {
             password: hash,
             userID: req.body.userID
         })
-    }),
+    })
+})
 
         router.get('/', (req, res) => {
             helper.SafeGetAll(res, UserPassword, []);
-        }),
+        })
 
         router.get('/:id', (req, res) => {
-            helper.SafeGetByID(req.params.id, res, UserPassword, []);
-            if (!isNaN(req.params.id) && req.params.id > 0) 
-    }),
+            if (!isNaN(req.params.id) && req.params.id > 0) {
+                helper.SafeGetByID(req.params.id, res, UserPassword, []);
+            } else {
+                res.status(500).json('id must be greater than 0')
+            }
+
+        })
 
         router.put('/:id', async (req, res) => {
+            if (!isNaN(req.params.id) && req.params.id > 0) {
             hash = await bcrypt.hash(req.body.password, 5)
             helper.SafeUpdate(req.params.id, res, UserPassword, {
                 password: hash,
                 userID: req.body.userID
             });
-            if (!isNaN(req.params.id) && req.params.id > 0);
+        } else {
+            res.status(500).json('id must be greater than 0')
         }
-    }),
+    })
 
     router.delete('/:id', (req, res) => {
+        if (!isNaN(req.params.id) && req.params.id > 0) {
         helper.SafeDelete(req.params.id, res, UserPassword)
-        if (!isNaN(req.params.id) && req.params.id > 0);
-    }),
+        } else {
+            res.status(500).json('id must be greater than 0')
+        }
+    })
 
     module.exports = router;

@@ -11,10 +11,10 @@ router.get('/', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-    if (!isNaN(recipe.id) && recipe.id != -1) {
+    if (!isNaN(req.params.id) && req.params.id > 0) {
         helper.SafeGetByID(req.params.id, res, Recipe, [])
     } else {
-        res.json('id must be greater than 0')
+        res.status(500).json('id must be greater than 0')
     }
 })
 
@@ -72,7 +72,7 @@ router.put('/:id', (req, res) => {
             complexity: req.body.complexity
         })
     } else {
-        res.json('id must be greater than 0')
+        res.status(500).json('id must be greater than 0')
     }
 })
 
@@ -80,18 +80,23 @@ router.delete('/:id', (req, res) => {
     if (!isNaN(req.params.id) && req.params.id > 0) {
         helper.SafeDelete(req.params.id, res, Recipe)
     } else {
-        res.json('id must be greater than 0')
+        res.status(500).json('id must be greater than 0')
     }
 })
 router.post('/:id/votes', (req, res) => {
-    helper.SafeCreate(res, RecipeUserVote, {
+    if (!isNaN(req.params.id) && req.params.id > 0) {
+        helper.SafeCreate(res, RecipeUserVote, {
         recipeID: req.params.id,
         userID: req.session.userID,
         vote: req.body.vote
     })
+} else {
+    res.status(500).json('id must be greater than 0')
+}
 })
 
 router.put('/:id/votes', (req, res) => {
+    if (!isNaN(req.params.id) && req.params.id > 0) {
     helper.SafeRequest(res, async(res) => {
     let vote = await RecipeUserVote.findOne( {where: { recipeID: req.params.id, userID: req.session.userID }})
 
@@ -101,14 +106,19 @@ router.put('/:id/votes', (req, res) => {
 
     res.json(vote)
     })
+} else {
+    res.status().json('id must be greater than 0')
+}
 })
 
 router.delete('/:id/votes', (req, res) => {
+    if (!isNaN(req.params.id) && req.params.id > 0) {
     helper.SafeRequest(res, async(res) => {
 
    const voteResult = await RecipeUserVote.destroy({ where: { recipeID: req.params.id, userID: req.session.userID }})
     res.json(voteResult)
     })
+}
 
 })
 

@@ -33,7 +33,7 @@ router.get('/:id', (req, res) => {
     if (!isNaN(req.params.id) && req.params.id > 0) {
         helper.SafeGetByID(req.params.id, res, User, [])
     } else {
-        res.json('id must be greater than 0')
+        res.status(500).json('id must be greater than 0')
     }
 })
 router.put('/:id', (req, res) => {
@@ -43,7 +43,7 @@ router.put('/:id', (req, res) => {
         email: req.body.email
     })
 } else {
-    res.json('id must be greater than 0')
+    res.status(500).json('id must be greater than 0')
 }
 })
 
@@ -51,7 +51,7 @@ router.delete('/:id', (req, res) => {
     if (!isNaN(req.params.id) && req.params.id > 0) {
     helper.SafeDelete(req.params.id, res, User)
     } else {
-        res.json('id must be greater than 0')
+        res.status(500).json('id must be greater than 0')
     }
 })
 
@@ -71,29 +71,33 @@ router.post('/logout', (req, res) => {
 
 
 router.post("/:userID/Favorites", (req, res) => {
-    if (!isNaN(req.params.id) && req.params.id > 0) {
+    if (!isNaN(req.params.userID) && req.params.userID > 0) {
     helper.SafeCreate(res, UserRecipeFavorite, {
         userID: req.params.userID,
         recipeID: req.body.recipeID
     })
 } else {
-    res.json('id must be greater than 0')
+    res.status(500).json('id must be greater than 0')
 }
 });
 
 router.get("/:userID/Favorites", (req, res) => {
-    if (!isNaN(req.params.id) && req.params.id > 0) {
+    if (!isNaN(req.params.userID) && req.params.userID > 0) {
     helper.SafeGetAll(res, UserRecipeFavorite, [], { userID: req.params.userID });
     } else {
-        res.json('id must be greater than 0')
+        res.status(500).json('id must be greater than 0')
     }
 });
 
 router.delete("/:userID/Favorites/:id", (req, res) => {
-    if (!isNaN(req.params.id) && req.params.id > 0) {
-    helper.SafeDelete(req.params.id, res, UserRecipeFavorite);
+    if (!isNaN(req.params.userID) && req.params.userID > 0) {
+        if (!isNaN(req.params.id) && req.params.id > 0) {
+    helper.SafeDelete(req.params.id, res, UserRecipeFavorite)
+        } else {
+            res.status(500).json('id must be greater than 0')
+        }
     } else {
-        res.json('id must be greater than 0')
+        res.status(500).json('id must be greater than 0')
     }
 });
 

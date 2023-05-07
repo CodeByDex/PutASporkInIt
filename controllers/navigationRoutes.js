@@ -37,6 +37,9 @@ router.get("/recipe/:id/edit", async (req, res) => {
   
     if(!isNaN(recipe.id) && recipe.id != -1) {
       recipe = await getRecipeViewModel(recipe.id);
+    } else {
+      recipe.activeTimeUOM = "min";
+      recipe.totalTimeUOM = "h";
     };
 
     recipe.timeUOMs = units.GetTimeUOMs().map(x => {

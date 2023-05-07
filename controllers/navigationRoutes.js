@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const helper = require('./util')
 const units = require("../utils/Units");
-const { User, Recipe, Ingredient, RecipeIngredient, UserRecipeFavorite } = require('../models');
+const { User, Recipe, Ingredient, RecipeIngredient, UserRecipeFavorite, RecipeUserVote } = require('../models');
 
 /************************************************
  * Unsecured
@@ -86,24 +86,48 @@ async function renderRecipe(recipesToRender, req) {
   let recipes = await Promise.all(recipesToRender.map(async (obj) => {
     let recipe = obj.get();
     if (req.session.loggedIn) {
-      const userFavorites = await UserRecipeFavorite.findOne({
-        where: {
-          userID: req.session.userID,
-          recipeID: recipe.id
-        },
-      });
-
-      if (userFavorites == null) {
-        recipe.favoriteid = 0;
-      }
-      else {
-        const userFavRecipe = userFavorites.get();
-        recipe.favoriteid = userFavRecipe.id;
-      }
+      recipe = await loadUserFavorite(req, recipe);
+      recipe = await loadUserVote(req, recipe);
     }
     return recipe;
   }));
   return recipes;
+}
+
+async function loadUserVote(req, recipe) {
+  const userVote = await RecipeUserVote.findOne({
+    where: {
+      userID: req.session.userID,
+      recipeID: recipe.id
+    },
+  });
+
+  if (userVote == null) {
+    recipe.userVote = 0;
+  }
+  else {
+    const userVoteData = userVote.get();
+    recipe.userVote = userVoteData.id;
+  }
+  return recipe
+}
+
+async function loadUserFavorite(req, recipe) {
+  const userFavorites = await UserRecipeFavorite.findOne({
+    where: {
+      userID: req.session.userID,
+      recipeID: recipe.id
+    },
+  });
+
+  if (userFavorites == null) {
+    recipe.favoriteid = 0;
+  }
+  else {
+    const userFavRecipe = userFavorites.get();
+    recipe.favoriteid = userFavRecipe.id;
+  }
+  return recipe
 }
 
 async function getRecipeViewModel(id, req) {

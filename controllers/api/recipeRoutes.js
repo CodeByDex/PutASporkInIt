@@ -73,22 +73,21 @@ router.delete('/:id', (req, res) => {
 })
 
 router.post('/:id/votes', (req, res) => {
-    helper.SafeCreate(res, RecipeUserVote, {
+    let vote = helper.SafeCreate(res, RecipeUserVote, {
         recipeID: req.params.id,
         userID: req.session.userID,
         vote: req.body.vote
     })
+    res.json(vote)
 })
 
 router.put('/:id/votes', (req, res) => {
     helper.SafeRequest(res, async(res) => {
-    let vote = await RecipeUserVote.findOne( {where: { recipeID: req.params.id, userID: req.session.userID }})
+    RecipeUserVote.findOne( {where: { recipeID: req.params.id, userID: req.session.userID }})
     
     vote.set({vote: req.body.vote})
 
     vote = await vote.save()
-    
-    res.json(vote)
     })
 })
 

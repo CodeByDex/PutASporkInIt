@@ -43,7 +43,7 @@ app.use((err, req, res, next) => {
 app.use(routes);
 
 app.use('*', (req, res) => {
-    res.render('404');
+    res.status(404).render('404');
   })
   
 sequelize.sync({force: false})

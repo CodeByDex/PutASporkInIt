@@ -1,5 +1,5 @@
 const Ingredient = require("./ingredient");
-const {Recipe, RecipeIngredient } = require('./recipe');
+const {Recipe, RecipeIngredient, RecipeUserVote } = require('./recipe');
 const {User, UserRecipeFavorite} = require("./user");
 const UserPassword = require("./userPassword");
 const {UserGroceryList, GroceryListIngredients} = require("./grocery")
@@ -29,6 +29,24 @@ RecipeIngredient.belongsTo(Ingredient, {
 Ingredient.hasMany(RecipeIngredient, {
     foreignKey: "ingredientID",
     onDelete: "RESTRICT"
+})
+
+RecipeUserVote.belongsTo(Recipe, {
+    foreignKey: "recipeID"
+})
+
+Recipe.hasMany(RecipeUserVote, {
+    foreignKey: "recipeID",
+    onDelete: "CASCADE"
+})
+
+RecipeUserVote.belongsTo(User, {
+    foreignKey: "userID"
+})
+
+User.hasMany(RecipeUserVote, {
+    foreignKey: "userID",
+    onDelete: "CASCADE"
 })
 
 User.hasMany(UserPassword, {
@@ -94,4 +112,4 @@ Ingredient.hasMany(GroceryListIngredients, {
     onDelete: 'CASCADE'
 })
 
-module.exports = { Recipe, RecipeIngredient, Ingredient, User, UserRecipeFavorite, UserGroceryList, GroceryListIngredients };
+module.exports = { Recipe, RecipeIngredient, RecipeUserVote, Ingredient, User, UserRecipeFavorite, UserGroceryList, GroceryListIngredients };

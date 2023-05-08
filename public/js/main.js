@@ -89,6 +89,17 @@ function toggleFavoriteDisplay(event) {
     event.target.classList.toggle('fa-regular');
     event.target.classList.toggle('dark:text-green-500');
 }
+
+function copyToClipboard(link) {
+    const el = document.createElement('textarea');
+    el.value = link;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    alert('Recipe link copied to clipboard!');
+}
+
 // Dark mode
 // const sunIcon = document.querySelector(".sun");
 // const moonIcon = document.querySelector(".moon");

@@ -5,11 +5,11 @@ function localLoggedIn(req, res, next) {
         res.locals.loggedIn = true;
     }
 
-    next();   
+    next();
 };
 
-function localUserId(req, res, next){
-    if(!req.session.userID) {
+function localUserId(req, res, next) {
+    if (!req.session.userID) {
         delete res.locals.userId;
         res.clearCookie("userID");
     } else {

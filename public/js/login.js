@@ -1,5 +1,5 @@
 window.addEventListener("load", () => {
-    document.querySelector("#signIn").addEventListener("submit", async (event) =>{
+    document.querySelector("#signIn").addEventListener("submit", async (event) => {
         event.preventDefault()
         const email = document.querySelector("#email").value
         const password = document.querySelector("#password").value
@@ -18,7 +18,6 @@ window.addEventListener("load", () => {
             document.location.replace('/');
         } else {
             alert("Error Loggin In");
-            console.log(response);
         }
-    })    
+    })
 })

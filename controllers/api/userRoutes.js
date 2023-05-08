@@ -27,7 +27,11 @@ router.get('/', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-    helper.SafeGetByID(req.params.id, res, User, [])
+    if (!isNaN(req.params.id) && req.params.id > 0) {
+        helper.SafeGetByID(req.params.id, res, User, [])
+    } else {
+        res.json('id must be greater than 0')
+    }
 })
 
 router.post('/logout', (req, res) => {
@@ -44,7 +48,11 @@ router.post('/logout', (req, res) => {
 });
 
 router.get("/:userID/Favorites", (req, res) => {
-    helper.SafeGetAll(res, UserRecipeFavorite, [], { userID: req.params.userID });
+    if (!isNaN(req.params.userID) && req.params.userID > 0) {
+        helper.SafeGetAll(res, UserRecipeFavorite, [], { userID: req.params.userID });
+    } else {
+        res.json('id must be greater than 0')
+    }
 });
 
 function setLoginInfo(req, id, res) {
@@ -100,25 +108,41 @@ router.post('/logout', async (req, res) => {
 router.use(helper.VerifyLoggedIn)
 
 router.post("/:userID/Favorites", (req, res) => {
-    helper.SafeCreate(res, UserRecipeFavorite, {
-        userID: req.params.userID,
-        recipeID: req.body.recipeID
-    })
+    if (!isNaN(req.params.userID) && req.params.userID > 0) {
+        helper.SafeCreate(res, UserRecipeFavorite, {
+            userID: req.params.userID,
+            recipeID: req.body.recipeID
+        })
+    } else {
+        res.json('id must be greater than 0')
+    }
 });
 
 router.put('/:id', (req, res) => {
-    helper.SafeUpdate(req.params.id, res, User, {
-        userName: req.body.userName,
-        email: req.body.email
-    })
+    if (!isNaN(req.params.id) && req.params.id > 0) {
+        helper.SafeUpdate(req.params.id, res, User, {
+            userName: req.body.userName,
+            email: req.body.email
+        })
+    } else {
+        res.json('id must be greater than 0')
+    }
 });
 
 router.delete('/:id', (req, res) => {
-    helper.SafeDelete(req.params.id, res, User)
+    if (!isNaN(req.params.id) && req.params.id > 0) {
+        helper.SafeDelete(req.params.id, res, User)
+    } else {
+        res.json('id must be greater than 0')
+    }
 });
 
 router.delete("/:userID/Favorites/:id", (req, res) => {
-    helper.SafeDelete(req.params.id, res, UserRecipeFavorite);
+    if (!isNaN(req.params.userID) && req.params.userID > 0) {
+        helper.SafeDelete(req.params.id, res, UserRecipeFavorite);
+    } else {
+        res.json('id must be greater than 0')
+    }
 });
 
 module.exports = router;

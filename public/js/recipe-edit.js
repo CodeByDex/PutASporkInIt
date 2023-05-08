@@ -47,7 +47,7 @@ async function recipeSave(event) {
             seenIn,
             description,
             instructions,
-            sourceURL: "",
+            sourceURL,
             activeTime,
             activeTimeUOM,
             totalTime,

@@ -137,6 +137,11 @@ async function renderRecipe(recipesToRender, req) {
         recipe.favoriteid = userFavRecipe.id;
       }
     }
+    
+    // Add check for session user ID and recipe creator's user ID
+    const isUserRecipe = req.session.userID === recipe.userID;
+    recipe.isUserRecipe = isUserRecipe;
+
     return recipe;
   }));
   return recipes;

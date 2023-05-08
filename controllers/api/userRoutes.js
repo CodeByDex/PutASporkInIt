@@ -101,10 +101,14 @@ router.use(helper.VerifyLoggedIn)
 
 router.post("/:userID/Favorites", (req, res) => {
     if (!isNaN(req.params.userID) && req.params.userID > 0) {
-        helper.SafeCreate(res, UserRecipeFavorite, {
-            userID: req.params.userID,
-            recipeID: req.body.recipeID
-        })
+        if (req.params.userID != req.session.userID) {
+            res.status(401).json("Not Authorized");
+        } else {
+            helper.SafeCreate(res, UserRecipeFavorite, {
+                userID: req.params.userID,
+                recipeID: req.body.recipeID
+            })
+        }
     } else {
         res.json('id must be greater than 0')
     }
@@ -112,10 +116,14 @@ router.post("/:userID/Favorites", (req, res) => {
 
 router.put('/:id', (req, res) => {
     if (!isNaN(req.params.id) && req.params.id > 0) {
-        helper.SafeUpdate(req.params.id, res, User, {
-            userName: req.body.userName,
-            email: req.body.email
-        })
+        if (req.params.id != req.session.userID) {
+            res.status(401).json("Not Authorized");
+        } else {
+            helper.SafeUpdate(req.params.id, res, User, {
+                userName: req.body.userName,
+                email: req.body.email
+            })
+        }
     } else {
         res.json('id must be greater than 0')
     }
@@ -123,7 +131,11 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     if (!isNaN(req.params.id) && req.params.id > 0) {
-        helper.SafeDelete(req.params.id, res, User)
+        if (req.params.id != req.session.userID) {
+            res.status(401).json("Not Authorized");
+        } else {
+            helper.SafeDelete(req.params.id, res, User)
+        }
     } else {
         res.json('id must be greater than 0')
     }
@@ -131,7 +143,11 @@ router.delete('/:id', (req, res) => {
 
 router.delete("/:userID/Favorites/:id", (req, res) => {
     if (!isNaN(req.params.userID) && req.params.userID > 0) {
-        helper.SafeDelete(req.params.id, res, UserRecipeFavorite);
+        if (req.params.userID != req.session.userID) {
+            res.status(401).json("Not Authorized");
+        } else {
+            helper.SafeDelete(req.params.id, res, UserRecipeFavorite);
+        }
     } else {
         res.json('id must be greater than 0')
     }

@@ -18,13 +18,13 @@
             <div class="mb-4 flex columns-3 gap-4 md:gap-12">
                 <div>
                     <p class="text-sm font-semibold text-green-500 lg:text-xl dark:text-green-500">ACTIVE TIME</p>
-                    <p class="text-sm font-normal text-neutral-500 lg:text-xl dark:text-neutral-400">{{activeTime}}
-                        {{activeTimeUOM}}</p>
+                    <p class="text-sm font-normal text-neutral-500 lg:text-xl dark:text-neutral-400">{{DisplayTimeValue activeTime activeTimeUOM}}
+                        {{DisplayTimeUnit activeTime activeTimeUOM}}</p>
                 </div>
                 <div>
                     <p class="text-sm font-semibold text-green-500 lg:text-xl dark:text-green-500">TOTAL TIME</p>
-                    <p class="text-sm font-normal text-neutral-500 lg:text-xl dark:text-neutral-400">{{totalTime}}
-                        {{totalTimeUOM}}</p>
+                    <p class="text-sm font-normal text-neutral-500 lg:text-xl dark:text-neutral-400">{{DisplayTimeValue totalTime totalTimeUOM}}
+                        {{DisplayTimeUnit totalTime totalTimeUOM}}</p>
                 </div>
                 <div>
                     <p class="text-sm font-semibold text-green-500 lg:text-xl dark:text-green-500">COMPLEXITY</p>
@@ -39,11 +39,7 @@
             </div>
             <div class="flex columns-2 justify-between px-2">
                 {{> favorite-button}}
-                <div class="flex columns-3 justify-between gap-2">
-                    <a class="text-neutral-500 text-lg md:text-xl"><i class="fa-solid fa-thumbs-up"></i> 1,398</a>
-                    <p class="text-neutral-500 text-lg md:text-xl"> | </p>
-                    <a class="text-neutral-500 text-lg md:text-xl"><i class="fa-solid fa-thumbs-down"></i></a>
-                </div>
+                {{> vote}}
             </div>
         </div>
     </div>

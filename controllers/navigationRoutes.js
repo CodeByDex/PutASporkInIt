@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const helper = require('./util')
 const units = require("../utils/Units");
-const { User, Recipe, Ingredient, RecipeIngredient, UserRecipeFavorite } = require('../models');
+const { User, Recipe, Ingredient, RecipeIngredient, UserRecipeFavorite, RecipeUserVote } = require('../models');
 
 /************************************************
  * Unsecured
@@ -122,20 +122,8 @@ async function renderRecipe(recipesToRender, req) {
   let recipes = await Promise.all(recipesToRender.map(async (obj) => {
     let recipe = obj.get();
     if (req.session.loggedIn) {
-      const userFavorites = await UserRecipeFavorite.findOne({
-        where: {
-          userID: req.session.userID,
-          recipeID: recipe.id
-        },
-      });
-
-      if (userFavorites == null) {
-        recipe.favoriteid = 0;
-      }
-      else {
-        const userFavRecipe = userFavorites.get();
-        recipe.favoriteid = userFavRecipe.id;
-      }
+      recipe = await loadUserFavorite(req, recipe);
+      recipe = await loadUserVote(req, recipe);
     }
     
     // Add check for session user ID and recipe creator's user ID
@@ -145,6 +133,46 @@ async function renderRecipe(recipesToRender, req) {
     return recipe;
   }));
   return recipes;
+}
+
+async function loadUserVote(req, recipe) {
+  const uservote = await RecipeUserVote.findOne({
+    where: {
+      userID: req.session.userID,
+      recipeID: recipe.id
+    }
+  })
+  if (uservote == null) {
+    recipe.upvote = null
+    recipe.downvote = null
+  } else {
+    if (uservote.dataValues.vote === 1) {
+      console.log("upvote")
+      recipe.upvote = true
+    } else if (uservote.dataValues.vote === -1) {
+      console.log("downvote")
+      recipe.downvote = true
+    }
+  }
+  return recipe
+}
+
+async function loadUserFavorite(req, recipe) {
+  const userFavorites = await UserRecipeFavorite.findOne({
+    where: {
+      userID: req.session.userID,
+      recipeID: recipe.id
+    },
+  });
+
+  if (userFavorites == null) {
+    recipe.favoriteid = 0;
+  }
+  else {
+    const userFavRecipe = userFavorites.get();
+    recipe.favoriteid = userFavRecipe.id;
+  }
+  return recipe
 }
 
 async function getRecipeViewModel(id, req) {

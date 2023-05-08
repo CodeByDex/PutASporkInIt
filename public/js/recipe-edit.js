@@ -9,6 +9,9 @@ window.addEventListener("load", () => {
     const totalTimeUOM = document.querySelector("#recipeTotalTimeUOM");
     totalTimeUOM.value = totalTimeUOM.dataset.value;
 
+    const recipeComplexity = document.querySelection("#recipeComplexity");
+    recipeComplexity.value = recipeComplexity.dataset.value;
+
 });
 
 async function recipeSave(event) {

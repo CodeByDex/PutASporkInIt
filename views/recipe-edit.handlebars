@@ -42,10 +42,15 @@
                         </div>
                         <div>
                             <label for="recipeComplexity"
-                                class="block mb-1 text-sm font-medium text-neutral-900 dark:text-white">Complexity <span class="text-neutral-500">(eg.Simple, Intermediate, Expert)</span></label>
-                            <input type="text" name="recipeComplexity" id="recipeComplexity"
+                                class="block mb-1 text-sm font-medium text-neutral-900 dark:text-white">Complexity <span class="text-neutral-500"></span></label>
+                            <select 
                                 class="bg-neutral-50 border border-neutral-300 text-neutral-900 sm:text-sm rounded-lg focus:ring-green-500 focus:border-neutral-300 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white caret-green-500 mb-2"
-                                placeholder="Simple" required="" value="{{complexity}}">
+                                placeholder="Simple" required="" 
+                                name="recipeComplexity" id="recipeComplexity" value="{{complexity}}">
+                                    <option value="Simple">Simple</option> 
+                                    <option value ="Intermediate">Intermediate</option> 
+                                    <option value="Expert">Expert</option>
+                            </select>     
                         </div>
                         <div class="columns-2 gap-2">
                             <label for="recipeActiveTime"

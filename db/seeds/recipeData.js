@@ -26,7 +26,7 @@ const recipeData = [
         activeTimeUOM: "min",
         totalTime: 2,
         totalTimeUOM: "h",
-        complexity: "medium"
+        complexity: "Intermediate"
     },
     {   name: "Baby You Can Chive My Car",
         thumbnailURL: "https://i.ytimg.com/vi/EgBven7G0Xk/maxresdefault.jpg",
@@ -110,7 +110,7 @@ const recipeData = [
         activeTimeUOM: "h",
         totalTime: 3,
         totalTimeUOM: "h",
-        complexity: "medium"
+        complexity: "Intermediate"
     },
     {   name: "Rachel's English Trifle",
         thumbnailURL: "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2019/9/5/FN_Friends-Trifle_heather-baird_4x3_H.jpg.rend.hgtvcom.616.462.suffix/1567714947094.jpeg",
@@ -141,7 +141,7 @@ const recipeData = [
         activeTimeUOM: "min",
         totalTime: 4,
         totalTimeUOM: "h",
-        complexity: "medium"
+        complexity: "Intermediate"
     },
     {   name: "Krabby Patty",
         thumbnailURL: "https://www.wikihow.com/images/thumb/b/b1/Make-a-Krabby-Patty-Step-14-Version-5.jpg/aid1004609-v4-1200px-Make-a-Krabby-Patty-Step-14-Version-5.jpg",
@@ -174,7 +174,7 @@ const recipeData = [
         activeTimeUOM: "min",
         totalTime: 20,
         totalTimeUOM: "min",
-        complexity: "easy"
+        complexity: "Simple"
     },
     {   name: "Flaming Fire Flakes",
         thumbnailURL: "https://images.squarespace-cdn.com/content/v1/5ba3eeed755be24d0ec5e917/1579606389321-ONSLX3T1ESMD6S9C2C87/fireflakes.jpg?format=1000w",
@@ -209,7 +209,7 @@ const recipeData = [
         activeTimeUOM: "min",
         totalTime: 3,
         totalTimeUOM: "h",
-        complexity: "medium"
+        complexity: "Intermediate"
     },
     {   name: "Cheesy Blasters",
         thumbnailURL: "https://i.ytimg.com/vi/atLL2Yzi3bg/maxresdefault.jpg",
@@ -240,7 +240,7 @@ const recipeData = [
         activeTimeUOM: "min",
         totalTime: 1,
         totalTimeUOM: "h",
-        complexity: "easy"
+        complexity: "Simple"
     },
     {   name: "Spaghetti Tacos",
         thumbnailURL: "https://images-gmi-pmc.edge-generalmills.com/7dd22523-eea7-435c-a68d-a052b00e65bf.jpg",
@@ -279,7 +279,7 @@ const recipeData = [
         activeTimeUOM: "min",
         totalTime: 45,
         totalTimeUOM: "min",
-        complexity: "easy"
+        complexity: "Simple"
     },
     {   name: "Secret Ingredient Soup",
         thumbnailURL: "https://sethlui.com/wp-content/uploads/2020/06/simple-stay-home-recipes-kungfu-panda-secret-ingredient-noodles-9.jpg",
@@ -312,7 +312,7 @@ const recipeData = [
         activeTimeUOM: "min",
         totalTime: 30,
         totalTimeUOM: "min",
-        complexity: "easy"
+        complexity: "Simple"
     },
     {   name: "Car Panini",
         thumbnailURL: "https://www.cartooncuisine.com/wp-content/uploads/2019/01/Peter-Griffin-Car-Panini-3.jpg",
@@ -337,7 +337,7 @@ const recipeData = [
         activeTimeUOM: "min",
         totalTime: 10,
         totalTimeUOM: "min",
-        complexity: "easy"
+        complexity: "Simple"
     },
     {   name: "Flanders Hot Cocoa",
         thumbnailURL: "https://i.ytimg.com/vi/Z8-0nCsmT8w/maxresdefault.jpg",
@@ -378,7 +378,7 @@ const recipeData = [
         activeTimeUOM: "min",
         totalTime: 15,
         totalTimeUOM: "min",
-        complexity: "easy"
+        complexity: "Simple"
     },
     {   name: "Rum French Toast",
         thumbnailURL: "https://images.squarespace-cdn.com/content/v1/590be7fd15d5dbc6bf3e22d0/1516812819097-GHL87EBZTPDQ2LRWQ368/Screen+Shot+2018-01-24+at+10.53.03+AM.png?format=1500w",
@@ -406,7 +406,7 @@ const recipeData = [
         activeTimeUOM: "min",
         totalTime: 25,
         totalTimeUOM: "min",
-        complexity: "easy"
+        complexity: "Simple"
     },
     {   name: "Meat Tornado",
         thumbnailURL: "https://images.squarespace-cdn.com/content/v1/590be7fd15d5dbc6bf3e22d0/1598374781435-AVSRM9VEOBR47IU09S75/Screen+Shot+2020-08-25+at+11.56.34+AM.png?format=2500w",
@@ -443,7 +443,7 @@ const recipeData = [
         activeTimeUOM: "min",
         totalTime: 1,
         totalTimeUOM: "h",
-        complexity: "medium"
+        complexity: "Intermediate"
     },
     {   name: "Ratatouille",
         thumbnailURL: "https://static.onecms.io/wp-content/uploads/sites/43/2022/09/01/disneys-ratatouille-ddmfs-4x3-0747.jpg",
@@ -478,7 +478,7 @@ const recipeData = [
         activeTimeUOM: "min",
         totalTime: 90,
         totalTimeUOM: "min",
-        complexity: "medium"
+        complexity: "Intermediate"
     },
     {   name: "Bubba's Shrimp",
         thumbnailURL: "https://copykat.com/wp-content/uploads/2022/07/Bubba-Gump-Shrimp-Photo-1.jpg",
@@ -519,7 +519,7 @@ const recipeData = [
         activeTimeUOM: "min",
         totalTime: 15,
         totalTimeUOM: "min",
-        complexity: "easy"
+        complexity: "Simple"
     },
     {   name: "Shawarma",
         thumbnailURL: "https://www.koimoi.com/wp-content/new-galleries/2020/04/avengers-endgame-trivia-17-captain-america-refused-to-eat-in-the-post-credits-shawarma-scene-of-the-avengers-heres-why-001.jpg",
@@ -566,7 +566,7 @@ const recipeData = [
         activeTimeUOM: "min",
         totalTime: 20,
         totalTimeUOM: "min",
-        complexity: "easy"
+        complexity: "Simple"
     },
     {   name: "Fish Fingers",
         thumbnailURL: "https://images.squarespace-cdn.com/content/v1/559dc96be4b099333339097f/1436406043192-ZH4U1RZY8GXOF6JWJ962/image-asset.jpeg?format=1000w",
@@ -645,7 +645,7 @@ const recipeData = [
         activeTimeUOM: "min",
         totalTime: 90,
         totalTimeUOM: "min",
-        complexity: "medium"
+        complexity: "Intermediate"
     },
     {   name: "Enchiladas",
         thumbnailURL: "https://easyfood.ie/wp-content/uploads/2023/01/moira-roses-enchiladas_banner-image-2160x1270.jpg",
@@ -708,7 +708,7 @@ const recipeData = [
         activeTimeUOM: "min",
         totalTime: 45,
         totalTimeUOM: "min",
-        complexity: "easy"
+        complexity: "Simple"
     },
 ];
 

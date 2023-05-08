@@ -71,6 +71,7 @@ router.get("/recipe/:id/edit", async (req, res) => {
     } else {
       recipe.activeTimeUOM = "min";
       recipe.totalTimeUOM = "h";
+      recipe.complextiy = "intermediate"
     };
 
     recipe.timeUOMs = units.GetTimeUOMs().map(x => {

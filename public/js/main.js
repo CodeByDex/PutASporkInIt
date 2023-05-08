@@ -155,7 +155,6 @@ async function addUpvote(recipeID, event) {
     
     if (response.ok) {
         toggleUpvoteDisplay(event);
-        console.log(response)
         const responseData = await response.json();
         event.target.dataset.vote = responseData.id;
     } else {
@@ -219,19 +218,29 @@ async function deleteVote(recipeID) {
 }
 
 function toggleUpvoteDisplay(event) {
-    console.log(event.classList)
     event.target.classList.toggle('fa-solid');
     event.target.classList.toggle('fa-regular');
     event.target.classList.toggle('dark:text-green-500');
-    // downvoteButtons.classList.remove('fa-solid');
+
+    const pairedDownvoteButton = event.target.parentNode.parentNode.children[2].children[0]
+    console.log(pairedDownvoteButton)
+    pairedDownvoteButton.classList.remove("dark:text-red-500")
+    pairedDownvoteButton.classList.remove("fa-solid")
+    pairedDownvoteButton.classList.add("fa-regular")  
 }
 
 function toggleDownvoteDisplay(event) {
-    console.log(event.target.classList)
     event.target.classList.toggle('fa-solid');
     event.target.classList.toggle('fa-regular');
     event.target.classList.toggle('dark:text-red-500');
-    // upvoteButtons.classList.remove('fa-solid');
+
+
+
+    const pairedUpvoteButton = event.target.parentNode.parentNode.children[0].children[0]
+    console.log(pairedUpvoteButton)
+    pairedUpvoteButton.classList.remove("dark:text-green-500");
+    pairedUpvoteButton.classList.remove("fa-solid");
+    pairedUpvoteButton.classList.add("fa-regular")
 }
 
 // Dark mode

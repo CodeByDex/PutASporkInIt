@@ -95,19 +95,23 @@ async function renderRecipe(recipesToRender, req) {
 }
 
 async function loadUserVote(req, recipe) {
-  const userVote = await RecipeUserVote.findOne({
+  const uservote = await RecipeUserVote.findOne({
     where: {
       userID: req.session.userID,
       recipeID: recipe.id
-    },
-  });
-
-  if (userVote == null) {
-    recipe.userVote = 0;
-  }
-  else {
-    const userVoteData = userVote.get();
-    recipe.userVote = userVoteData.id;
+    }
+  })
+  if (uservote == null) {
+    recipe.upvote = null
+    recipe.downvote = null
+  } else {
+    if (uservote.dataValues.vote === 1) {
+      console.log("upvote")
+      recipe.upvote = true
+    } else if (uservote.dataValues.vote === -1) {
+      console.log("downvote")
+      recipe.downvote = true
+    }
   }
   return recipe
 }

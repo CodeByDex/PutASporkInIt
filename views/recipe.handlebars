@@ -1,8 +1,11 @@
 {{!-- Recipe Header --}}
 <section class="bg-neutral-100 dark:bg-neutral-900">
-    <div class="py-8 px-4 mx-auto max-w-screen-xl text-left lg:py-16 md:flex md:columns-2 md:items-center md:gap-6 md:justify-between">
+    <div class="pt-8 pb-4 px-4 mx-auto max-w-screen-xl text-left lg:pt-16 lg:pb-10 md:flex md:columns-2 md:items-center md:gap-6 md:justify-between">
         <div class="w-full md:w-1/2">
-            <h1 class="mb-2 text-3xl font-extrabold tracking-tight leading-none text-neutral-800 md:text-4xl lg:text-5xl dark:text-white">{{name}}</h1>
+            <h1 class="mb-2 text-3xl font-extrabold tracking-tight leading-none text-neutral-800 md:text-4xl lg:text-5xl dark:text-white">
+                {{name}} 
+                <a class="edit-button cursor-pointer"><i class="text-xl md:text-2xl lg:text-3xl text-green-500 align-top fa-regular fa-pen-to-square"></i></a>
+            </h1>
             {{#if seenIn}}
             <p class="text-2xl mb-1 font-semibold text-neutral-600 dark:text-white"><span class="text-xl font-semibold text-green-500 lg:text-xl dark:text-green-500">AS SEEN ON</span> {{seenIn}}</p>
             {{/if}}

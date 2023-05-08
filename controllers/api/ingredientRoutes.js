@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const {Ingredient} = require('../../models');
+const { Ingredient } = require('../../models');
 const helper = require('../util');
 
 /************************************************
  * Unsecured
  ************************************************/
 router.get('/', (req, res) => {
-    helper.SafeGetAll(res, Ingredient, [])    
+    helper.SafeGetAll(res, Ingredient, [])
 });
 
 router.get('/:id', (req, res) => {
@@ -31,8 +31,8 @@ router.delete('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     helper.SafeCreate(res, Ingredient, {
-    name: req.body.name,
-    defaultUOM: req.body.defaultUOM,
+        name: req.body.name,
+        defaultUOM: req.body.defaultUOM,
     })
 });
 

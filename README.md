@@ -40,8 +40,14 @@ Please follow these steps to install and run the project on your local machine:
 ## Usage
   
 To use this project, follow these steps:
+1. Go to the site and create an account: www.putasporkinit.co/
+2. Click `Browse All Recipes`. 
+3. Search through to find a recipe that you would like to try.
+4. Choose your favorite recipes by clicking the `heart` icon and give it an `up-vote` or `down-vote`.
 
-Usage instructions coming in a future update.
+<img src="assets/www.putasporkinit.co_newUser.png">
+<img src="assets/www.putasporkinit.co_.png">
+<img src="assets/www.putasporkinit.co_recipe_2 (1).png">
 
 ## Contributing
 
@@ -50,7 +56,8 @@ This project is not currently open for contributions.
 ## Tests
 
 To run tests on this project, follow these steps:
-
+Feeling creating? Go to `Dashboard` and add your own recipes for other users to use!
+Browse all of your favorite recipes from the `Dashboard`.
 Testing instructions coming in a future update.
   
 ## Project Links
@@ -59,10 +66,10 @@ Deployed Application: https://www.putasporkinit.co/
 
 Github Repository: https://github.com/CodeByDex/PutASporkInIt
 
-Team: [CodeByDex](https://github.com/CodeByDex), [Cyanasaurusrex](https://github.com/Cyanasaurusrex), [ChelseaLuevano](https://github.com/ChelseaLuevano), [that_devguy](https://github.com/that_devguy)
+Team: [CodeByDex](https://github.com/CodeByDex), [Cyanasaurusrex](https://github.com/Cyanasaurusrex), [ChelseaLuevano](https://github.com/ChelseaLuevano), [that_devguy](https://github.com/that_devguy), [Christianmsm](https://github.com/Christianmsm), [jxmart](https://github.com/jxmart)
 
 ## License
-
+[![MIT](https://img.shields.io/badge/MIT-License-red)](https://www.mit.edu/~amini/LICENSE.md)
 ## Questions
 
 If you have any questions or issues, feel free to reach out to me via my GitHub profile: [CodeByDex](https://github.com/CodeByDex)

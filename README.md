@@ -41,7 +41,7 @@ Please follow these steps to install and run the project on your local machine:
   
 To use this project, follow these steps:
 1. Go to the site and create an account: www.putasporkinit.co/
-2. Click `Browse All Recipes` 
+2. Click `Browse All Recipes`. 
 3. Search through to find a recipe that you would like to try.
 4. Choose your favorite recipes by clicking the `heart` icon and give it an `up-vote` or `down-vote`.
 

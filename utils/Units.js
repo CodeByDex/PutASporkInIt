@@ -58,27 +58,27 @@ function ConvertValue(value, from, to) {
     }
 
     //qty is not a convertable unit
-    if (from === qty || to === qty){
+    if (from === qty || to === qty) {
         return value;
     };
 
     return convert(value).from(from).to(to);
 };
 
-function ConvertValueToBestMetric(value, from){
+function ConvertValueToBestMetric(value, from) {
     return ConvertValueToSystem(value, from, "metric");
 }
 
-function ConvertValueToBestImperial(value, from){
+function ConvertValueToBestImperial(value, from) {
     return ConvertValueToSystem(value, from, "imperial");
 }
 
-function ConvertValueToBest(value, from){
-    return convert(value).from(from).toBest({exclude: excludedUOMs});
+function ConvertValueToBest(value, from) {
+    return convert(value).from(from).toBest({ exclude: excludedUOMs });
 }
 
-function ConvertValueToSystem(value, from, system){
-    return convert(value).from(from).toBest({system: system, exclude: excludedUOMs});
+function ConvertValueToSystem(value, from, system) {
+    return convert(value).from(from).toBest({ system: system, exclude: excludedUOMs });
 }
 
 module.exports = {

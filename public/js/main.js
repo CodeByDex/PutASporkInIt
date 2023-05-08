@@ -40,9 +40,6 @@ favoriteButtons.forEach(favoriteButton => {
 
         } else if (!event.target.classList.contains('fa-regular')) {
             await removeFromFavorites(event, userID);
-        } else {
-            // TO DO
-            console.log("Something very odd happened")
         }
     });
 });

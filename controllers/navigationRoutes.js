@@ -173,8 +173,6 @@ async function getRecipeViewModel(id, req) {
 
   recipe.userName = recipe.User ? recipe.User.get().userName : null;
 
-  console.log(recipe);
-
   return recipe;
 };
 

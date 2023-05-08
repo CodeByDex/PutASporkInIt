@@ -26,6 +26,7 @@ async function recipeSave(event) {
     const complexity = document.querySelector("#recipeComplexity").value;
     const ingredients = document.querySelector("#recipeIngredients").value;
     const instructions = document.querySelector("#recipeInstructions").value;
+    const sourceURL = document.querySelector("#recipeSource").value;
 
     let method = "POST";
     let uriSuffix = "";
@@ -53,7 +54,7 @@ async function recipeSave(event) {
             totalTime,
             totalTimeUOM,
             complexity,
-            ingredients,
+            ingredients
         })
     });
 

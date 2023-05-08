@@ -11,6 +11,24 @@ window.addEventListener("load", () => {
 
 });
 
+// Delete recipe button
+document.getElementById("deleteButton").addEventListener("click", async function(event) {
+    event.preventDefault();
+    if (confirm("Are you sure you wish to delete this recipe?")) {
+        const recipeID = event.target.dataset.recipeid;
+        const response = await fetch(`/api/recipes/${recipeID}`, {
+            method: "DELETE"
+        });
+    
+        if (response.ok) {
+            window.location.href = `/dashboard`;
+        } else {
+            console.log(response);
+            alert("Error deleting recipe");
+        }
+    }
+});
+
 async function recipeSave(event) {
     event.preventDefault();
 

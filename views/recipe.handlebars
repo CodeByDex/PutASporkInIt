@@ -4,7 +4,7 @@
         <div class="w-full md:w-1/2">
             <h1 class="mb-2 text-3xl font-extrabold tracking-tight leading-none text-neutral-800 md:text-4xl lg:text-5xl dark:text-white">
                 {{name}} 
-                <a class="edit-button cursor-pointer"><i class="text-xl md:text-2xl lg:text-3xl text-green-500 align-top fa-regular fa-pen-to-square"></i></a>
+                <a href="/recipe/{{id}}/edit" class="edit-button cursor-pointer"><i class="text-xl md:text-2xl lg:text-3xl text-green-500 align-top fa-regular fa-pen-to-square"></i></a>
             </h1>
             {{#if seenIn}}
             <p class="text-2xl mb-1 font-semibold text-neutral-600 dark:text-white"><span class="text-xl font-semibold text-green-500 lg:text-xl dark:text-green-500">AS SEEN IN</span> {{seenIn}}</p>
@@ -77,5 +77,15 @@
     <div class="py-4 px-4 mx-auto max-w-screen-xl text-left lg:py-12">
         <h3 class="mb-4 text-xl font-bold tracking-tight leading-none text-neutral-900 md:text-2xl lg:text-3xl dark:text-white">INSTRUCTIONS</h3>
         <p class="mb-4 text-md font-normal text-neutral-500 lg:text-xl sm:px-16 dark:text-neutral-400 whitespace-pre-line">{{instructions}}</p>
+    </div>
+</section>
+
+{{!-- Original Recipe Link --}}
+<section class="bg-neutral-100 dark:bg-neutral-900">
+    <div class="py-4 px-4 mx-auto max-w-screen-xl text-left lg:py-12">
+        <div>
+            <p class="text-sm font-semibold text-green-500 lg:text-xl dark:text-green-500">ORIGINAL RECIPE</p>
+            <a class="text-sm mb-8 font-normal lg:text-xl text-neutral-500 dark:text-neutral-400 hover:underline hover:text-green-500 dark:hover:text-green-400" href="{{sourceURL}}">{{sourceURL}}</a>
+        </div>
     </div>
 </section>

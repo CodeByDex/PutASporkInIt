@@ -14,7 +14,7 @@ function VerifyLoggedIn(req, res, next) {
         return;
     }
 
-    next();    
+    next();
 };
 
 async function SafeRequest(res, cb) {

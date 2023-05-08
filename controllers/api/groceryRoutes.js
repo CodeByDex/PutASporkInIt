@@ -30,7 +30,7 @@ router.put('/:id', (req, res) => {
     } else {
         res.status(500).json('id must be greater than 0')
     }
-    });
+});
 
 router.delete('/:id', (req, res) => {
     if (!isNaN(req.params.id) && req.params.id > 0) {

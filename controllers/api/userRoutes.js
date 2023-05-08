@@ -20,11 +20,11 @@ router.post('/', (req, res) => {
         })
 
     });
-})
+});
 
 router.get('/', (req, res) => {
     helper.SafeGetAll(res, User, [])
-})
+});
 
 router.get('/:id', (req, res) => {
     if (!isNaN(req.params.id) && req.params.id > 0) {
@@ -32,7 +32,7 @@ router.get('/:id', (req, res) => {
     } else {
         res.json('id must be greater than 0')
     }
-})
+});
 
 router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
@@ -54,14 +54,6 @@ router.get("/:userID/Favorites", (req, res) => {
         res.json('id must be greater than 0')
     }
 });
-
-function setLoginInfo(req, id, res) {
-    req.session.userID = id;
-    req.session.loggedIn = true;
-
-    res.locals.userID = id;
-    res.locals.loggedIn = true;
-}
 
 router.post('/login', async (req, res) => {
 
@@ -146,3 +138,20 @@ router.delete("/:userID/Favorites/:id", (req, res) => {
 });
 
 module.exports = router;
+
+/***************************************************************
+ * Private Functions
+ **************************************************************/
+/**
+ * Sets both the session and local values needed in the application.
+ * @param {request} req 
+ * @param {int} id 
+ * @param {response} res 
+ */
+function setLoginInfo(req, id, res) {
+    req.session.userID = id;
+    req.session.loggedIn = true;
+
+    res.locals.userID = id;
+    res.locals.loggedIn = true;
+}

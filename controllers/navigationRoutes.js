@@ -18,28 +18,38 @@ router.get('/newUser', (req, res) => {
 
 // GET route for home page
 router.get('/', async (req, res) => {
-  const recipes = await Recipe.findAll({})
-  // Pull in first three recipes in array
-  const topThreeRecipes = recipes.slice(0, 3)
-  const topRecipes = await renderRecipe(topThreeRecipes, req);
+  helper.SafeRequest(res, async (res) => {
+    const recipes = await Recipe.findAll({})
+    // Pull in first three recipes in array
+    const topThreeRecipes = recipes.slice(0, 3)
+    const topRecipes = await renderRecipe(topThreeRecipes, req);
 
-  res.render('home', { topRecipes })
+    res.render('home', { topRecipes })
+  })
 });
 
 // GET route for recipe page
 router.get('/recipe/:id', async (req, res) => {
-  let recipe = await getRecipeViewModel(req.params.id, req);
+  if (!isNaN(req.params.id) && req.params.id > 0) {
+    helper.SafeRequest(res, async (res) => {
+      let recipe = await getRecipeViewModel(req.params.id, req);
 
-  res.render('recipe', recipe);
+      res.render('recipe', recipe);
+    })
+  } else {
+    res.json('id must be greater than 0')
+  }
 })
 
 // GET route for browser page
 router.get('/browse', async (req, res) => {
-  const recipes = await Recipe.findAll({})
+  helper.SafeRequest(res, async (res) => {
+    const recipes = await Recipe.findAll({})
 
-  const allRecipes = await renderRecipe(recipes, req);
+    const allRecipes = await renderRecipe(recipes, req);
 
-  res.render('browse', { allRecipes });
+    res.render('browse', { allRecipes });
+  })
 })
 
 /**********************************************
@@ -137,9 +147,9 @@ async function getRecipeViewModel(id, req) {
     include: [{
       model: RecipeIngredient,
       include: Ingredient
-      }, {
-        model: User
-      }
+    }, {
+      model: User
+    }
     ]
   });
 
@@ -168,11 +178,4 @@ async function getRecipeViewModel(id, req) {
   return recipe;
 };
 
-// GET route for browser page
-router.get('/browse', async (req, res) => {
-  const recipes = await Recipe.findAll({})
-  //TODO: Implement UserRecipeFavorite get conditionally if the user is logged in
-  const allRecipes = recipes.map(obj => obj.get())
-  console.log(allRecipes)
-  res.render('browse', {allRecipes});
-})
+

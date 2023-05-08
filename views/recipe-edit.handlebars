@@ -16,7 +16,7 @@
                 </div>
                 
                 <form id="recipeform" class="space-y-4 md:space-y-6" data-recipeid="{{id}}" target="_self" method="POST">
-                    <div class="flex-row md:columns-2 justfiy-between">
+                    <div class="flex-row md:columns-2 justfiy-between align-between">
                         <div>
                             <label for="recipeName"
                                 class="block mb-1 text-sm font-medium text-neutral-900 dark:text-white">Recipe Name</label>
@@ -39,20 +39,13 @@
                                 placeholder="TV show, Movie, or Game" required="" value="{{seenIn}}">
                         </div>
                         <div>
-                            <label for="recipeDescription"
-                                class="block mb-1 text-sm font-medium text-neutral-900 dark:text-white">Description</label>
-                            <textarea type="text" name="recipeDescription" id="recipeDescription"
-                                class="resize-none bg-neutral-50 border border-neutral-300 text-neutral-900 sm:text-sm rounded-lg focus:ring-green-500 focus:border-neutral-300 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white caret-green-500 mb-2"
-                                placeholder="Brief Recipe Description" rows="3" required="" value="{{description}}">{{description}}</textarea>
-                        </div>
-                        <div>
                             <label for="recipeComplexity"
-                                class="block mb-1 text-sm font-medium text-neutral-900 dark:text-white">Complexity</label>
+                                class="block mb-1 text-sm font-medium text-neutral-900 dark:text-white">Complexity <span class="text-neutral-500">(eg.Simple, Intermediate, Expert)</span></label>
                             <input type="text" name="recipeComplexity" id="recipeComplexity"
                                 class="bg-neutral-50 border border-neutral-300 text-neutral-900 sm:text-sm rounded-lg focus:ring-green-500 focus:border-neutral-300 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white caret-green-500 mb-2"
                                 placeholder="Simple" required="" value="{{complexity}}">
                         </div>
-                        <div class="columns-2">
+                        <div class="columns-2 gap-2">
                             <label for="recipeActiveTime"
                                 class="block mb-1 text-sm font-medium text-neutral-900 dark:text-white">Active Time</label>
                             <input type="text" name="recipeActiveTime" id="recipeActiveTime"
@@ -60,7 +53,7 @@
                                 placeholder="30" required="" value="{{activeTime}}">
 
                             <label for="recipeActiveTimeUOM"
-                                class="block mb-1 text-sm font-medium text-neutral-900 dark:text-white">UOM</label>
+                                class="block invisible mb-1 text-sm font-medium text-neutral-900 dark:text-white">UOM</label>
                             <select
                                 class="bg-neutral-50 border border-neutral-300 text-neutral-900 sm:text-sm rounded-lg focus:ring-green-500 focus:border-neutral-300 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white caret-green-500 mb-2"
                                 id="recipeActiveTimeUOM" name="recipeActiveTimeUOM" data-value="{{activeTimeUOM}}">
@@ -69,7 +62,7 @@
                                 {{/each}}
                             </select>
                         </div>
-                        <div class="columns-2">
+                        <div class="columns-2 gap-2">
                             <label for="recipeTotalTime"
                                 class="block mb-1 text-sm font-medium text-neutral-900 dark:text-white">Total Time</label>
                             <input type="text" name="recipeTotalTime" id="recipeTotalTime"
@@ -77,7 +70,7 @@
                                 placeholder="1" required="" value="{{totalTime}}">
 
                             <label for="recipeTotalTimeUOM"
-                                class="block mb-1 text-sm font-medium text-neutral-900 dark:text-white">UOM</label>
+                                class="block invisible mb-1 text-sm font-medium text-neutral-900 dark:text-white">UOM</label>
                             <select
                                 class="bg-neutral-50 border border-neutral-300 text-neutral-900 sm:text-sm rounded-lg focus:ring-green-500 focus:border-neutral-300 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white caret-green-500 mb-2"
                                 id="recipeTotalTimeUOM" name="recipeTotalTimeUOM" data-value="{{totalTimeUOM}}">
@@ -87,28 +80,42 @@
                             </select>
                         </div>
                         <div>
+                            <label for="recipeSource"
+                                class="block mb-1 text-sm font-medium text-neutral-900 dark:text-white">Original Recipe Link</label>
+                            <input type="text" name="recipeSource" id="recipeSource"
+                                class="bg-neutral-50 border border-neutral-300 text-neutral-900 sm:text-sm rounded-lg focus:ring-green-500 focus:border-neutral-300 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white caret-green-500 mb-2"
+                                placeholder="https://" value="{{sourceURL}}">
+                        </div>
+                        <div>
+                            <label for="recipeDescription"
+                                class="block mb-1 text-sm font-medium text-neutral-900 dark:text-white">Description</label>
+                            <textarea type="text" name="recipeDescription" id="recipeDescription"
+                                class="resize-none bg-neutral-50 border border-neutral-300 text-neutral-900 sm:text-sm rounded-lg focus:ring-green-500 focus:border-neutral-300 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white caret-green-500 mb-2"
+                                placeholder="Please describe your recipe..." rows="4" required="" value="{{description}}">{{description}}</textarea>
+                        </div>
+                        <div>
                             <label for="recipeIngredients"
-                                class="block mb-1 text-sm font-medium text-neutral-900 dark:text-white">Igredients</label>
+                                class="block mb-1 text-sm font-medium text-neutral-900 dark:text-white">Igredients <span class="text-neutral-500">(please include amount & uom)</span></label>
                             <textarea type="text" name="recipeIngredients" id="recipeIngredients"
                                 class="resize-none bg-neutral-50 border border-neutral-300 text-neutral-900 sm:text-sm rounded-lg focus:ring-green-500 focus:border-neutral-300 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white caret-green-500 mb-2"
-                                placeholder="List of Ingredients" rows="4" required="" value="{{ingredients}}">{{ingredients}}</textarea>
+                                placeholder="2 Slices of Bread &#10;2 Tbsp Butter..." rows="6" required="" value="{{ingredients}}">{{ingredients}}</textarea>
                         </div>
                         <div>
                             <label for="recipeInstructions"
-                                class="block mb-1 text-sm font-medium text-neutral-900 dark:text-white">Instructions</label>
+                                class="block mb-1 text-sm font-medium text-neutral-900 dark:text-white">Instructions <span class="text-right text-neutral-500">(please number your steps)</span></label>
                             <textarea type="text" name="recipeInstructions" id="recipeInstructions"
                                 class="resize-none bg-neutral-50 border border-neutral-300 text-neutral-900 sm:text-sm rounded-lg focus:ring-green-500 focus:border-neutral-300 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white caret-green-500 mb-2"
-                                placeholder="List of Instructions" rows="4" required="" value="{{instructions}}">{{instructions}}</textarea>
+                                placeholder="1. Grab your slices of bread. &#10;2. Take a knife and spread the butter on..." rows="5" required="" value="{{instructions}}">{{instructions}}</textarea>
                         </div>
+                        <button type="submit" class="w-full mt-2 items-end text-white bg-green-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                            {{#isNewRecipe id}}
+                            <p>Add Recipe</p>
+                            {{else}}
+                            <p>Update</p>
+                            {{/isNewRecipe}}
+                        </button>
                     </div>
-                    <button type="submit"
-                        class="w-full text-white bg-green-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                        {{#isNewRecipe id}}
-                        <p>Add Recipe</p>
-                        {{else}}
-                        <p>Update</p>
-                        {{/isNewRecipe}}
-                    </button>
+                    
                 </form>
             </div>
         </div>

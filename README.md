@@ -62,7 +62,7 @@ Testing instructions coming in a future update.
   
 ## Project Links
   
-Deployed Application: www.putasporkinit.co/
+Deployed Application: https://www.putasporkinit.co/ 
 
 Github Repository: https://github.com/CodeByDex/PutASporkInIt
 

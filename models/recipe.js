@@ -2,8 +2,9 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const units = require("../utils/Units");
 
-class Recipe extends Model {}
-class RecipeIngredient extends Model {}
+class Recipe extends Model { }
+class RecipeIngredient extends Model { }
+class RecipeUserVote extends Model { }
 
 Recipe.init(
   {
@@ -25,7 +26,20 @@ Recipe.init(
         key: "id"
       }
     },
+    thumbnailURL: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      defaultValue: "https://i.ibb.co/h23wxGn/placeholder-image.jpg"
+    },
+    seenIn: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
     description: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    ingredients: {
       type: DataTypes.TEXT,
       allowNull: false
     },
@@ -45,7 +59,7 @@ Recipe.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isIn: [units.GetTimeUOMs().map(x=>x.abbr)]
+        isIn: [units.GetTimeUOMs().map(x => x.abbr)]
       }
     },
     totalTime: {
@@ -56,16 +70,28 @@ Recipe.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isIn: [units.GetTimeUOMs().map(x=>x.abbr)]
+        isIn: [units.GetTimeUOMs().map(x => x.abbr)]
       }
     },
     complexity: {
       type: DataTypes.STRING,
       allowNull: false
-    }  
+    },
   },
   {
-    sequelize
+    sequelize,
+    hooks: {
+      beforeCreate: async (recipe) => {
+        if (!recipe.thumbnailURL) {
+          recipe.thumbnailURL = "https://i.ibb.co/h23wxGn/placeholder-image.jpg";
+        }
+      },
+      beforeUpdate: async (recipe) => {
+        if (!recipe.thumbnailURL) {
+          recipe.thumbnailURL = "https://i.ibb.co/h23wxGn/placeholder-image.jpg";
+        }
+      },
+    }
   }
 );
 
@@ -89,12 +115,12 @@ RecipeIngredient.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model:"ingredient",
+        model: "ingredient",
         key: "id"
       }
     },
     amount: {
-      type: DataTypes.DECIMAL(10,2),
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
       validate: {
         min: 0.01
@@ -104,7 +130,44 @@ RecipeIngredient.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isIn: [units.GetAllIngredientUOMs().map(x=>x.abbr)]
+        isIn: [units.GetAllIngredientUOMs().map(x => x.abbr)]
+      }
+    }
+  },
+  {
+    sequelize
+  }
+)
+
+RecipeUserVote.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    recipeID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "recipe",
+        key: "id"
+      }
+    },
+    userID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "User",
+        key: "id"
+      }
+    },
+    vote: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        isIn: [[-1, 1]]
       }
     }
   },
@@ -115,5 +178,6 @@ RecipeIngredient.init(
 
 module.exports = {
   Recipe,
-  RecipeIngredient
+  RecipeIngredient,
+  RecipeUserVote
 };

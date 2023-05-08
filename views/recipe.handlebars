@@ -16,13 +16,13 @@
             <div class="mb-4 flex columns-3 gap-4 md:gap-12">
                 <div>
                     <p class="text-sm font-semibold text-green-500 lg:text-xl dark:text-green-500">ACTIVE TIME</p>
-                    <p class="text-sm font-normal text-neutral-500 lg:text-xl dark:text-neutral-400">{{activeTime}}
-                        {{activeTimeUOM}}</p>
+                    <p class="text-sm font-normal text-neutral-500 lg:text-xl dark:text-neutral-400">{{DisplayTimeValue activeTime activeTimeUOM}}
+                        {{DisplayTimeUnit activeTime activeTimeUOM}}</p>
                 </div>
                 <div>
                     <p class="text-sm font-semibold text-green-500 lg:text-xl dark:text-green-500">TOTAL TIME</p>
-                    <p class="text-sm font-normal text-neutral-500 lg:text-xl dark:text-neutral-400">{{totalTime}}
-                        {{totalTimeUOM}}</p>
+                    <p class="text-sm font-normal text-neutral-500 lg:text-xl dark:text-neutral-400">{{DisplayTimeValue totalTime totalTimeUOM}}
+                        {{DisplayTimeUnit totalTime totalTimeUOM}}</p>
                 </div>
                 <div>
                     <p class="text-sm font-semibold text-green-500 lg:text-xl dark:text-green-500">COMPLEXITY</p>

@@ -1,3 +1,5 @@
-<a class="upvote-button text-neutral-500 text-lg md:text-xl"><i class="{{#if upvote}} fa-solid dark:text-green-500 {{else}} fa-regular {{/if}} fa-thumbs-up" data-recipeid="{{id}}" data-userid = "{{userID}}" data-vote="{{userVote}}"></i></a>
-<p class="text-neutral-500 text-lg"> | </p>
-<a class="downvote-button text-neutral-500 text-lg md:text-xl"><i class="{{#if downvote}}fa-solid dark:text-red-500 {{else}}fa-regular{{/if}} fa-thumbs-down" data-recipeid="{{id}}" data-userid = "{{userID}}" data-vote="{{userVote}}"></i></a>
+<div class="flex columns-3 justify-between gap-2">
+    <a class="upvote-button text-neutral-500 text-lg md:text-xl"><i class="{{#if upvote}} fa-solid dark:text-green-500 {{else}} fa-regular {{/if}} fa-thumbs-up" data-recipeid="{{id}}" data-userid = "{{userID}}" data-vote="{{userVote}}"></i></a>
+    <p class="text-neutral-500 text-lg"> | </p>
+    <a class="downvote-button text-neutral-500 text-lg md:text-xl"><i class="{{#if downvote}}fa-solid dark:text-red-500 {{else}}fa-regular{{/if}} fa-thumbs-down" data-recipeid="{{id}}" data-userid = "{{userID}}" data-vote="{{userVote}}"></i></a>
+</div>

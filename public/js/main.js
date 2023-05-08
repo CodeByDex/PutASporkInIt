@@ -17,6 +17,56 @@ window.addEventListener("load", () => {
             }
         })
     }
+    // Identify upvote/downvote buttons
+    const upvoteButtons = document.querySelectorAll(".upvote-button");
+    const downvoteButtons = document.querySelectorAll(".downvote-button");
+
+    upvoteButtons.forEach(upvoteButton => {
+        upvoteButton.addEventListener("click", async (event) => {
+            const userID = getCookieValue("userID");
+            if (isNaN(userID)) {
+                return;
+            }
+
+            const recipeID = event.target.dataset.recipeid;
+
+            if (!event.target.classList.contains('fa-solid')) {
+                // Send favorited to database
+                await addUpvote(recipeID, event);
+
+            } else if (!event.target.classList.contains('fa-regular')) {
+
+                await removeUpvote(recipeID, event);
+            } else {
+                // TO DO
+                console.log("Something very very odd happened")
+            }
+        })
+    })
+
+    downvoteButtons.forEach(downvoteButton => {
+        downvoteButton.addEventListener("click", async (event) => {
+            const userID = getCookieValue("userID");
+            if (isNaN(userID)) {
+                return;
+            }
+
+            const recipeID = event.target.dataset.recipeid;
+
+
+            if (!event.target.classList.contains('fa-solid')) {
+                // Send favorited to database
+                await addDownvote(recipeID, event);
+
+            } else if (!event.target.classList.contains('fa-regular')) {
+
+                await removeDownvote(recipeID, event);
+            } else {
+                // TO DO
+                console.log("Something very very odd happened")
+            }
+        })
+    })
 })
 
 
@@ -90,60 +140,13 @@ function toggleFavoriteDisplay(event) {
     event.target.classList.toggle('dark:text-green-500');
 }
 
-// Identify upvote/downvote buttons
-const upvoteButtons = document.querySelectorAll(".upvote-button");
-const downvoteButtons = document.querySelectorAll(".downvote-button");
 
-upvoteButtons.forEach(upvoteButton => {
-    upvoteButton.addEventListener("click", async (event) => {
-        const userID = getCookieValue("userID");
-        if (isNaN(userID)) {
-            return;
-        }
-
-        const recipeID = event.target.dataset.recipeid;
-        
-        if (!event.target.classList.contains('fa-solid')) {
-            // Send favorited to database
-            await addUpvote(recipeID, event);
-
-        } else if (!event.target.classList.contains('fa-regular')) {
-
-            await removeUpvote(recipeID, event);
-        } else {
-            // TO DO
-            console.log("Something very very odd happened")
-        }
-})})
-
-downvoteButtons.forEach(downvoteButton => {
-    downvoteButton.addEventListener("click", async (event) => {
-        const userID = getCookieValue("userID");
-        if (isNaN(userID)) {
-            return;
-        }
-
-        const recipeID = event.target.dataset.recipeid;
-        
-
-        if (!event.target.classList.contains('fa-solid')) {
-            // Send favorited to database
-            await addDownvote(recipeID, event);
-
-        } else if (!event.target.classList.contains('fa-regular')) {
-
-            await removeDownvote(recipeID, event);
-        } else {
-            // TO DO
-            console.log("Something very very odd happened")
-        }
-})})
 
 
 
 async function addUpvote(recipeID, event) {
     await deleteVote(recipeID)
-    const response = await fetch(`/api/recipes/1/votes/`, {
+    const response = await fetch(`/api/recipes/${recipeID}/votes/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -152,7 +155,7 @@ async function addUpvote(recipeID, event) {
             vote: 1
         })
     });
-    
+
     if (response.ok) {
         toggleUpvoteDisplay(event);
         const responseData = await response.json();
@@ -212,7 +215,7 @@ async function deleteVote(recipeID) {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
-        }, 
+        },
     })
     return response
 }
@@ -226,7 +229,7 @@ function toggleUpvoteDisplay(event) {
     console.log(pairedDownvoteButton)
     pairedDownvoteButton.classList.remove("dark:text-red-500")
     pairedDownvoteButton.classList.remove("fa-solid")
-    pairedDownvoteButton.classList.add("fa-regular")  
+    pairedDownvoteButton.classList.add("fa-regular")
 }
 
 function toggleDownvoteDisplay(event) {

@@ -1,8 +1,15 @@
-
 <div class="recipe-card pb-2 rounded-md drop-shadow-md">
-    <a href="recipe/{{id}}"><img class="h-auto max-w-full" src="/images/placeholder-image.jpg" alt="image description"></a>
+    <div class="w-full h-0 relative" style="padding-bottom: 56.25%">
+        <a href="recipe/{{id}}"><img class="absolute inset-0 w-full h-full object-cover" src="{{thumbnailURL}}"
+                alt="{{name}} thumbnail"></a>
+    </div>
     <div class="flex-row justify-between py-2 px-4 bg-white dark:bg-neutral-800">
-        <a href = "/recipe/{{id}}"><h3 class="text-2xl font-semibold text-neutral-800 dark:text-white">{{name}}</h3></a>
+        <div class="flex">
+            <a href = "/recipe/{{id}}"><h3 class="text-2xl mr-2 font-semibold text-neutral-800 dark:text-white">{{name}}</h3></a>
+            {{#if isUserRecipe}}
+                <a href="/recipe/{{id}}/edit" class="edit-button cursor-pointer text-neutral-500 text-lg md:text-xl "><i class="fa-regular fa-pen-to-square hover:text-green-500"></i></a>
+            {{/if}}
+        </div>
         <h3 class="text-lg text-neutral-500 dark:text-neutral-400">{{seenIn}}</h3>
         <div class="flex columns-2 justify-between">
             {{> favorite-button}}

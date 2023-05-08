@@ -90,9 +90,6 @@ favoriteButtons.forEach(favoriteButton => {
 
         } else if (!event.target.classList.contains('fa-regular')) {
             await removeFromFavorites(event, userID);
-        } else {
-            // TO DO
-            console.log("Something very odd happened")
         }
     });
 });
@@ -139,10 +136,6 @@ function toggleFavoriteDisplay(event) {
     event.target.classList.toggle('fa-regular');
     event.target.classList.toggle('dark:text-green-500');
 }
-
-
-
-
 
 async function addUpvote(recipeID, event) {
     await deleteVote(recipeID)
@@ -245,6 +238,27 @@ function toggleDownvoteDisplay(event) {
     pairedUpvoteButton.classList.remove("fa-solid");
     pairedUpvoteButton.classList.add("fa-regular")
 }
+
+
+// Share button that copies recipe link to the users clipboard
+function copyToClipboard(link) {
+    const el = document.createElement('textarea');
+    el.value = link;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    alert('Recipe link copied to clipboard!');
+}
+
+// Delete recipe button
+document.getElementById("deleteButton").addEventListener("click", function() {
+    if (confirm("Are you sure you wish to delete?")) {
+      // TODO: Send delete request to server based on recipeID
+    } else {
+      // TODO: Do nothing
+    }
+});
 
 // Dark mode
 // const sunIcon = document.querySelector(".sun");

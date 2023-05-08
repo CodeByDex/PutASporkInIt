@@ -20,7 +20,7 @@ const sequelize = process.env.JAWSDB_URL
                 timestamps: true
             }
         })
-    : new Sequelize(process.env.DB_Name, 
+    : new Sequelize(process.env.DB_Name,
         process.env.DB_User,
         process.env.DB_PW,
         {
@@ -33,6 +33,6 @@ const sequelize = process.env.JAWSDB_URL
             },
             logging: false
         }
-        );
+    );
 
 module.exports = sequelize;

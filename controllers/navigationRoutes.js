@@ -35,7 +35,6 @@ router.get('/recipe/:id', async (req, res) => {
   if (!isNaN(req.params.id) && req.params.id > 0) {
     helper.SafeRequest(res, async (res) => {
       let recipe = await getRecipeViewModel(req.params.id, req);
-      // recipe = await loadUserVote(req, recipe);
 
       res.render('recipe', recipe);
     })

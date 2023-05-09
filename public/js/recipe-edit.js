@@ -9,7 +9,7 @@ window.addEventListener("load", () => {
     const totalTimeUOM = document.querySelector("#recipeTotalTimeUOM");
     totalTimeUOM.value = totalTimeUOM.dataset.value;
 
-    const recipeComplexity = document.querySelection("#recipeComplexity");
+    const recipeComplexity = document.querySelector("#recipeComplexity");
     recipeComplexity.value = recipeComplexity.dataset.value;
 
 });

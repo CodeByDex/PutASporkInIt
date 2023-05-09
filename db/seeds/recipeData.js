@@ -552,7 +552,7 @@ const recipeData = [
         Hot sauce of choice (optional)
         `,
         instructions: `
-        1. Marinade chicken - Combine the marinade ingredients in a large Ziplock bag. Add the chicken, seal, the massage from the outside with your hands to make sure each piece is coated. Marinate 24 hours (minimum 3 hours).
+        1. Marinade chicken - Combine the marinade ingredients in a large Ziploc bag. Add the chicken, seal, the massage from the outside with your hands to make sure each piece is coated. Marinate 24 hours (minimum 3 hours).
         2. Yogurt Sauce - Combine the Yogurt Sauce ingredients in a bowl and mix. Cover and put in the fridge until required (it will last for 3 days in the fridge).
         3. Preheat stove or BBQ - Heat a large non-stick skillet with 1 tablespoon over medium high heat, or lightly brush a BBQ hotplate/grills with oil and heat to medium high. (See notes for baking)
         4. Cook chicken - Place chicken in the skillet or on the grill and cook the first side for 4 to 5 minutes until nicely charred. Turn and cook the other side for 3 to 4 minutes (the 2nd side takes less time).
@@ -609,7 +609,7 @@ const recipeData = [
         6. Add the yolks one at a time. Scrape down the sides of the bowl and make sure it is all mixed well.
         7. Add the vanilla and beat the mix again until combined.
         8. With the mixer on low, add the flour and milk alternately in 3 additions, ending with the flour.
-        9. In a clean bowl whisk the eggwhites until foamy. Add the rest of the sugar (about 1/2 cup)and whisk the eggwhites until stiff peaks form.
+        9. In a clean bowl whisk the egg whites until foamy. Add the rest of the sugar (about 1/2 cup)and whisk the egg whites until stiff peaks form.
         10. Gently fold in about 1/4 of the egg white mix into the cake batter. Then fold in the rest of the egg whites until completely incorporated - be careful not to deflate the batter.
         11. You can divide the batter equally into 3- 8inch pans or 2 -9x 11 inch pans.
         12. Smoothen the top of the batter to make sure they are evenly spread.
@@ -627,7 +627,7 @@ const recipeData = [
         1. Mix the crushed Graham Crackers, sugar and cocoa powder in a tray until well combined.
         Assembly:
         1. With a spoon pour lime glaze over the Cake fingers (One at a time) until coated all over (As you would with an egg wash for fish fingers)
-        2. Transfer to the biscuit crums and press the crumbs into the cake until it is well coated all over.
+        2. Transfer to the biscuit crumbs and press the crumbs into the cake until it is well coated all over.
         3. Place on a wire rack till everything sets.
         4. Chill until ready to serve.
 
@@ -637,7 +637,7 @@ const recipeData = [
         3. When the milk is steaming, lower the heat (to low).
         4. Add about 1/4 a cup of the steaming milk in a thin stream to the egg yolk mix while whisking to temper the egg yolk. Add about another 1/4 cup of milk to bring the heat of the yolk up.
         5. Add the egg yolk mix in to the milk mix and whisk constantly while heating up the mix till it thickens to desired consistency.
-        6. After custard has thickened, place a plastic wrap along the surface of the custard to prevent a film forming on the surface. Cool to room temparature and transfer to the fridge to cool for a few hours.
+        6. After custard has thickened, place a plastic wrap along the surface of the custard to prevent a film forming on the surface. Cool to room temperature and transfer to the fridge to cool for a few hours.
         7. Serve along side the Vanilla Basil & Lime Cake "Fish Fingers."        
         ` ,
         sourceURL: "https://www.theflavorbender.com/fish-fingers-custard-dr-who-party-part-i-geronimo/",
@@ -680,7 +680,7 @@ const recipeData = [
         Salsa Roja Method:
         1. Start by removing the stems and seeds from the chilis and cut into 1” segments. 
         2. Peel and cut 2 medium onions into chunks. Cut 2 plum tomatoes in half. Peel the 3 cloves of garlic. 
-        3. Over the stovetop, dry roast the peppers in a dry pan over medium heat for 1-2 minutes. Set aside once roasted.
+        3. Over the stove-top, dry roast the peppers in a dry pan over medium heat for 1-2 minutes. Set aside once roasted.
         4. Into the same pan goes the onions, garlic, and tomatoes to char a little bit. Once the onions and tomatoes have picked up a little color, add back in the chiles along with enough water to cover everything in the pot. 
         5. Bring to a bare simmer ,then add in a generous pinch of Mexican oregano. 
         6. Take 3 large chicken breasts and butterfly cut each piece before killing the heat and adding the chicken to the pot of vegetables, making sure to fully submerge the chicken. 
@@ -689,7 +689,7 @@ const recipeData = [
         9. Blend one last time to combine. 
         Enchilada Filling and Assembly:
         10. Start by shredding the 3 large chicken breasts from the red sauce. Remove the stems and seeds of 3 poblano peppers and cut in half. 
-        11. Place each half of the poblano pepper over the stovetop and roast until the exteriors are fully blackened. After the pepper is fully roasted, pile them together onto aluminum foil and wrap the peppers up into a package. 
+        11. Place each half of the poblano pepper over the stove-top and roast until the exteriors are fully blackened. After the pepper is fully roasted, pile them together onto aluminum foil and wrap the peppers up into a package. 
         12. Using gloved hands, scrape off all of the blackened exteriors and slice into small pieces. 
         13. For the queso, in a pot add 3 tablespoons each of flour and butter. Cook and whisk together for 1-2 minutes over low heat. Slowly stream in 2 cups of whole milk while constantly whisking until a thick white sauce has formed. 
         14. Kill the heat, add in 8 ounces of shredded queso de papa and, using a rubber spatula, gently fold in the cheese (stirring gently from the bottom upward over the cheese) until smooth. 

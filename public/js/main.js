@@ -37,10 +37,7 @@ window.addEventListener("load", () => {
             } else if (!event.target.classList.contains('fa-regular')) {
 
                 await removeUpvote(recipeID, event);
-            } else {
-                // TO DO
-                console.log("Something very very odd happened")
-            }
+            } 
         })
     })
 
@@ -61,10 +58,7 @@ window.addEventListener("load", () => {
             } else if (!event.target.classList.contains('fa-regular')) {
 
                 await removeDownvote(recipeID, event);
-            } else {
-                // TO DO
-                console.log("Something very very odd happened")
-            }
+            } 
         })
     })
 })
@@ -181,7 +175,6 @@ async function addDownvote(recipeID, event) {
 
 async function removeDownvote(recipeID, event) {
     const response = await deleteVote(recipeID)
-    console.log(response)
 
     if (response.ok) {
         toggleDownvoteDisplay(event);
@@ -193,7 +186,7 @@ async function removeDownvote(recipeID, event) {
 
 async function removeUpvote(recipeID, event) {
     const response = await deleteVote(recipeID)
-    console.log(response)
+
     if (response.ok) {
         toggleUpvoteDisplay(event);
         event.target.dataset.vote = 0;
@@ -219,7 +212,7 @@ function toggleUpvoteDisplay(event) {
     event.target.classList.toggle('dark:text-green-500');
 
     const pairedDownvoteButton = event.target.parentNode.parentNode.children[2].children[0]
-    console.log(pairedDownvoteButton)
+
     pairedDownvoteButton.classList.remove("dark:text-red-500")
     pairedDownvoteButton.classList.remove("fa-solid")
     pairedDownvoteButton.classList.add("fa-regular")
@@ -233,7 +226,7 @@ function toggleDownvoteDisplay(event) {
 
 
     const pairedUpvoteButton = event.target.parentNode.parentNode.children[0].children[0]
-    console.log(pairedUpvoteButton)
+
     pairedUpvoteButton.classList.remove("dark:text-green-500");
     pairedUpvoteButton.classList.remove("fa-solid");
     pairedUpvoteButton.classList.add("fa-regular")

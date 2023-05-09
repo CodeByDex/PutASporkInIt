@@ -148,10 +148,8 @@ async function loadUserVote(req, recipe) {
     recipe.downvote = null
   } else {
     if (uservote.dataValues.vote === 1) {
-      console.log("upvote")
       recipe.upvote = true
     } else if (uservote.dataValues.vote === -1) {
-      console.log("downvote")
       recipe.downvote = true
     }
   }

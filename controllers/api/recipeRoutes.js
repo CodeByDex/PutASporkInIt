@@ -19,10 +19,10 @@ router.get('/:id', (req, res) => {
 })
 
 router.get('/:id/votes', (req, res) => {
-    if (isNaN(req.params.id) && req.params.id > 0) {
+    if (!isNaN(req.params.id) && req.params.id > 0) {
         helper.SafeRequest(res, async (res) => {
 
-            const voteData = await RecipeUserVote.findAll({ where: { recipeID: req.params.id } })
+            const voteData = await RecipeUserVote.findAll({ where: { recipeID: req.params.id, vote:1 } })
 
             let voteResults;
             if (!voteData) {
@@ -30,9 +30,8 @@ router.get('/:id/votes', (req, res) => {
             }
             else {
                 voteResults = voteData.map(obj => obj.get())
-            }
-            res.json({ voteResults })
-        });
+            res.json(voteResults.length)
+        } });
     } else {
         res.status(500).json('id must be greater than 0')
     }

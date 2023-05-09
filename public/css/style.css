@@ -1,0 +1,11 @@
+/* Style for inactive tab button */
+.tabset button[role="tab"] {
+    background-color: none;
+    color: #333;
+}
+  
+/* Style for active tab button */
+.tabset button[role="tab"][aria-selected="true"] {
+    background-color: #333;
+    color: #fff;
+}

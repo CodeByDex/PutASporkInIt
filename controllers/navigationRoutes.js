@@ -32,10 +32,16 @@ router.get('/recipe/:id', async (req, res) => {
     helper.SafeRequest(res, async (res) => {
       let recipe = await getRecipeViewModel(req.params.id, req);
 
+      if (recipe == null) {
+        res.status(404).render("404");
+        return;
+      }
+
       res.render('recipe', recipe);
+
     })
   } else {
-    res.json('id must be greater than 0')
+    res.status(400).render("404", { errorMessage: "id must be greater than 0" });
   }
 })
 
@@ -64,7 +70,12 @@ router.get("/recipe/:id/edit", async (req, res) => {
 
     if (!isNaN(recipe.id) && recipe.id != 0) {
       recipe = await getRecipeViewModel(recipe.id, req);
+      if (recipe == null) {
+        res.status(404).render("404");
+        return;
+      }
     } else {
+      recipe.id = 0;
       recipe.activeTimeUOM = "min";
       recipe.totalTimeUOM = "h";
       recipe.complexity = "Intermediate"
@@ -236,6 +247,10 @@ async function getRecipeViewModel(id, req) {
     }
     ]
   });
+
+  if (!recData) {
+    return null;
+  }
 
   let recipe = await renderRecipe([recData], req);
 

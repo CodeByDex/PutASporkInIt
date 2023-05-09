@@ -56,7 +56,7 @@ This project is not currently open for contributions.
 ## Tests
 
 To run tests on this project, follow these steps:
-Feeling creating? Go to `Dashboard` and add your own recipes for other users to use!
+Feeling creative? Go to `Dashboard` and add your own recipes for other users to use!
 Browse all of your favorite recipes from the `Dashboard`.
 Testing instructions coming in a future update.
   

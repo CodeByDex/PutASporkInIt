@@ -1,8 +1,6 @@
 const router = require("express").Router();
 const helper = require('./util')
 const units = require("../utils/Units");
-const Sequelize = require('sequelize')
-const Op = Sequelize.Op;
 const { User, Recipe, Ingredient, RecipeIngredient, UserRecipeFavorite, RecipeUserVote } = require('../models');
 
 /************************************************
@@ -35,7 +33,6 @@ router.get('/recipe/:id', async (req, res) => {
   if (!isNaN(req.params.id) && req.params.id > 0) {
     helper.SafeRequest(res, async (res) => {
       let recipe = await getRecipeViewModel(req.params.id, req);
-      recipe = await loadUserVote(req, recipe);
 
       res.render('recipe', recipe);
     })
@@ -74,6 +71,7 @@ router.get("/recipe/:id/edit", async (req, res) => {
     } else {
       recipe.activeTimeUOM = "min";
       recipe.totalTimeUOM = "h";
+      recipe.complexity = "Intermediate"
     };
 
     recipe.timeUOMs = units.GetTimeUOMs().map(x => {
@@ -124,16 +122,18 @@ module.exports = router;
 async function renderRecipe(recipesToRender, req) {
   let recipes = await Promise.all(recipesToRender.map(async (obj) => {
     let recipe = obj.get();
+    recipe.isUserRecipe = false;
+
     if (req.session.loggedIn) {
       recipe = await loadUserFavorite(req, recipe);
       recipe = await loadUserVote(req, recipe);
-      recipe = await loadVoteCount(req, recipe)
+      // Add check for session user ID and recipe creator's user ID
+      const isUserRecipe = req.session.userID === recipe.userID;
+      recipe.isUserRecipe = isUserRecipe;
     }
-    
-    // Add check for session user ID and recipe creator's user ID
-    const isUserRecipe = req.session.userID === recipe.userID;
-    recipe.isUserRecipe = isUserRecipe;
 
+    recipe = await loadVoteCount(req, recipe);
+    
     return recipe;
   }));
   return recipes;
@@ -142,28 +142,15 @@ async function renderRecipe(recipesToRender, req) {
 async function loadVoteCount(req, recipe) {
   const recipeID = recipe.id
 
-  RecipeUserVote.findAll({
-    attributes: [
-      [Sequelize.fn('sum', Sequelize.col('vote')), 'totalVotes']
-    ],
+  let votes = await RecipeUserVote.count({
     where: {
-      vote: {
-        [Op.eq]: 1
-      },
-      recipeID: {
-        [Op.eq]: recipeID
+      vote: 1,
+      recipeID: recipeID
       }
-    }
-
-  }).then(result => {
-    if (result[0].dataValues.totalVotes === null) {
-      recipe.upvoteCount = 0
-    } else {
-      recipe.upvoteCount = result[0].dataValues.totalVotes
-    }
-  }).catch(err => {
-    console.log(err);
   });
+
+  recipe.upvoteCount = votes;
+  
   return recipe
 }
 

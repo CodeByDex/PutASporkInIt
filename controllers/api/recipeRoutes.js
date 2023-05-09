@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { request } = require('express');
 const { Recipe, RecipeUserVote } = require('../../models');
 const helper = require('../util')
 
@@ -22,7 +21,7 @@ router.get('/:id/votes', (req, res) => {
     if (!isNaN(req.params.id) && req.params.id > 0) {
         helper.SafeRequest(res, async (res) => {
 
-            const voteData = await RecipeUserVote.findAll({ where: { recipeID: req.params.id, vote:1 } })
+            const voteData = await RecipeUserVote.findAll({ where: { recipeID: req.params.id, vote: 1 } })
 
             let voteResults;
             if (!voteData) {
@@ -30,8 +29,9 @@ router.get('/:id/votes', (req, res) => {
             }
             else {
                 voteResults = voteData.map(obj => obj.get())
-            res.json(voteResults.length)
-        } });
+                res.json(voteResults)
+            }
+        });
     } else {
         res.status(500).json('id must be greater than 0')
     }

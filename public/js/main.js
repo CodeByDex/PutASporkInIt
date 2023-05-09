@@ -4,7 +4,7 @@ window.addEventListener("load", () => {
     if (btnLogout) {
         btnLogout.addEventListener("click", async () => {
 
-            const response = await fetch('./api/users/logout', {
+            const response = await fetch('/api/users/logout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
             });
@@ -33,10 +33,10 @@ window.addEventListener("load", () => {
             if (!event.target.classList.contains('fa-solid')) {
                 // Send favorited to database
                 await addUpvote(recipeID, event);
-
+                addVoteCount(event)                
             } else if (!event.target.classList.contains('fa-regular')) {
-
                 await removeUpvote(recipeID, event);
+                subtractVoteCount(event)
             } 
         })
     })
@@ -54,10 +54,12 @@ window.addEventListener("load", () => {
             if (!event.target.classList.contains('fa-solid')) {
                 // Send favorited to database
                 await addDownvote(recipeID, event);
+                subtractVoteCount(event)
 
             } else if (!event.target.classList.contains('fa-regular')) {
 
                 await removeDownvote(recipeID, event);
+                addVoteCount(event)
             } 
         })
     })
@@ -206,32 +208,66 @@ async function deleteVote(recipeID) {
     return response
 }
 
+
+// function for switching styling when a downvote is toggled
 function toggleUpvoteDisplay(event) {
+
+    // changes the styling for the upvote button
     event.target.classList.toggle('fa-solid');
     event.target.classList.toggle('fa-regular');
     event.target.classList.toggle('dark:text-green-500');
 
+    // grabs the element for the downvote button on the same card
     const pairedDownvoteButton = event.target.parentNode.parentNode.children[2].children[0]
 
+    // If switching from a downvote to an upvote, increment the score an additional time
+    // to account for the difference
+    if (pairedDownvoteButton.classList.contains("dark:text-red-500")) {
+       addVoteCount(event)
+    }
+
+    // changes the styling for the downvote button
     pairedDownvoteButton.classList.remove("dark:text-red-500")
     pairedDownvoteButton.classList.remove("fa-solid")
     pairedDownvoteButton.classList.add("fa-regular")
 }
 
+
+// function for switching styling when a downvote is toggled
 function toggleDownvoteDisplay(event) {
+
+    // changes the styling for the downvote button
     event.target.classList.toggle('fa-solid');
     event.target.classList.toggle('fa-regular');
     event.target.classList.toggle('dark:text-red-500');
 
-
-
+    // grabs the element for the upvote button on the same card
     const pairedUpvoteButton = event.target.parentNode.parentNode.children[0].children[0]
 
+    // If switching from an upvote to a downvote, decrement the score an additional time
+    // to account for the difference
+    if (pairedUpvoteButton.classList.contains("dark:text-green-500")) {
+        subtractVoteCount(event)
+    }
+    // changes the styling for the upvote button
     pairedUpvoteButton.classList.remove("dark:text-green-500");
     pairedUpvoteButton.classList.remove("fa-solid");
     pairedUpvoteButton.classList.add("fa-regular")
 }
 
+// function for incrementing the vote count
+function addVoteCount(event) {
+    const pairedVoteCount = event.target.parentNode.parentNode.children[1]
+    const placeholder = pairedVoteCount.textContent
+    pairedVoteCount.textContent = parseInt(placeholder) + 1
+}
+
+// function for decrementing the vote count
+function subtractVoteCount(event) {
+    const pairedVoteCount = event.target.parentNode.parentNode.children[1]
+    const placeholder = pairedVoteCount.textContent
+    pairedVoteCount.textContent = parseInt(placeholder) -1
+}
 
 // Share button that copies recipe link to the users clipboard
 function copyToClipboard(link) {

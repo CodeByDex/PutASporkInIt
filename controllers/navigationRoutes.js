@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const helper = require('./util')
 const units = require("../utils/Units");
+const sequelize = require("sequelize");
 const { User, Recipe, Ingredient, RecipeIngredient, UserRecipeFavorite, RecipeUserVote } = require('../models');
 
 /************************************************
@@ -19,10 +20,7 @@ router.get('/newUser', (req, res) => {
 // GET route for home page
 router.get('/', async (req, res) => {
   helper.SafeRequest(res, async (res) => {
-    const recipes = await Recipe.findAll({})
-    // Pull in first three recipes in array
-    const topThreeRecipes = recipes.slice(0, 3)
-    const topRecipes = await renderRecipe(topThreeRecipes, req);
+    const topRecipes = await getRecipesSorted(req, 3);
 
     res.render('home', { topRecipes })
   })
@@ -34,19 +32,23 @@ router.get('/recipe/:id', async (req, res) => {
     helper.SafeRequest(res, async (res) => {
       let recipe = await getRecipeViewModel(req.params.id, req);
 
+      if (recipe == null) {
+        res.status(404).render("404");
+        return;
+      }
+
       res.render('recipe', recipe);
+
     })
   } else {
-    res.json('id must be greater than 0')
+    res.status(400).render("404", { errorMessage: "id must be greater than 0" });
   }
 })
 
 // GET route for browser page
 router.get('/browse', async (req, res) => {
   helper.SafeRequest(res, async (res) => {
-    const recipes = await Recipe.findAll({})
-
-    const allRecipes = await renderRecipe(recipes, req);
+    const allRecipes = await getRecipesSorted(req);
 
     res.render('browse', { allRecipes });
   })
@@ -68,7 +70,12 @@ router.get("/recipe/:id/edit", async (req, res) => {
 
     if (!isNaN(recipe.id) && recipe.id != 0) {
       recipe = await getRecipeViewModel(recipe.id, req);
+      if (recipe == null) {
+        res.status(404).render("404");
+        return;
+      }
     } else {
+      recipe.id = 0;
       recipe.activeTimeUOM = "min";
       recipe.totalTimeUOM = "h";
       recipe.complexity = "Intermediate"
@@ -119,21 +126,77 @@ module.exports = router;
  * Private Functions
  ******************************************/
 
+async function getRecipesSorted(req, top) {
+  let recipes = await Recipe.findAll({
+    attributes: {
+      include: [
+        [
+          sequelize.literal( `(
+            COALESCE(
+              (SELECT SUM(vote)
+              FROM RecipeUserVote as V
+              WHERE
+                v.recipeID = Recipe.id
+              ), 0)
+          )`), 
+          "voteSum"
+        ]
+      ]
+    },
+    order: [
+      [sequelize.literal("voteSum"), "DESC"]
+    ]
+  });
+
+  //if top is not provided, render all
+  top = top ? top : recipes.length + 1;
+
+  recipes = recipes.slice(0, top);
+
+  recipes = await renderRecipe(recipes, req);
+  return recipes;
+}
+
 async function renderRecipe(recipesToRender, req) {
   let recipes = await Promise.all(recipesToRender.map(async (obj) => {
     let recipe = obj.get();
+    recipe.isUserRecipe = false;
+
     if (req.session.loggedIn) {
       recipe = await loadUserFavorite(req, recipe);
       recipe = await loadUserVote(req, recipe);
+      // Add check for session user ID and recipe creator's user ID
+      const isUserRecipe = req.session.userID === recipe.userID;
+      recipe.isUserRecipe = isUserRecipe;
     }
-    
-    // Add check for session user ID and recipe creator's user ID
-    const isUserRecipe = req.session.userID === recipe.userID;
-    recipe.isUserRecipe = isUserRecipe;
 
+    recipe = await loadVoteCount(req, recipe);
+    
     return recipe;
   }));
   return recipes;
+}
+// finds the total 
+async function loadVoteCount(req, recipe) {
+  const recipeID = recipe.id
+
+  let upvotes = await RecipeUserVote.count({
+    where: {
+      vote: 1,
+      recipeID: recipeID
+      }
+  });
+
+  let downvotes = await RecipeUserVote.count({
+    where: {
+      vote: -1,
+      recipeID: recipeID
+    }
+  })
+
+  recipe.upvoteCount = (upvotes - downvotes);
+  
+  return recipe
 }
 
 async function loadUserVote(req, recipe) {
@@ -185,6 +248,10 @@ async function getRecipeViewModel(id, req) {
     ]
   });
 
+  if (!recData) {
+    return null;
+  }
+
   let recipe = await renderRecipe([recData], req);
 
   recipe = recipe[0];
@@ -207,5 +274,3 @@ async function getRecipeViewModel(id, req) {
 
   return recipe;
 };
-
-

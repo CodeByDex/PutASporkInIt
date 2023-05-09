@@ -142,14 +142,21 @@ async function renderRecipe(recipesToRender, req) {
 async function loadVoteCount(req, recipe) {
   const recipeID = recipe.id
 
-  let votes = await RecipeUserVote.count({
+  let upvotes = await RecipeUserVote.count({
     where: {
       vote: 1,
       recipeID: recipeID
       }
   });
 
-  recipe.upvoteCount = votes;
+  let downvotes = await RecipeUserVote.count({
+    where: {
+      vote: -1,
+      recipeID: recipeID
+    }
+  })
+
+  recipe.upvoteCount = (upvotes - downvotes);
   
   return recipe
 }

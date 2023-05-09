@@ -1,2 +1,4 @@
-<a class="favorite-button text-neutral-500 text-lg"><i class="fa-regular fa-heart"></i></a>
-
+<div>
+    <a class="favorite-button mr-2 text-neutral-500 text-lg md:text-xl cursor-pointer"><i class="{{#if favoriteid}}fa-solid dark:text-green-500 {{else}}fa-regular hover:text-green-500{{/if}} fa-heart" data-recipeid="{{id}}" data-userid = "{{userID}}" data-favoriteid="{{favoriteid}}"></i></a>
+    <a class="share-button mr-2 text-neutral-500 text-lg md:text-xl cursor-pointer" onclick="copyToClipboard('https://www.putasporkinit.co/recipe/{{id}}')"><i class="fa-regular fa-paper-plane hover:text-green-500"></i></a>
+</div>

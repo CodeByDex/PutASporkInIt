@@ -4,7 +4,7 @@ window.addEventListener("load", () => {
     if (btnLogout) {
         btnLogout.addEventListener("click", async () => {
 
-            const response = await fetch('./api/users/logout', {
+            const response = await fetch('/api/users/logout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
             });

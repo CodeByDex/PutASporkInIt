@@ -27,6 +27,7 @@ Welcome to PutASporkInIt, the virtual kitchen for pop culture fans! Our mission 
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v2.2.15-blue)](https://tailwindcss.com/)
 [![Flowbite](https://img.shields.io/badge/Flowbite-v3.3.0-green)](https://flowbite.com/)
 [![Handlebars](https://img.shields.io/badge/Handlebars-v4.7.7-orange)](https://handlebarsjs.com/)
+[![convert-units](https://img.shields.io/badge/convert--units-v2.3.4-orange)](https://www.npmjs.com/package/convert-units)
 
 ## Installation
 
@@ -66,10 +67,10 @@ Deployed Application: https://www.putasporkinit.co/
 
 Github Repository: https://github.com/CodeByDex/PutASporkInIt
 
-Team: [CodeByDex](https://github.com/CodeByDex), [Cyanasaurusrex](https://github.com/Cyanasaurusrex), [ChelseaLuevano](https://github.com/ChelseaLuevano), [that_devguy](https://github.com/that_devguy), [Christianmsm](https://github.com/Christianmsm), [jxmart](https://github.com/jxmart)
+Team: [ChelseaLuevano](https://github.com/ChelseaLuevano), [Christianmsm](https://github.com/Christianmsm), [CodeByDex](https://github.com/CodeByDex), [Cyanasaurusrex](https://github.com/Cyanasaurusrex), [jxmart](https://github.com/jxmart), [that_devguy](https://github.com/that_devguy)
 
 ## License
 [![MIT](https://img.shields.io/badge/MIT-License-red)](https://www.mit.edu/~amini/LICENSE.md)
 ## Questions
 
-If you have any questions or issues, feel free to reach out to me via my GitHub profile: [CodeByDex](https://github.com/CodeByDex)
+If you have any questions or issues, feel free to reach out to us via my GitHub repo: [PutASporkInIt](https://github.com/CodeByDex/PutASporkInIt)

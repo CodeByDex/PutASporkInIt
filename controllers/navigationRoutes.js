@@ -133,18 +133,43 @@ module.exports = router;
 async function renderRecipe(recipesToRender, req) {
   let recipes = await Promise.all(recipesToRender.map(async (obj) => {
     let recipe = obj.get();
+    recipe.isUserRecipe = false;
+
     if (req.session.loggedIn) {
       recipe = await loadUserFavorite(req, recipe);
       recipe = await loadUserVote(req, recipe);
+      // Add check for session user ID and recipe creator's user ID
+      const isUserRecipe = req.session.userID === recipe.userID;
+      recipe.isUserRecipe = isUserRecipe;
     }
 
-    // Add check for session user ID and recipe creator's user ID
-    const isUserRecipe = req.session.userID === recipe.userID;
-    recipe.isUserRecipe = isUserRecipe;
-
+    recipe = await loadVoteCount(req, recipe);
+    
     return recipe;
   }));
   return recipes;
+}
+// finds the total 
+async function loadVoteCount(req, recipe) {
+  const recipeID = recipe.id
+
+  let upvotes = await RecipeUserVote.count({
+    where: {
+      vote: 1,
+      recipeID: recipeID
+      }
+  });
+
+  let downvotes = await RecipeUserVote.count({
+    where: {
+      vote: -1,
+      recipeID: recipeID
+    }
+  })
+
+  recipe.upvoteCount = (upvotes - downvotes);
+  
+  return recipe
 }
 
 async function loadUserVote(req, recipe) {
@@ -222,5 +247,3 @@ async function getRecipeViewModel(id, req) {
 
   return recipe;
 };
-
-

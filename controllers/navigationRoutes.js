@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const helper = require('./util')
 const units = require("../utils/Units");
+const sequelize = require("sequelize");
 const { User, Recipe, Ingredient, RecipeIngredient, UserRecipeFavorite, RecipeUserVote } = require('../models');
 
 /************************************************
@@ -19,10 +20,7 @@ router.get('/newUser', (req, res) => {
 // GET route for home page
 router.get('/', async (req, res) => {
   helper.SafeRequest(res, async (res) => {
-    const recipes = await Recipe.findAll({})
-    // Pull in first three recipes in array
-    const topThreeRecipes = recipes.slice(0, 3)
-    const topRecipes = await renderRecipe(topThreeRecipes, req);
+    const topRecipes = await getRecipesSorted(req, 3);
 
     res.render('home', { topRecipes })
   })
@@ -44,9 +42,7 @@ router.get('/recipe/:id', async (req, res) => {
 // GET route for browser page
 router.get('/browse', async (req, res) => {
   helper.SafeRequest(res, async (res) => {
-    const recipes = await Recipe.findAll({})
-
-    const allRecipes = await renderRecipe(recipes, req);
+    const allRecipes = await getRecipesSorted(req);
 
     res.render('browse', { allRecipes });
   })
@@ -118,6 +114,37 @@ module.exports = router;
 /****************************************
  * Private Functions
  ******************************************/
+
+async function getRecipesSorted(req, top) {
+  let recipes = await Recipe.findAll({
+    attributes: {
+      include: [
+        [
+          sequelize.literal( `(
+            COALESCE(
+              (SELECT SUM(vote)
+              FROM RecipeUserVote as V
+              WHERE
+                v.recipeID = Recipe.id
+              ), 0)
+          )`), 
+          "voteSum"
+        ]
+      ]
+    },
+    order: [
+      [sequelize.literal("voteSum"), "DESC"]
+    ]
+  });
+
+  //if top is not provided, render all
+  top = top ? top : recipes.length + 1;
+
+  recipes = recipes.slice(0, top);
+
+  recipes = await renderRecipe(recipes, req);
+  return recipes;
+}
 
 async function renderRecipe(recipesToRender, req) {
   let recipes = await Promise.all(recipesToRender.map(async (obj) => {

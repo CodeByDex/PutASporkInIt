@@ -1,8 +1,6 @@
 const router = require("express").Router();
 const helper = require('./util')
 const units = require("../utils/Units");
-const Sequelize = require('sequelize')
-const Op = Sequelize.Op;
 const { User, Recipe, Ingredient, RecipeIngredient, UserRecipeFavorite, RecipeUserVote } = require('../models');
 
 /************************************************

@@ -46,9 +46,12 @@ To use this project, follow these steps:
 3. Search through to find a recipe that you would like to try.
 4. Choose your favorite recipes by clicking the `heart` icon and give it an `up-vote` or `down-vote`.
 
-<img src="assets/www.putasporkinit.co_newUser.png">
-<img src="assets/www.putasporkinit.co_.png">
-<img src="assets/www.putasporkinit.co_recipe_2 (1).png">
+![homepage-demo](https://github.com/CodeByDex/PutASporkInIt/assets/113719464/4be400f6-3e69-42b0-a1d7-c2c8b52c8fe9)
+![browse-demo](https://github.com/CodeByDex/PutASporkInIt/assets/113719464/ebec0a0d-c720-4830-90a9-b356fc332be1)
+![signup-demo](https://github.com/CodeByDex/PutASporkInIt/assets/113719464/ff774573-3bc4-41d8-ad0c-6ecb93981ef7)
+![dashboard-demo](https://github.com/CodeByDex/PutASporkInIt/assets/113719464/e330afd7-2991-4e90-a575-31abeb282083)
+![recipe-demo](https://github.com/CodeByDex/PutASporkInIt/assets/113719464/df56adef-905e-4884-87ce-7ac5a2a3521b)
+
 
 ## Contributing
 

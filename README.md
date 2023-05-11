@@ -27,6 +27,7 @@ Welcome to PutASporkInIt, the virtual kitchen for pop culture fans! Our mission 
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v2.2.15-blue)](https://tailwindcss.com/)
 [![Flowbite](https://img.shields.io/badge/Flowbite-v3.3.0-green)](https://flowbite.com/)
 [![Handlebars](https://img.shields.io/badge/Handlebars-v4.7.7-orange)](https://handlebarsjs.com/)
+[![convert-units](https://img.shields.io/badge/convert--units-v2.3.4-orange)](https://www.npmjs.com/package/convert-units)
 
 ## Installation
 
@@ -45,9 +46,12 @@ To use this project, follow these steps:
 3. Search through to find a recipe that you would like to try.
 4. Choose your favorite recipes by clicking the `heart` icon and give it an `up-vote` or `down-vote`.
 
-<img src="assets/www.putasporkinit.co_newUser.png">
-<img src="assets/www.putasporkinit.co_.png">
-<img src="assets/www.putasporkinit.co_recipe_2 (1).png">
+![homepage-demo](https://github.com/CodeByDex/PutASporkInIt/assets/113719464/4be400f6-3e69-42b0-a1d7-c2c8b52c8fe9)
+![browse-demo](https://github.com/CodeByDex/PutASporkInIt/assets/113719464/ebec0a0d-c720-4830-90a9-b356fc332be1)
+![signup-demo](https://github.com/CodeByDex/PutASporkInIt/assets/113719464/ff774573-3bc4-41d8-ad0c-6ecb93981ef7)
+![dashboard-demo](https://github.com/CodeByDex/PutASporkInIt/assets/113719464/e330afd7-2991-4e90-a575-31abeb282083)
+![recipe-demo](https://github.com/CodeByDex/PutASporkInIt/assets/113719464/df56adef-905e-4884-87ce-7ac5a2a3521b)
+
 
 ## Contributing
 
@@ -66,10 +70,10 @@ Deployed Application: https://www.putasporkinit.co/
 
 Github Repository: https://github.com/CodeByDex/PutASporkInIt
 
-Team: [CodeByDex](https://github.com/CodeByDex), [Cyanasaurusrex](https://github.com/Cyanasaurusrex), [ChelseaLuevano](https://github.com/ChelseaLuevano), [that_devguy](https://github.com/that_devguy), [Christianmsm](https://github.com/Christianmsm), [jxmart](https://github.com/jxmart)
+Team: [ChelseaLuevano](https://github.com/ChelseaLuevano), [Christianmsm](https://github.com/Christianmsm), [CodeByDex](https://github.com/CodeByDex), [Cyanasaurusrex](https://github.com/Cyanasaurusrex), [jxmart](https://github.com/jxmart), [that_devguy](https://github.com/that_devguy)
 
 ## License
 [![MIT](https://img.shields.io/badge/MIT-License-red)](https://www.mit.edu/~amini/LICENSE.md)
 ## Questions
 
-If you have any questions or issues, feel free to reach out to me via my GitHub profile: [CodeByDex](https://github.com/CodeByDex)
+If you have any questions or issues, feel free to reach out to us via my GitHub repo: [PutASporkInIt](https://github.com/CodeByDex/PutASporkInIt)

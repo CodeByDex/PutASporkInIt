@@ -1,67 +1,88 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Put A Spork In It</title>
+    <title>PutASporkInIt</title>
+
+    <meta name="author" content="Chelsea Luevano, Christian Smith, James Martin, Nathan Moon, Ryan Spath, Zach Mutch">
+    <meta name="keywords" content="recipes, cooking, instructions">
+    <meta name="description" content="Here at PutASporkInIt, our mission is to bring the magic of your favorite movies, TV shows, and video games to your plate with mouth-watering recipes!">
+
+    <meta property="og:title" content="Put a Spork in it!">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/images/spork-opengraph.png">
+    <meta property="og:url" content="https://www.putasporkinit.co/">
+
     <link rel="stylesheet" type="text/css" href="/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />{{!--FlowBite CDN--}}
     <link href="/css/output.css" rel="stylesheet" />
-    {{!-- <script src="https://cdn.tailwindcss.com"></script>TailwindCSS CDN --}}
-    {{!-- TailwindCSS Custom Config --}}
-    {{!-- <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
-    </script> --}}
     <script src="https://kit.fontawesome.com/ced0ff2264.js" crossorigin="anonymous"></script>{{!--FontAwesome Kit--}}
 </head>
+
 <body class="bg-neutral-100 dark:bg-neutral-900">
     <nav class="border-neutral-200 bg-white dark:bg-neutral-800 dark:border-neutral-700">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="/" class="flex items-center">
-            <img src="/images/lightmode-logo.png" class="h-8 mr-3 dark:hidden" alt="PutASporkInIt Logo" />
-            <img src="/images/darkmode-logo.png" class="h-8 mr-3 hidden dark:block" alt="PutASporkInIt Logo" />
-        </a>
-        <button data-collapse-toggle="navbar-solid-bg" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-neutral-500 rounded-lg md:hidden hover:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-700" aria-controls="navbar-solid-bg" aria-expanded="false">
-            <span class="sr-only">Open main menu</span>
-            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-        </button>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
-            <ul class="flex flex-col font-semibold mt-4 rounded-lg bg-white md:flex-row md:items-center md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:bg-neutral-800 md:dark:bg-transparent dark:border-neutral-700">
-            <li>
-                <a id="home" href="/" class="block py-2 pl-3 pr-4 text-neutral-900 rounded hover:bg-neutral-100 md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-neutral-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a>
-            </li>
-            <li>
-                <a href="/browse" class="block py-2 pl-3 pr-4 text-neutral-900 rounded hover:bg-neutral-100 md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-neutral-700 dark:hover:text-white md:dark:hover:bg-transparent">Browse Recipes</a>
-            </li>
-            {{!-- Conditionally renders login or logout links --}}
-            {{#if loggedIn}}
-            <li>
-                <a id="dashBoard" href="/dashboard" class="block py-2 pl-3 pr-4 text-neutral-900 rounded hover:bg-neutral-100 md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-neutral-700 dark:hover:text-white md:dark:hover:bg-transparent">Dashboard</a>
-            </li>
-            <li>
-                <a href="#" id="logout" class="block py-2 pl-3 pr-4 text-neutral-900 rounded hover:bg-neutral-100 md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-neutral-700 dark:hover:text-white md:dark:hover:bg-transparent">Logout</a>
-            </li>
-            {{else}}
-            <li>
-                <a href="/login" id="login" class="block py-2 pl-3 pr-4 text-neutral-900 rounded hover:bg-neutral-100 md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-neutral-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
-            </li>
-            {{/if}}
+            <a href="/" class="flex items-center">
+                <img src="/images/lightmode-logo.svg" class="h-8 mr-3 dark:hidden" alt="PutASporkInIt Logo" />
+                <img src="/images/darkmode-logo.svg" class="h-8 mr-3 hidden dark:block" alt="PutASporkInIt Logo" />
+            </a>
+            <button data-collapse-toggle="navbar-solid-bg" type="button"
+                class="inline-flex items-center p-2 ml-3 text-sm text-neutral-500 rounded-lg md:hidden hover:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-700"
+                aria-controls="navbar-solid-bg" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </button>
+            <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
+                <ul
+                    class="flex flex-col font-semibold mt-4 rounded-lg bg-white md:flex-row md:items-center md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:bg-neutral-800 md:dark:bg-transparent dark:border-neutral-700">
+                    <li>
+                        <a id="home" href="/"
+                            class="block py-2 pl-3 pr-4 text-neutral-900 rounded hover:bg-neutral-100 md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-neutral-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a>
+                    </li>
+                    <li>
+                        <a href="/browse"
+                            class="block py-2 pl-3 pr-4 text-neutral-900 rounded hover:bg-neutral-100 md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-neutral-700 dark:hover:text-white md:dark:hover:bg-transparent">Browse
+                            Recipes</a>
+                    </li>
+                    {{!-- Conditionally renders login or logout links --}}
+                    {{#if loggedIn}}
+                    <li>
+                        <a id="dashBoard" href="/dashboard"
+                            class="block py-2 pl-3 pr-4 text-neutral-900 rounded hover:bg-neutral-100 md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-neutral-700 dark:hover:text-white md:dark:hover:bg-transparent"><i class="mr-2 fa-solid fa-circle-user"></i>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#" id="logout"
+                            class="block py-2 pl-3 pr-4 text-lg text-neutral-900 rounded hover:bg-neutral-100 md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-neutral-700 dark:hover:text-white md:dark:hover:bg-transparent"><i
+                                class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                    </li>
+                    {{else}}
+                    <li>
+                        <a href="/login" id="login"
+                            class="block py-2 pl-3 pr-4 text-neutral-900 rounded hover:bg-neutral-100 md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-neutral-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
+                    </li>
+                    {{/if}}
 
-            {{!-- Dark mode toggle buttons --}}
-            {{!-- <li>
-                <div class="pl-3 pr-4">
-                    <i class="sun fa-regular fa-sun cursor-pointer text-xl hidden dark:block text-white"></i>
-                    <i class="moon fa-solid fa-moon cursor-pointer text-xl block dark:hidden text-green-500"></i>
-                </div>
-            </li> --}}
-            
-            </ul>
-        </div>
+                    {{!-- Dark mode toggle buttons --}}
+                    {{!-- <li>
+                        <div class="pl-3 pr-4">
+                            <i class="sun fa-regular fa-sun cursor-pointer text-xl hidden dark:block text-white"></i>
+                            <i
+                                class="moon fa-solid fa-moon cursor-pointer text-xl block dark:hidden text-green-500"></i>
+                        </div>
+                    </li> --}}
+
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -73,30 +94,39 @@
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
             <div class="sm:flex sm:items-center sm:justify-between">
                 <a href="/" class="flex items-center mb-4 sm:mb-0">
-                    <img src="/images/lightmode-logo.png" class="h-6 mr-3 dark:hidden" alt="PutASporkInIt Logo" />
-                    <img src="/images/darkmode-logo.png" class="h-6 mr-3 hidden dark:block" alt="PutASporkInIt Logo" />
+                    <img src="/images/lightmode-logo.svg" class="h-6 mr-3 dark:hidden" alt="PutASporkInIt Logo" />
+                    <img src="/images/darkmode-logo.svg" class="h-6 mr-3 hidden dark:block" alt="PutASporkInIt Logo" />
                 </a>
-                <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-neutral-500 sm:mb-0 dark:text-neutral-500">
+                <ul
+                    class="flex flex-wrap items-center mb-6 text-sm font-medium text-neutral-500 sm:mb-0 dark:text-neutral-500">
                     <li>
-                        <a href="#" class="mr-4 hover:underline hover:text-green-500 dark:hover:text-green-400 md:mr-6 ">About</a>
+                        <a href="/"
+                            class="hidden mr-4 hover:underline hover:text-green-500 dark:hover:text-green-400 md:mr-6 ">About</a>
                     </li>
                     <li>
-                        <a href="#" class="mr-4 hover:underline hover:text-green-500 dark:hover:text-green-400 md:mr-6">Privacy Policy</a>
+                        <a href="/"
+                            class="hidden mr-4 hover:underline hover:text-green-500 dark:hover:text-green-400 md:mr-6">Privacy
+                            Policy</a>
                     </li>
                     <li>
-                        <a href="https://github.com/CodeByDex/PutASporkInIt" class="mr-4 hover:underline hover:text-green-500 dark:hover:text-green-400 md:mr-6" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://github.com/CodeByDex/PutASporkInIt"
+                            class="mr-4 hover:underline hover:text-green-500 dark:hover:text-green-400 md:mr-6"
+                            target="_blank" rel="noopener noreferrer">GitHub</a>
                     </li>
                     <li>
-                        <a href="#" class="hover:underline hover:text-green-500 dark:hover:text-green-400">Contact</a>
+                        <a href="/" class="hidden hover:underline hover:text-green-500 dark:hover:text-green-400">Contact</a>
                     </li>
                 </ul>
             </div>
             <hr class="my-6 border-neutral-200 sm:mx-auto dark:border-neutral-700 lg:my-8" />
-            <span class="block text-sm text-neutral-500 sm:text-center dark:text-neutral-400">© 2023 <a href="#" class="hover:underline hover:text-green-500 dark:hover:text-green-400">PutASporkInIt</a>. All Rights Reserved.</span>
+            <span class="block text-sm text-neutral-500 sm:text-center dark:text-neutral-400">© 2023 <a href="/"
+                    class="hover:underline hover:text-green-500 dark:hover:text-green-400">PutASporkInIt</a>. All Rights
+                Reserved.</span>
         </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>{{!--Flowbite--}}
     <script src="/js/util.js"></script>
     <script src="/js/main.js"></script>
 </body>
+
 </html>

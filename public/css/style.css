@@ -1,3 +1,49 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+button[aria-selected="true"],
+button[aria-selected="true"]:hover {
+    color: #22c55e;
+}
+
+button[aria-selected="false"],
+button[aria-selected="false"]:hover {
+    color: #404040;
+}
+
+:is(.dark .dark\:text-blue-500[aria-selected="true"]),
+:is(.dark .dark\:text-blue-500[aria-selected="true"]:hover) {
+    --tw-text-opacity: 1;
+    color: #22c55e;
+}
+
+:is(.dark .dark\:border-blue-500[aria-selected="true"]),
+:is(.dark .dark\:border-blue-500[aria-selected="true"]:hover) {
+    --tw-border-opacity: 1;
+    border-color: #22c55e;
+    border-bottom-width: 3px;
+}
+
+:is(.dark .dark\:text-blue-500),
+:is(.dark .dark\:border-blue-500) {
+    --tw-text-opacity: 1;
+    color: #22c55e;
+}
+
+:is(.dark .dark\:text-gray-400),
+:is(.dark .dark\:border-gray-700) {
+    --tw-text-opacity: 1;
+    color: #404040 !important;
+}
+
+:is(.dark .dark\:hover\:text-gray-300:hover) {
+    color: #737373 !important;
+}
+
+.border-neutral-700 {
+    --tw-border-opacity: 1;
+    border-color: #404040;
+}
+

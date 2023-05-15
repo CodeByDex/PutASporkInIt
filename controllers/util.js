@@ -14,7 +14,7 @@ function VerifyLoggedIn(req, res, next) {
         return;
     }
 
-    next();    
+    next();
 };
 
 async function SafeRequest(res, cb) {
@@ -30,7 +30,7 @@ async function SafeRequest(res, cb) {
             errMsg = err.message;
         }
 
-        res.status(errCode).json(errMsg);
+        res.status(errCode).render("404", {errorMessage: errMsg});
     }
 }
 

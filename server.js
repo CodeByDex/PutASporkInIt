@@ -14,13 +14,18 @@ const PORT = process.env.PORT || 3001;
 
 const sess = {
     secret: "secret",
-    cookie: {},
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     store: new SequelizeStore({
         db: sequelize
-    })
+    }),
+    cookie: { secure: true},
+    proxy: true
 };
+
+if (process.env.landscape === "local"){
+    sess.cookie.secure = false;
+}
 
 app.use(session(sess));
 
@@ -46,7 +51,10 @@ app.use('*', (req, res) => {
     res.status(404).render('404');
 })
 
-sequelize.sync({ force: false })
-    .then(() => {
-        app.listen(PORT, () => console.log(`App Now Listening on ${PORT}`));
-    })
+async function startApp() {
+    const seq = await sequelize.sync({force: false});
+
+    app.listen(PORT, () => console.log(`Now Listening on ${PORT}`));
+}
+
+startApp();

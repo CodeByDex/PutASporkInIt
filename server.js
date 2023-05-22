@@ -24,13 +24,18 @@ async function StartApp() {
 
     const sess = {
         secret: secretTokens,
-        cookie: {},
         resave: false,
-        saveUninitialized: true,
+        saveUninitialized: false,
         store: new SequelizeStore({
             db: sequelize
-        })
+        }),
+        cookie: { secure: true},
+        proxy: true
     };
+    
+    if (process.env.landscape === "local"){
+        sess.cookie.secure = false;
+    }
 
     app.use(session(sess));
 

@@ -20,7 +20,13 @@ function localUserId(req, res, next) {
     next();
 }
 
+function loadCsrfToken(req, res, next) {
+    res.locals.csrfToken = req.csrfToken();
+    next();
+}
+
 module.exports = {
     localLoggedIn,
-    localUserId
+    localUserId,
+    loadCsrfToken
 }

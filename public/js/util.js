@@ -8,3 +8,7 @@ function getCookieValue(cookieName) {
 
     return cookies[cookieName];
 }
+
+function getCsrfToken() {
+    return document.querySelector(`meta[name="csrf-token"]`).getAttribute("content");
+}

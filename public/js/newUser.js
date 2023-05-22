@@ -8,7 +8,8 @@ window.addEventListener("load", () => {
         const response = await fetch("./api/users", {
             method: "POST",
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
+                "CSRF-Token": getCsrfToken()
             },
             body: JSON.stringify({
                 userName: userName,

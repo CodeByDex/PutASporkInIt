@@ -35,7 +35,13 @@ Please follow these steps to install and run the project on your local machine:
 
 1. You will need to run `npm i` to install project dependencies.
 2. You need to run the `db/schema.sql` file to create the database.
-3. You will need to create a `.env` variable
+3. You will need to create a `.env` file with with the following entries
+```
+DB_Name = "dbname"
+DB_User = "dbuser"
+DB_PW = "dbpw"
+landscape = "local"
+```
 4. You will need to run node `db/seeds` to initialize the database.
 5. You will need to run `npx tailwindcss -i ./public/css/style.css -o ./public/css/output.css --watch` while making view/css updates to generated an updated tailwind css file. 
   

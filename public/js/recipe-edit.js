@@ -15,14 +15,18 @@ window.addEventListener("load", () => {
 });
 
 // Delete recipe button
-document.getElementById("deleteButton").addEventListener("click", async function(event) {
+document.getElementById("deleteButton").addEventListener("click", async function (event) {
     event.preventDefault();
     if (confirm("Are you sure you wish to delete this recipe?")) {
         const recipeID = event.target.dataset.recipeid;
         const response = await fetch(`/api/recipes/${recipeID}`, {
-            method: "DELETE"
+            method: "DELETE",
+            headers: {
+                "content-type": "application/json",
+                "CSRF-Token": getCsrfToken()
+            }
         });
-    
+
         if (response.ok) {
             window.location.href = `/dashboard`;
         } else {
@@ -61,7 +65,8 @@ async function recipeSave(event) {
     const response = await fetch(`/api/recipes${uriSuffix}`, {
         method: method,
         headers: {
-            "content-type": "application/json"
+            "content-type": "application/json",
+            "CSRF-Token": getCsrfToken()
         },
         body: JSON.stringify({
             name,

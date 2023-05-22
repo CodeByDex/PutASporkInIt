@@ -3,6 +3,7 @@ const exphbs = require("express-handlebars");
 const routes = require("./controllers");
 const path = require("path");
 const session = require("express-session");
+const csurf = require("csurf");
 
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -29,6 +30,8 @@ if (process.env.landscape === "local"){
 
 app.use(session(sess));
 
+app.use(csurf());
+
 const hbs = exphbs.create({ helpers });
 
 app.engine("handlebars", hbs.engine);
@@ -38,7 +41,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use([middleware.localLoggedIn, middleware.localUserId]);
+app.use([middleware.localLoggedIn, middleware.localUserId, middleware.loadCsrfToken]);
 
 app.use((err, req, res, next) => {
     console.log(`Unhandled error: ${err}`);

@@ -6,7 +6,10 @@ window.addEventListener("load", () => {
 
             const response = await fetch('/api/users/logout', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    "CSRF-Token": getCsrfToken()
+                }
             });
 
             if (response.ok) {
@@ -33,11 +36,11 @@ window.addEventListener("load", () => {
             if (!event.target.classList.contains('fa-solid')) {
                 // Send favorited to database
                 await addUpvote(recipeID, event);
-                addVoteCount(event)                
+                addVoteCount(event)
             } else if (!event.target.classList.contains('fa-regular')) {
                 await removeUpvote(recipeID, event);
                 subtractVoteCount(event)
-            } 
+            }
         })
     })
 
@@ -60,7 +63,7 @@ window.addEventListener("load", () => {
 
                 await removeDownvote(recipeID, event);
                 addVoteCount(event)
-            } 
+            }
         })
     })
 })
@@ -96,7 +99,8 @@ async function removeFromFavorites(event, userID) {
     const response = await fetch(`/api/users/${userID}/Favorites/${favoriteID}`, {
         method: 'DELETE',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            "CSRF-Token": getCsrfToken()
         }
     });
     if (response.ok) {
@@ -111,7 +115,8 @@ async function addToFavorites(userID, recipeID, event) {
     const response = await fetch(`/api/users/${userID}/Favorites`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            "CSRF-Token": getCsrfToken()
         },
         body: JSON.stringify({
             recipeID: recipeID
@@ -138,7 +143,8 @@ async function addUpvote(recipeID, event) {
     const response = await fetch(`/api/recipes/${recipeID}/votes/`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            "CSRF-Token": getCsrfToken()
         },
         body: JSON.stringify({
             vote: 1
@@ -159,7 +165,8 @@ async function addDownvote(recipeID, event) {
     const response = await fetch(`/api/recipes/${recipeID}/votes/`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            "CSRF-Token": getCsrfToken()
         },
         body: JSON.stringify({
             vote: -1
@@ -202,8 +209,9 @@ async function deleteVote(recipeID) {
     const response = await fetch(`/api/recipes/${recipeID}/votes/`, {
         method: 'DELETE',
         headers: {
-            'Content-Type': 'application/json'
-        },
+            'Content-Type': 'application/json',
+            "CSRF-Token": getCsrfToken()
+        }
     })
     return response
 }
@@ -223,7 +231,7 @@ function toggleUpvoteDisplay(event) {
     // If switching from a downvote to an upvote, increment the score an additional time
     // to account for the difference
     if (pairedDownvoteButton.classList.contains("dark:text-red-500")) {
-       addVoteCount(event)
+        addVoteCount(event)
     }
 
     // changes the styling for the downvote button
@@ -266,7 +274,7 @@ function addVoteCount(event) {
 function subtractVoteCount(event) {
     const pairedVoteCount = event.target.parentNode.parentNode.children[1]
     const placeholder = pairedVoteCount.textContent
-    pairedVoteCount.textContent = parseInt(placeholder) -1
+    pairedVoteCount.textContent = parseInt(placeholder) - 1
 }
 
 // Share button that copies recipe link to the users clipboard

@@ -9,7 +9,8 @@
 
     <meta name="author" content="Chelsea Luevano, Christian Smith, James Martin, Nathan Moon, Ryan Spath, Zach Mutch">
     <meta name="keywords" content="recipes, cooking, instructions">
-    <meta name="description" content="Here at PutASporkInIt, our mission is to bring the magic of your favorite movies, TV shows, and video games to your plate with mouth-watering recipes!">
+    <meta name="description"
+        content="Here at PutASporkInIt, our mission is to bring the magic of your favorite movies, TV shows, and video games to your plate with mouth-watering recipes!">
 
     <meta property="og:title" content="Put a Spork in it!">
     <meta property="og:type" content="website">
@@ -19,9 +20,12 @@
     <link rel="stylesheet" type="text/css" href="/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />{{!--FlowBite CDN--}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />{{!--FlowBite
+    CDN--}}
     <link href="/css/output.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/ced0ff2264.js" crossorigin="anonymous"></script>{{!--FontAwesome Kit--}}
+
+    <meta name="csrf-token" content="{{csrfToken}}">
 </head>
 
 <body class="bg-neutral-100 dark:bg-neutral-900">
@@ -58,7 +62,8 @@
                     {{#if loggedIn}}
                     <li>
                         <a id="dashBoard" href="/dashboard"
-                            class="block py-2 pl-3 pr-4 text-neutral-900 rounded hover:bg-neutral-100 md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-neutral-700 dark:hover:text-white md:dark:hover:bg-transparent"><i class="mr-2 fa-solid fa-circle-user"></i>Dashboard</a>
+                            class="block py-2 pl-3 pr-4 text-neutral-900 rounded hover:bg-neutral-100 md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0 dark:text-white md:dark:hover:text-green-400 dark:hover:bg-neutral-700 dark:hover:text-white md:dark:hover:bg-transparent"><i
+                                class="mr-2 fa-solid fa-circle-user"></i>Dashboard</a>
                     </li>
                     <li>
                         <a href="#" id="logout"
@@ -114,7 +119,8 @@
                             target="_blank" rel="noopener noreferrer">GitHub</a>
                     </li>
                     <li>
-                        <a href="/" class="hidden hover:underline hover:text-green-500 dark:hover:text-green-400">Contact</a>
+                        <a href="/"
+                            class="hidden hover:underline hover:text-green-500 dark:hover:text-green-400">Contact</a>
                     </li>
                 </ul>
             </div>
